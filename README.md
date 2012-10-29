@@ -1,4 +1,0 @@
-NAW
-===
-
-Network After Work
