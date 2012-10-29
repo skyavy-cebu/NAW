@@ -1,0 +1,10 @@
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=localhost;dbname=naw'
+      username: root
+      password:
+      encoding: utf8
+      attributes:
+        use_native_enum: true

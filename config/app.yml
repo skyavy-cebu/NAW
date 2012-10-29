@@ -1,0 +1,14 @@
+all:
+  envi:                   %SF_ENVIRONMENT%
+  system:
+    salt:                 nU7djfmI149m3jkN2N2qqtwXnvO3pr
+  
+  user:
+    dir:  %SF_ROOT_DIR%/web/uploads/user/
+    full: 250
+    small: 150
+  
+  facebook:
+    fb_admins:        1600771217
+    app_id:           377394829013291
+    secret:           4052c5a1e487a13034ba8ada9a2d1c05

@@ -1,0 +1,11 @@
+log/
+log/frontend_dev.log
+log/AdmSys_dev.log
+cache/
+cache/project_autoload.cache
+web/access.log
+web/error.log
+_access.log
+_error.log
+web/uploads/*
+/*.DS_Store

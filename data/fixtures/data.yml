@@ -1,0 +1,33 @@
+Industry:
+  Industry_1:
+    name: Accounting
+    created_at: '2012-10-25 06:28:07'
+    updated_at: '2012-10-25 06:28:07'
+  Industry_2:
+    name: Legal
+    created_at: '2012-10-25 06:29:12'
+    updated_at: '2012-10-25 06:29:22'
+  Industry_3:
+    name: 'Small Business'
+    created_at: '2012-10-25 06:30:05'
+    updated_at: '2012-10-25 06:30:05'
+  Industry_4:
+    name: Sales
+    created_at: '2012-10-25 06:30:13'
+    updated_at: '2012-10-25 06:30:13'
+  Industry_5:
+    name: Advertising
+    created_at: '2012-10-25 06:30:25'
+    updated_at: '2012-10-25 06:30:25'
+  Industry_6:
+    name: 'Web Design'
+    created_at: '2012-10-25 06:30:37'
+    updated_at: '2012-10-25 06:30:37'
+  Industry_7:
+    name: Education
+    created_at: '2012-10-25 06:30:47'
+    updated_at: '2012-10-25 06:30:47'
+  Industry_8:
+    name: IT
+    created_at: '2012-10-25 06:30:54'
+    updated_at: '2012-10-25 06:30:54'

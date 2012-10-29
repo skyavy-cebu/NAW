@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /
+RewriteEngine On
+RewriteRule ^(.*)$ /web/index.php [QSA,L]
