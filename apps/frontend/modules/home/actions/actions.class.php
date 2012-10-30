@@ -17,6 +17,5 @@ class homeActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request){
     echo $this->getUser()->isAuthenticated();
-    return $this->renderText('home');
   }
 }
