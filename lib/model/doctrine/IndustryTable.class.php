@@ -16,4 +16,11 @@ class IndustryTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Industry');
     }
+		
+		public function getAllIndustry(){
+      $q = Doctrine_Query::create()
+        ->from('Industry');
+      $fetch = $q->fetchArray(array(),Doctrine::HYDRATE_ARRAY);
+      return array_merge($fetch);
+    }
 }

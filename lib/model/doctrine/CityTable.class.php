@@ -16,4 +16,11 @@ class CityTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('City');
     }
+		
+		public function getAllCities(){
+      $q = Doctrine_Query::create()
+        ->from('City');
+      $fetch = $q->fetchArray(array(),Doctrine::HYDRATE_ARRAY);
+      return array_merge($fetch);
+    }
 }
