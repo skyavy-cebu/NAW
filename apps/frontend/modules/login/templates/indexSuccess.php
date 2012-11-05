@@ -1,4 +1,5 @@
-<h1>Login</h1>
+<div id="content">
+<h2>UPCOMING EVENTS</h2>
 
 <form method="post">
 <div id="notify" style="color:red"><?php echo (isset($notify))?$notify:''; ?></div>
@@ -17,3 +18,4 @@
   </tr>
 </table>
 </form>
+</div>

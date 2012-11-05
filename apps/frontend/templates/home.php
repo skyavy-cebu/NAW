@@ -93,7 +93,8 @@
 			</div>
 			<div class="banner_bottom_line"></div>
 		</div>
-		<div class="content">
+		
+    <div class="content">
 			<div class="content_wrapper">
 				<div class="upcoming_events upcoming_events_top_margin">
 					<div>

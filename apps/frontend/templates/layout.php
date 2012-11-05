@@ -30,8 +30,42 @@
 					<a href="" alt="" class="btn_contact"></a>
 				</div>
 			</div>
+    </div><!-- header -->
+		<!-- header -->
+    
+    <?php if($sf_context->getModuleName() == 'home'): ?>
+    <div class="banner">
+			<div class="banner_people_wrap">
+				<div class="banner_content_wrap">
+					<div class="banner_description">
+						<div class="banner_header_text">NETWORK AFTER WORK</div>
+						<span>Networking Events for Professionals is a national business and social networking event company that launched in June 2009. We currently host events in seven cities across the country (Chicago, San Francisco, Los Angeles, San Diego, Washington DC, Detroit and Philadelphia). The events are created for professionals who want to expand their network and create new business opportunities. The events range in size from 150- 600 professionals and take place in each city's top nightlife destinations.</span>&nbsp; <a href="" alt="">View more</a>
+					</div>
+					<div class="banner_photo">
+						<img src="images/banner_photo.png" />
+					</div>
+					<div class="clear"></div>
+					<div class="banner_links">
+						<!--<a href="" alt=""><div class="btn_find_event_in_city"></div></a>-->
+						<div class="find_event_in_city">
+							<select>
+								<option>FIND AN EVENT IN YOUR CITY!</option>
+								<option>Tokyo</option>
+								<option>Seoul</option>
+								<option>London</option>
+								<option>New York</option>
+							</select>
+						</div>
+						<a href="http://www.youtube.com/watch?v=oHg5SJYRHA0" rel="prettyPhoto" alt="" class="btn_look_at_events"></a>
+					</div>
+				</div>
+			</div>
+			<div class="banner_bottom_line"></div>
 		</div>
-		<div class="content">
+		<!-- banner --> 
+    <?php endif; ?>
+    
+    <div class="content">
 			<div class="banner_bottom_line"></div>
 			<div class="content_wrapper">
 				<?php echo $sf_content ?>
