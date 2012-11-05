@@ -16,4 +16,13 @@ class ProfileIndustryTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('ProfileIndustry');
     }
+		
+		public function getUsersIndustry($uid){
+		
+		$fetch = Doctrine_Core::getTable('ProfileIndustry')
+      ->createQuery('a')
+			->where('a.user_id = ?', $uid)
+      ->execute();
+      return $fetch;
+    }
 }

@@ -1,3 +1,8 @@
-<h1>Create an account with Network After Work</h1>
+<article>
+  <div id="content">  
+	<h1>Create an account with Network After Work</h1>
 
 <?php include_partial('form', array('form' => $form)) ?>
+
+</div>
+</article>
