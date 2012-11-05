@@ -1073,6 +1073,20 @@ padding:0;*/
 			.btn_logout:hover {
 				background-position: -220px -38px;
 			}
+      
+.btn_login {
+  width: 140px;
+  height: 38px;
+  background-image: url('../images/buttons/btn_top_sprite.png');
+  float: left;
+  margin-left: 77px;
+  background-position: -360px 0px;
+}
+.btn_login:hover {
+  background-position: -360px -38px;
+}
+      
+
 .content_dashboard_wrapper {
 		width: 735px;
 		float: left;
@@ -1324,8 +1338,11 @@ padding:0;*/
 				color: #F5F5F5;
 			}
 
-#content tbody{
-  font-family: museosans500;
+#content{
+  font-family: museosans500 !important;
+  color:#424242;
+  font-size:15px;
+  margin-bottom:30px;
 }
       
 #content h2{
@@ -1336,4 +1353,17 @@ padding:0;*/
   border-bottom: 1px dotted #CCCCCC;
   width: 735px;
   color: #424242;
+}
+
+#content a{
+  color:#01528A;
+  text-decoration:none;
+}
+
+.fl{
+  float:left;
+}
+
+.fr{
+  float:right;
 }

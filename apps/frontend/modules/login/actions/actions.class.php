@@ -22,7 +22,8 @@ class loginActions extends sfActions
     if($this->getUser()->isAuthenticated()){
       $this->redirect('/home');
     }
-    $login = $this->getRequestParameter('login');
+    
+    $login = $request->getParameter('login');
     if($login){
       $email = $login['email'];
       $pass = md5hash($login['pass']);

@@ -10,6 +10,9 @@
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
 		<script type="text/javascript" src="http://widgets.twimg.com/j/2/widget.js"></script>
+    <!--[if IE]>
+      <script src="/js/ie-html5-fix.js"></script>
+    <![endif]-->
 	</head>
 	<body>
 		<div class="header">

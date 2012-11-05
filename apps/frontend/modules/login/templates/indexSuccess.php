@@ -1,7 +1,7 @@
 <div id="content">
-<h2>UPCOMING EVENTS</h2>
+<h2>Login</h2>
 
-<form method="post">
+<form id="login" method="post" class="fl">
 <div id="notify" style="color:red"><?php echo (isset($notify))?$notify:''; ?></div>
 <table>
   <tr>
@@ -10,12 +10,24 @@
   </tr>
   <tr>
     <td>Password</td>
-    <td><input name="login[pass]" type="password"/></td>
+    <td><input name="login[pass]" type="password" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }"/></td>
   </tr>
   <tr>
+    <td colspan="2" style="padding:5px;">
+      <a href="/login" class="btn_login" onclick="$('#login').submit(); return false;"></a>
+    </td>
+  </tr>
+  <tr>  
+    <td><a href="">Forgot Password</a></td>
     <td></td>
-    <td><input type="Submit" value="Login"/></td>
   </tr>
 </table>
 </form>
-</div>
+
+<div class="login_social fl" style="padding-left:60px;">
+    <a style="margin-left:0" href="<?php echo url_for('/login/facebook'); ?>" class="btn_sign_in_facebook"></a>
+    <div align="center">or</div>
+    <a style="margin-left:0" href="<?php echo url_for('/login/linkedin'); ?>" class="btn_sign_in_linked_in"></a>
+</div><!-- login social -->
+<div style="clear:both"></div>
+</div><!-- content -->
