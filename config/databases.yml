@@ -2,7 +2,7 @@ all:
   doctrine:
     class: sfDoctrineDatabase
     param:
-      dsn: 'mysql:host=localhost;dbname=naw'
+      dsn: 'mysql:host=localhost;dbname=sf_naw'
       username: root
       password:
       encoding: utf8
