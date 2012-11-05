@@ -1,6 +1,8 @@
  <div class="right_bar">
 				<div class="right_logged_in">
-					<h4 class="text_novecentowidenormal">LOGGED IN AS</h4>
+          <?php if($sf_context->getUser()->isAuthenticated()): ?>
+					<!-- Login User -->
+          <h4 class="text_novecentowidenormal">LOGGED IN AS</h4>
 					<div>
 						<img src="../images/dashboard/profile_photo_small.png" alt="" />
 						<div class="logged_in_details"><span class="text_gray">John Doe</span><br /><span class="text_dark_blue">LA Systems Inc.</span></div>
@@ -8,8 +10,24 @@
 						<a href="" alt="" class="btn_my_dashboard"></a>
 						<a href="" alt="" class="btn_edit_profile"></a>
 						<a href="" alt="" class="btn_logout"></a>
-					</div>
-				</div>
+					</div><!-- Login User -->
+          <?php else: ?>
+          <!-- Login Form -->
+          <h4 class="text_gray text_novecentowidenormal">LOGIN/REGISTER</h4>
+          <div class="right_current_members">
+            CURRENT MEMBERS <a href="" class="text_sky_blue text_no_underline">50,342</a>
+          </div>
+          <span class="text_dark_blue right_login_medium_text">Login to see events</span><br />
+          <p class="right_login_small_text">you're registered to attend, past events, list of attendees and more!</p>
+          <a href="<?php echo url_for('/login'); ?>" alt="" class="btn_login_big"></a>
+          <span class="text_dark_blue right_login_medium_text">Don't have an account?</span><br />
+          <p class="right_login_small_text">Register for free!</p>
+          <a href="<?php echo url_for('/register'); ?>" alt="" class="btn_register_big"></a>
+          <!-- Login Form -->
+          <?php endif; ?>
+          
+				</div><!-- right_logged_in -->
+        
 				<div class="right_latest_news">
 					<a href="" alt="">See More</a><h4 class="text_novecentowidenormal">LATEST NEWS</h4>
 					<ul>

@@ -2,4 +2,4 @@
   sdfasdf home
 </div>
 
-<?php include_partial('home/sidebar',array()); ?>
+<?php include_component('home','sidebar',array()); ?>

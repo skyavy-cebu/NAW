@@ -62,6 +62,6 @@ class loginActions extends sfActions
 		unset($_SESSION['fb_'.$app_id.'_user_id']);
     
     $this->getUser()->signOut();
-    return $this->renderText('logout');
+    return $this->redirect('/login');
   }
 }

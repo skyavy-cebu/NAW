@@ -21,6 +21,10 @@
     <td><a href="">Forgot Password</a></td>
     <td></td>
   </tr>
+  <tr>
+    <td><a href="<?php echo url_for('/register'); ?>">Register Account</a></td>
+    <td></td>
+  </tr>
 </table>
 </form>
 

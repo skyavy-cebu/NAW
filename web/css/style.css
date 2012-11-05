@@ -253,7 +253,7 @@
 			background-image: url(../images/buttons/btn_header_sprite.png);
 			background-position: -218px -36px;
 		}*/
-	.btn_login {
+	.btn_login_small {
 		background-image: url('../images/buttons/btn_header_sprite.png');
 		float: left;
 		height: 32px;
@@ -261,7 +261,7 @@
 		background-position: 0px -64px;
 		margin-left: 14px;
 	}
-		.btn_login:hover {
+		.btn_login_small:hover {
 			background-position: -77px -64px;
 		}
 	.btn_register {
@@ -820,6 +820,7 @@ padding:0;*/
 		.right_bar {
 			width: 220px;
 			float: right;
+      margin-bottom:15px;
 		}
 		.right_login {
 			height: 275px;
@@ -1005,12 +1006,13 @@ padding:0;*/
 				border-bottom: none;
 			}
 		.right_logged_in {
-			height: 255px;
+			/*height: 255px;*/
 			background-color: #FFFFFF;
 			border-radius: 5px;
 			padding-top: 15px;
 			padding-left: 20px;
 			padding-right: 15px;
+      padding-bottom: 15px;
 			margin-bottom: 20px;
 		}
 			.right_logged_in h4:first-of-type {

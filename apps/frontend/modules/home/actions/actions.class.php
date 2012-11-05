@@ -16,6 +16,5 @@ class homeActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeIndex(sfWebRequest $request){
-    echo $this->getUser()->isAuthenticated();
   }
 }
