@@ -8,8 +8,8 @@
 						<div class="logged_in_details"><span class="text_gray">John Doe</span><br /><span class="text_dark_blue">LA Systems Inc.</span></div>
 						<div class="clear"></div>
 						<a href="" alt="" class="btn_my_dashboard"></a>
-						<a href="" alt="" class="btn_edit_profile"></a>
-						<a href="" alt="" class="btn_logout"></a>
+						<a href="profile/edit" alt="" class="btn_edit_profile"></a>
+						<a href="logout" alt="" class="btn_logout"></a>
 					</div><!-- Login User -->
           <?php else: ?>
           <!-- Login Form -->

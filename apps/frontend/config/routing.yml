@@ -9,6 +9,18 @@ homepage:
 logout:
   url: /logout
   param: { module: login, action: logout}
+  
+profile_edit:
+  url: /profile/edit
+  param: { module: profile, action: edit}
+
+profile_ajax1:
+  url: /profile/ajax/:var
+  param: { module: profile, action: ajax}
+  
+profile_ajax2:
+  url: /profile/ajax/:var/:val
+  param: { module: profile, action: ajax}
 
 # generic rules
 # please, remove them by adding more specific rules

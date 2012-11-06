@@ -16,6 +16,13 @@ class CityTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('City');
     }
+    
+    public function getCitiesByState($id){
+      $q = Doctrine_Query::create()
+        ->from('City c')
+        ->where('c.state_id = ?',$id);
+      return $q->execute();
+    }
 		
 		public function getAllCities(){
       $q = Doctrine_Query::create()

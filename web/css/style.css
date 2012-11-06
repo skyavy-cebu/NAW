@@ -1369,3 +1369,13 @@ padding:0;*/
 .fr{
   float:right;
 }
+
+table tr th label{
+  font-family: museosans500 !important;
+}
+
+tbody tr th{
+  text-align:left;
+  padding-right:15px;
+  font-weight:normal;
+}
