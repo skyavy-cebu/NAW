@@ -25,11 +25,59 @@ class profileActions extends sfActions{
     $this->profile = Doctrine_Core::getTable('Profile')->find(array($request->getParameter('id')));
     $this->forward404Unless($this->profile);
   }
+  
+  public function executeUploadPic(sfWebRequest $request){
+    $file = $this->request->getFiles();
+    $file = $file['profile']['photo'];
+    if(!$file){
+      return  $this->forward404();
+    }
+    
+    $full = sfConfig::get('app_user_full');
+    $small = sfConfig::get('app_user_small');
+    $dir = sfConfig::get('app_user_dir');
+    
+    $id = $this->getUser()->getAccount()->getId();
+    
+    //saving & cropping picture
+    $image_full = encode('profile-'.$id).'.jpg';
+    $image_small = encode('profile-'.$id).'_thumb.jpg';
+    $image_full_path = $dir.$image_full;
+    $image_small_path = $dir.$image_small;
+    rename($file['tmp_name'],$image_full_path);
+    
+    //cropping image_full
+    $profile_image = new myImageManipulator($image_full_path);
+    $profile_image->resample2($full, $full);
+    $profile_image->crop(0, 0, $full, $full);
+    $profile_image->save($image_full_path);
+    
+    //cropping image_small
+    $profile_image = new myImageManipulator($image_full_path);
+    $profile_image->resample2($small, $small);
+    $profile_image->crop(0, 0, $small, $small);
+    $profile_image->save($image_small_path);
+    
+    $data = array(
+      'image_full' => $image_full,
+      'image_small' => $image_small.'?r='.rand(1000,9999)
+    );
+    return $this->renderText(json_encode($data));
+  }
 
   public function executeEdit(sfWebRequest $request){
     $id = $this->getUser()->getAccount()->getId();
     $this->forward404Unless($profile = Doctrine_Core::getTable('Profile')->find(array($id)), sprintf('Object profile does not exist (%s).', $request->getParameter('id')));
     $this->form = new UserProfileForm($profile);
+    $this->user = $this->getUser()->getAccount();
+    $this->profile = $this->user->getProfile();
+    
+    $user = Doctrine_Core::getTable('User')->find($id);
+    $this->form2 = new UserForm($user);
+  }
+  
+  public function executeUseredit(sfWebRequest $request){
+    $this->setTemplate('edit');
   }
 
   public function executeUpdate(sfWebRequest $request)
