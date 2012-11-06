@@ -1,5 +1,5 @@
 <?php
-
+require_once dirname(__FILE__).'/../lib/myImageManipulator.php';
 /**
  * register actions.
  *
@@ -124,6 +124,7 @@ class registerActions extends sfActions
     if ($form->isValid())
     {
       $profile = $form->save();
+			$this->resize_img($profile->getImageFull());
 			
 			$this->forward404Unless($user = Doctrine_Core::getTable('ProfileIndustry')->findByUserId(array($request->getParameter('id'))), sprintf('Object user does not exist (%s).', $request->getParameter('id')));
       $user->delete();
@@ -147,6 +148,58 @@ class registerActions extends sfActions
   {
 
   }
+	public function resize_img($thefoto){
+	
+		$imgfile = './uploads/users/temp/'. $thefoto;
+		$newfname = './uploads/users/'. $thefoto;	
+		$newfnamesml = './uploads/users/sml_'. $thefoto;
+		
+		if(file_exists($imgfile)) {
+			$this->crop_img($imgfile,$newfname,700,500);
+			$this->crop_img($imgfile,$newfnamesml,80,49);
+			unlink($imgfile);
+		}
+	}
+	public function crop_img($imgfile,$newfname,$width,$height){	
+		$imgcrop = new myImageManipulator($imgfile);
+		$newimg = $imgcrop->resample3($width,$height);
+		$imgcrop->save($newfname);
+	}
+	
+	public function executeForgotpassword(sfWebRequest $request) {
+	  $this->form = new ForgotPasswordForm();
+
+	  if ($request->isMethod('post')) {
+			$forgotPassword = $request->getParameter('forgotpassword');
+			$this->form->bind($forgotPassword);
+
+			if ($this->form->isValid()) {
+				$user = UserTable::getInstance()->findOneByEmail($forgotPassword['email']);
+				$this->redirect('register/changePassword?id='.$user->getId());
+			}
+	  }
+	}
+	
+	public function executeChangePassword(sfWebRequest $request) {
+		$this->forward404Unless($id = $request->getParameter('id'));
+
+		$this->forward404Unless($this->user = UserTable::getInstance()->findOneById($id));
+
+		$this->form = new FormChangePassword();
+
+		if ($request->isMethod('post')) {
+			$changePassword = $request->getParameter('reset');
+			$this->form->bind($changePassword);
+
+			if ($this->form->isValid($changePassword)) {
+				sfContext::getInstance()->getConfiguration()->loadHelpers(array('Mix', 'Email'));
+				$this->user->setPass(md5hash($changePassword['reset-password']));
+				$this->user->save();
+				$this->redirect($this->generateUrl('homepage'));
+			}
+		}
+	}
+
 	
 
   

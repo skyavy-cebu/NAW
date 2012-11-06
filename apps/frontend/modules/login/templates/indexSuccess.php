@@ -18,7 +18,7 @@
     </td>
   </tr>
   <tr>  
-    <td><a href="">Forgot Password</a></td>
+    <td><a href="<?php echo url_for('/register/forgotpassword'); ?>">Forgot Password</a></td>
     <td></td>
   </tr>
   <tr>
