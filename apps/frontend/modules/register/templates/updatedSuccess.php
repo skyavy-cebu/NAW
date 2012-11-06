@@ -1,7 +1,6 @@
-<article>
-  <div id="content">  
-	<h1>Updated successfully!</h1>
+<div id="content">  
+	<h2>Updated successfully!</h2>
 	
-	</div>
-</article>
+</div>
+
 

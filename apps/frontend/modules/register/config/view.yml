@@ -1,5 +1,4 @@
 all:
   metas:
     title: Network After Work
-  stylesheets: [style.css,prettyPhoto.css]
-  javascripts: [jquery.js,jquery.prettyPhoto.js,twimg.widget.js]
+  stylesheets: [style.css]

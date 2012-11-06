@@ -3,11 +3,13 @@
       
     <?php
     if ($is_error == 0) { ?>
-		<h3>Thank you for registering an account!</h3>
+		<h2>Thank you for registering an account!</h2>
+		<span>
 		Please take a moment to fill out your profile. It's a handy tool for connecting with others.
 		Or you could check out <a href="<?php url_for('events/upcoming')?>">upcoming events </a>.
+		</span>
 		
-		Edit your Network After Work profile.
+		<h3>Edit your Network After Work profile.</h3>
     
     <form action="<?php echo url_for('register/profileupdate?id='.$uid);?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 			<input type="hidden" name="sf_method" value="put" />
@@ -25,7 +27,7 @@
 			</table>
 		</form>
 
-		<?php } else { echo "<p>Activation code is incorrect.</p>"; }?>
+		<?php } else { echo "<h2>Activation code is incorrect.</h2>"; }?>
 		
        
     </div>

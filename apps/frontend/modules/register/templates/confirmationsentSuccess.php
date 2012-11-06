@@ -1,8 +1,6 @@
-<article>
-  <div id="content">  
-<h1>Thank you for registering</h1>
-<br /><br />
+<div id="content">  
+<h2>Thank you for registering</h2>
+
 please check you email for the confimation.
 
 </div>
-</article>

@@ -60,16 +60,16 @@ class UserRegisterForm extends BaseUserForm
 		
 		$this->setValidators(array(
       'id'            => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'fname'         => new sfValidatorString(array('max_length' => 150, 'required' => true)),
-      'lname'         => new sfValidatorString(array('max_length' => 150, 'required' => true)),
-      'dob'           => new sfValidatorDate(array('required' => true)),
-			'city'      		=> new sfValidatorString(array('max_length' => 150, 'required' => true)),
-			'industry1'     => new sfValidatorString(array('max_length' => 150, 'required' => true)),
+      'fname'         => new sfValidatorString(array('max_length' => 150, 'required' => true),array('required' => 'Please Enter Firstname.')),
+      'lname'         => new sfValidatorString(array('max_length' => 150, 'required' => true),array('required' => 'Please Enter Lastname.')),
+      'dob'           => new sfValidatorDate(array('required' => true),array('required' => 'Please Enter Date of Birth.')),
+			'city'      		=> new sfValidatorString(array('max_length' => 150, 'required' => true),array('required' => 'Please Select City.')),
+			'industry1'     => new sfValidatorString(array('max_length' => 150, 'required' => true),array('required' => 'Please Select Industry.')),
       'industry2'     => new sfValidatorString(array('max_length' => 150)),
-			'email'         => new sfValidatorEmail(array('required' => true),array('required' => 'Please enter email.','invalid' => 'Invalid email.')),
-      'email2'        => new sfValidatorString(array('required' => true),array('required' => 'Please repeat email.')),
-			'pass'          => new sfValidatorString(array('max_length' => 32, 'required' => true)),
-			'pass2'         => new sfValidatorString(array('max_length' => 32, 'required' => true))
+			'email'         => new sfValidatorEmail(array('required' => true),array('required' => 'Please Enter Email.','invalid' => 'Invalid Email.')),
+      'email2'        => new sfValidatorString(array('required' => true),array('required' => 'Please Repeat Email.')),
+			'pass'          => new sfValidatorString(array('max_length' => 32, 'required' => true),array('required' => 'Please Enter Password.')),
+			'pass2'         => new sfValidatorString(array('max_length' => 32, 'required' => true),array('required' => 'Please Repeat Password.'))
     ));
 		
 		$this->mergePostValidator(new sfValidatorSchemaCompare('email', sfValidatorSchemaCompare::IDENTICAL, 'email2', array(), array('invalid'=>'Email Doesn\'t match.')));
