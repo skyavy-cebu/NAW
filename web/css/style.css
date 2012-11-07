@@ -1414,3 +1414,30 @@ img.profile_pic {
   display: block;
   background-color: #FFFFFF;
 }
+/*------- admin ---------- */
+#sf_admin_content table  {
+	text-align: left;
+	width: 100%;
+}
+#sf_admin_content table th {
+	background: #242424;
+	padding:5px;
+	color: #fff;
+	border: 1px solid #fff;
+	font-weight: normal;
+}
+#sf_admin_content table tfoot th {
+	background: none;
+	text-align: center;
+	color: #000;
+}
+#sf_admin_content table  .odd td{
+	background: #D6D6D6;
+	padding:5px;
+	border: 1px solid #fff;
+}
+#sf_admin_content table  .even td{
+	background: #FCFCFC;
+	padding:5px;
+	border: 1px solid #fff;
+}
