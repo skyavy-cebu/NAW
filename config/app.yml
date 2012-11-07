@@ -5,8 +5,8 @@ all:
   
   user:
     dir:  %SF_ROOT_DIR%/web/uploads/user/
-    full: 250
-    small: 150
+    full: 128
+    small: 44
   
   facebook:
     fb_admins:        1600771217

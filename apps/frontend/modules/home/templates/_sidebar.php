@@ -4,11 +4,15 @@
 					<!-- Login User -->
           <h4 class="text_novecentowidenormal">LOGGED IN AS</h4>
 					<div>
-						<img src="../images/dashboard/profile_photo_small.png" alt="" />
-						<div class="logged_in_details"><span class="text_gray">John Doe</span><br /><span class="text_dark_blue">LA Systems Inc.</span></div>
+						<?php if($profile->getImageSmall()): ?>
+              <img src="/uploads/user/<?php echo $profile->getImageSmall(); ?>" alt="" />
+            <?php else: ?>
+              <img class="default_small" src="/images/default.png" alt="" />
+            <?php endif; ?>
+						<div class="logged_in_details"><span class="text_gray"><?php echo $name; ?></span><br /><span class="text_dark_blue"><?php echo $profile->getCompany(); ?></span></div>
 						<div class="clear"></div>
 						<a href="" alt="" class="btn_my_dashboard"></a>
-						<a href="profile/edit" alt="" class="btn_edit_profile"></a>
+						<a href="<?php echo url_for('profile/edit'); ?>" alt="" class="btn_edit_profile"></a>
 						<a href="logout" alt="" class="btn_logout"></a>
 					</div><!-- Login User -->
           <?php else: ?>

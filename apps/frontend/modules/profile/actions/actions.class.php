@@ -58,8 +58,14 @@ class profileActions extends sfActions{
     $profile_image->crop(0, 0, $small, $small);
     $profile_image->save($image_small_path);
     
+    //update
+    $user = Doctrine_Core::getTable('Profile')->find($id);
+    $user->setImageFull($image_full);
+    $user->setImageSmall($image_small);
+    $user->save();
+    
     $data = array(
-      'image_full' => $image_full,
+      'image_full' => $image_full.'?r='.rand(1000,9999),
       'image_small' => $image_small.'?r='.rand(1000,9999)
     );
     return $this->renderText(json_encode($data));

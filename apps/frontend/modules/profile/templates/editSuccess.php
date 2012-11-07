@@ -18,7 +18,7 @@
     
     function profile_pic_success(data){
       $('.profile_pic a').attr('attr',data.image_full);
-      $('.profile_pic img').attr('src','/uploads/user/'+data.image_small);
+      $('.profile_pic img').attr('src','/uploads/user/'+data.image_full);
       $('.profile_pic_form .profile_photo').val('');
       $('.profile_pic_form .submit').prop('disabled',true);
     }
@@ -33,10 +33,10 @@
 
 <h2>Change Photo</h2>
 
-<?php $image_small = $profile->getImageSmall(); ?>
-<?php if($image_small): ?>
+<?php $image_full = $profile->getImageFull(); ?>
+<?php if($image_full): ?>
 <span class="profile_pic">
-  <img class="profile_pic" src="/uploads/user/<?php echo $image_small; ?>"></span>
+  <img class="profile_pic" src="/uploads/user/<?php echo $image_full; ?>"></span>
 <?php else: ?>
 <span class="profile_pic">
   <img src="/images/default.png"></span>

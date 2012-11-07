@@ -1025,7 +1025,7 @@ padding:0;*/
 			.right_logged_in div, .right_logged_in a {
 				margin-bottom: 6px;
 			}
-				.right_logged_in div>img {
+				.right_logged_in div>img{
 					border: 1px solid #CCCCCC;
 					padding: 2px;
 					float: left;
@@ -1398,4 +1398,19 @@ tbody tr th{
   text-align:left;
   padding-right:15px;
   font-weight:normal;
+}
+
+.default_small{
+  width:44px;
+}
+
+.default_full{
+  width:128px;
+}
+
+img.profile_pic {
+  border: 1px solid #CCCCCC;
+  padding: 5px;
+  display: block;
+  background-color: #FFFFFF;
 }
