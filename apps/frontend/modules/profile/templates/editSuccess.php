@@ -22,6 +22,10 @@
       $('.profile_pic_form .profile_photo').val('');
       $('.profile_pic_form .submit').prop('disabled',true);
     }
+    
+    if('<?php echo $focus; ?>' == 'user'){
+      $("html, body").animate({ scrollTop: 900 }, 'slow');
+    }
   });
 </script>
 
@@ -51,7 +55,7 @@
 
 <br /><br />
 <h2>Edit Account Settings</h2>
-<form method="post" name="user_form" class="user_form" action="<?php echo url_for('profile/useredit') ?>">
+<form method="post" name="user_form" class="user_form" action="<?php echo url_for('profile/edit') ?>">
 <div class="display_form_errr">
 <?php if ($form2->hasErrors()): ?>
   <ul class="shop_list_error">
@@ -67,14 +71,14 @@
 <tbody>
   <tr>
     <td>Email</td>
-    <td><?php echo $form2['email']; ?></td>
+    <td><?php echo $form2['email1']; ?></td>
   </tr>
   <tr>
     <td>Email Confirm</td>
-    <td><?php echo $form2['email_confirm']; ?></td>
+    <td><?php echo $form2['email2']; ?></td>
   </tr>
   <tr>
-    <td>Old Password</td>
+    <td>Current Password</td>
     <td><?php echo $form2['pass1']; ?></td>
   </tr>
   <tr>
@@ -82,7 +86,7 @@
     <td><?php echo $form2['pass2']; ?></td>
   </tr>
   <tr>
-    <td>Re-Password</td>
+    <td>Re-Enter Password</td>
     <td><?php echo $form2['pass3']; ?></td>
   </tr>
   <tr>

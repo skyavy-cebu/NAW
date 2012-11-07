@@ -74,14 +74,41 @@ class profileActions extends sfActions{
     
     $user = Doctrine_Core::getTable('User')->find($id);
     $this->form2 = new UserForm($user);
+    
+    $user = $request->getParameter('user');
+    if($request->getParameter('user')){
+      $this->processUser($request, $this->form2);
+      $this->focus = 'user';
+    }else{
+      $this->focus = 'profile';
+    }
   }
   
-  public function executeUseredit(sfWebRequest $request){
-    $this->setTemplate('edit');
+  protected function processUser(sfWebRequest $request, sfForm $form){
+    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+    if($form->isValid()){
+      $id = $this->form2->getValue('id');
+      
+      $email = $this->form2->getValue('email');
+      if($email){
+        //change email
+        $user = Doctrine_Core::getTable('User')->find($id);
+        $user->setEmail($email);
+        $user->save();
+      }
+      
+      $pass2 = $this->form2->getValue('pass2');
+      if($pass2){
+        //change pass
+        $user = Doctrine_Core::getTable('User')->find($id);
+        $user->setPass(md5hash($pass2));
+        $user->save();
+      }
+      $this->redirect('profile/edit');
+    }
   }
 
-  public function executeUpdate(sfWebRequest $request)
-  {
+  public function executeUpdate(sfWebRequest $request){
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
     $this->forward404Unless($profile = Doctrine_Core::getTable('Profile')->find(array($request->getParameter('id'))), sprintf('Object profile does not exist (%s).', $request->getParameter('id')));
     $this->form = new UserProfileForm($profile);
