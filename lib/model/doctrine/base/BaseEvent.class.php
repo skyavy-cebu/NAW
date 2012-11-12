@@ -13,7 +13,8 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @property timestamp $start
  * @property timestamp $end
  * @property integer $city_id
- * @property text $address
+ * @property string $venue
+ * @property string $address
  * @property integer $prepay_slots
  * @property integer $max_capacity
  * @property decimal $admission_prepay
@@ -32,7 +33,8 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @method timestamp           getStart()             Returns the current record's "start" value
  * @method timestamp           getEnd()               Returns the current record's "end" value
  * @method integer             getCityId()            Returns the current record's "city_id" value
- * @method text                getAddress()           Returns the current record's "address" value
+ * @method string              getVenue()             Returns the current record's "venue" value
+ * @method string              getAddress()           Returns the current record's "address" value
  * @method integer             getPrepaySlots()       Returns the current record's "prepay_slots" value
  * @method integer             getMaxCapacity()       Returns the current record's "max_capacity" value
  * @method decimal             getAdmissionPrepay()   Returns the current record's "admission_prepay" value
@@ -50,6 +52,7 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @method Event               setStart()             Sets the current record's "start" value
  * @method Event               setEnd()               Sets the current record's "end" value
  * @method Event               setCityId()            Sets the current record's "city_id" value
+ * @method Event               setVenue()             Sets the current record's "venue" value
  * @method Event               setAddress()           Sets the current record's "address" value
  * @method Event               setPrepaySlots()       Sets the current record's "prepay_slots" value
  * @method Event               setMaxCapacity()       Sets the current record's "max_capacity" value
@@ -101,8 +104,15 @@ abstract class BaseEvent extends sfDoctrineRecord
              'default' => 0,
              'length' => 2,
              ));
-        $this->hasColumn('address', 'text', null, array(
-             'type' => 'text',
+        $this->hasColumn('venue', 'string', 150, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 150,
+             ));
+        $this->hasColumn('address', 'string', 255, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 255,
              ));
         $this->hasColumn('prepay_slots', 'integer', 2, array(
              'type' => 'integer',
