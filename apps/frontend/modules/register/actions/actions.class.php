@@ -51,6 +51,7 @@ class registerActions extends sfActions
 			$UserProInd = new ProfileIndustry();
 			$UserProInd->setUserId($newId);
 			$UserProInd->setIndustryId($this->form->getValue('industry' . $i));
+			$UserProInd->setTypeId(0);
 			$UserProInd->save();
 			$i++;
 			}

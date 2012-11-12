@@ -21,7 +21,7 @@ class UserRegisterForm extends BaseUserForm
     );
 		
 	$dbState = CityTable::getInstance()->getAllCities();
-	$state = array('NONE'=>'Select State');
+	$state = array('NONE'=>'Select City');
 	foreach ($dbState as $s) $state[$s['id']] = $s['name'];
 	
 	$dbIndustry = IndustryTable::getInstance()->getAllIndustry();
