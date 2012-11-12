@@ -12,7 +12,6 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @property text $description
  * @property timestamp $start
  * @property timestamp $end
- * @property integer $state_id
  * @property integer $city_id
  * @property text $address
  * @property integer $prepay_slots
@@ -24,7 +23,6 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @property string $image_small
  * @property integer $event_admin1
  * @property integer $event_admin2
- * @property State $State
  * @property City $City
  * @property Doctrine_Collection $EventAttendee
  * 
@@ -33,7 +31,6 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @method text                getDescription()       Returns the current record's "description" value
  * @method timestamp           getStart()             Returns the current record's "start" value
  * @method timestamp           getEnd()               Returns the current record's "end" value
- * @method integer             getStateId()           Returns the current record's "state_id" value
  * @method integer             getCityId()            Returns the current record's "city_id" value
  * @method text                getAddress()           Returns the current record's "address" value
  * @method integer             getPrepaySlots()       Returns the current record's "prepay_slots" value
@@ -45,7 +42,6 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @method string              getImageSmall()        Returns the current record's "image_small" value
  * @method integer             getEventAdmin1()       Returns the current record's "event_admin1" value
  * @method integer             getEventAdmin2()       Returns the current record's "event_admin2" value
- * @method State               getState()             Returns the current record's "State" value
  * @method City                getCity()              Returns the current record's "City" value
  * @method Doctrine_Collection getEventAttendee()     Returns the current record's "EventAttendee" collection
  * @method Event               setId()                Sets the current record's "id" value
@@ -53,7 +49,6 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @method Event               setDescription()       Sets the current record's "description" value
  * @method Event               setStart()             Sets the current record's "start" value
  * @method Event               setEnd()               Sets the current record's "end" value
- * @method Event               setStateId()           Sets the current record's "state_id" value
  * @method Event               setCityId()            Sets the current record's "city_id" value
  * @method Event               setAddress()           Sets the current record's "address" value
  * @method Event               setPrepaySlots()       Sets the current record's "prepay_slots" value
@@ -65,7 +60,6 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @method Event               setImageSmall()        Sets the current record's "image_small" value
  * @method Event               setEventAdmin1()       Sets the current record's "event_admin1" value
  * @method Event               setEventAdmin2()       Sets the current record's "event_admin2" value
- * @method Event               setState()             Sets the current record's "State" value
  * @method Event               setCity()              Sets the current record's "City" value
  * @method Event               setEventAttendee()     Sets the current record's "EventAttendee" collection
  * 
@@ -99,13 +93,6 @@ abstract class BaseEvent extends sfDoctrineRecord
              ));
         $this->hasColumn('end', 'timestamp', null, array(
              'type' => 'timestamp',
-             ));
-        $this->hasColumn('state_id', 'integer', 2, array(
-             'type' => 'integer',
-             'unsigned' => true,
-             'notnull' => true,
-             'default' => 0,
-             'length' => 2,
              ));
         $this->hasColumn('city_id', 'integer', 2, array(
              'type' => 'integer',
@@ -175,12 +162,6 @@ abstract class BaseEvent extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('State', array(
-             'local' => 'state_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE',
-             'onUpdate' => 'CASCADE'));
-
         $this->hasOne('City', array(
              'local' => 'city_id',
              'foreign' => 'id',

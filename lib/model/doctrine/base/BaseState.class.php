@@ -12,20 +12,17 @@ Doctrine_Manager::getInstance()->bindComponent('State', 'doctrine');
  * @property string $name
  * @property Doctrine_Collection $Profile
  * @property Doctrine_Collection $City
- * @property Doctrine_Collection $Event
  * 
  * @method integer             getId()      Returns the current record's "id" value
  * @method string              getCode()    Returns the current record's "code" value
  * @method string              getName()    Returns the current record's "name" value
  * @method Doctrine_Collection getProfile() Returns the current record's "Profile" collection
  * @method Doctrine_Collection getCity()    Returns the current record's "City" collection
- * @method Doctrine_Collection getEvent()   Returns the current record's "Event" collection
  * @method State               setId()      Sets the current record's "id" value
  * @method State               setCode()    Sets the current record's "code" value
  * @method State               setName()    Sets the current record's "name" value
  * @method State               setProfile() Sets the current record's "Profile" collection
  * @method State               setCity()    Sets the current record's "City" collection
- * @method State               setEvent()   Sets the current record's "Event" collection
  * 
  * @package    symfony
  * @subpackage model
@@ -64,10 +61,6 @@ abstract class BaseState extends sfDoctrineRecord
              'foreign' => 'state_id'));
 
         $this->hasMany('City', array(
-             'local' => 'id',
-             'foreign' => 'state_id'));
-
-        $this->hasMany('Event', array(
              'local' => 'id',
              'foreign' => 'state_id'));
 

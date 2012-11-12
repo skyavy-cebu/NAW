@@ -49,15 +49,15 @@
 					<a href="" alt="" class="btn_contact"></a>-->
           
           <a href="">Happening Now</a>
-          <a href="">Upcomming Events Mgt</a>
-          <a href="">Past Events Mgt</a><br />
-          <a href="">Location Mgt</a>
-          <a href="">Industry Mgt</a>
-          <a href="">User Mgt</a>
-          <a href="">Account Mgt</a><br />
-          <a href="">News Mgt</a>
-          <a href="">Sponsor Mgt</a>
-          <a href="" class="end">Newsletter Mgt</a>
+          <a href="">Upcomming Events</a>
+          <a href="">Past Events</a><br />
+          <a href="">Location</a>
+          <a href="">Industry</a>
+          <a href="">User</a>
+          <a href="">Account</a><br />
+          <a href="">News</a>
+          <a href="">Sponsor</a>
+          <a href="" class="end">Newsletter</a>
 				</div>
 			</div>
     </div><!-- header -->
