@@ -17,12 +17,17 @@ class EventTable extends Doctrine_Table
     }
     
     public static function getAllEvent(){
+      $pager = new sfDoctrinePager('Event', 2);
       $q = Doctrine_Query::create()
         ->select('e.*,(SELECT count(*) FROM eventAttendee ea WHERE ea.event_id = e.id) as countAttendee')
         ->from('Event e')
         ->leftJoin('e.City c')
         ->leftJoin('c.State s')
         ->orderBy('e.event_date DESC');
-      return $q->execute();
+      //return $q->execute();
+      $pager->setQuery($q);
+      $pager->setPage(1);
+      $pager->init();
+      return $pager;
     }
 }

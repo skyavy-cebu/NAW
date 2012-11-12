@@ -48,4 +48,7 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<?php echo $events->getlastPage(); ?>
+
 </div>
