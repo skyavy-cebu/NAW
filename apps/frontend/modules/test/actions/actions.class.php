@@ -17,6 +17,7 @@ class testActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request){
    display($_SESSION);
+   
   }
   
   public function executePass(sfWebRequest $request){

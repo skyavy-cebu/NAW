@@ -13,6 +13,18 @@
     <!--[if IE]>
       <script src="/js/ie-html5-fix.js"></script>
     <![endif]-->
+    <style>
+      .nav a{
+        color:#fff;
+        text-decoration:none;
+        border-right: 1px solid #999;
+        padding-right: 5px;
+      }
+      
+      .nav a.end{
+        border-right:none;
+      }
+    </style>
 	</head>
 	<body>
 		<div class="header">
@@ -29,12 +41,23 @@
             <a href="<?php echo url_for('/login'); ?>" alt="" class="btn_login_small" alt=""></a>
           <?php endif; ?>
 				</div>
-				<div class="header_nav_buttons_wrapper">
-					<a href="" alt="" class="btn_events"></a>
+				<div class="header_nav_buttons_wrapper nav">
+					<!--<a href="" alt="" class="btn_events"></a>
 					<a href="" alt="" class="btn_news"></a>
 					<a href="" alt="" class="btn_blog"></a>
 					<a href="" alt="" class="btn_photos"></a>
-					<a href="" alt="" class="btn_contact"></a>
+					<a href="" alt="" class="btn_contact"></a>-->
+          
+          <a href="">Happening Now</a>
+          <a href="">Upcomming Events Mgt</a>
+          <a href="">Past Events Mgt</a><br />
+          <a href="">Location Mgt</a>
+          <a href="">Industry Mgt</a>
+          <a href="">User Mgt</a>
+          <a href="">Account Mgt</a><br />
+          <a href="">News Mgt</a>
+          <a href="">Sponsor Mgt</a>
+          <a href="" class="end">Newsletter Mgt</a>
 				</div>
 			</div>
     </div><!-- header -->
