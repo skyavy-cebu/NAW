@@ -6,6 +6,20 @@ homepage:
   url:   /
   param: { module: home, action: index }
   
+about:
+  url:   /about
+  param: { module: home, action: about }
+  
+dashboard:
+  url:   /dashboard
+  param: { module: profile, action: dashboard }
+  
+news_single_page:
+  url:     /news/:slug
+  class: 	 sfDoctrineRoute
+  options: { model: News, type: object }
+  param:   { module: news, action: single }
+  
 logout:
   url: /logout
   param: { module: login, action: logout}

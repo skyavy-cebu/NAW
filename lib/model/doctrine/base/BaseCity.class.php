@@ -62,18 +62,18 @@ abstract class BaseCity extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasOne('State', array(
-             'local' => 'id',
-             'foreign' => 'state_id',
+             'local' => 'state_id',
+             'foreign' => 'id',
              'onDelete' => 'CASCADE',
              'onUpdate' => 'CASCADE'));
 
         $this->hasMany('Profile', array(
-             'local' => 'city_id',
-             'foreign' => 'id'));
+             'local' => 'id',
+             'foreign' => 'city_id'));
 
         $this->hasMany('Event', array(
-             'local' => 'city_id',
-             'foreign' => 'id'));
+             'local' => 'id',
+             'foreign' => 'city_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

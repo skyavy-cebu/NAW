@@ -147,12 +147,12 @@ abstract class BaseUser extends sfDoctrineRecord
              'onUpdate' => 'CASCADE'));
 
         $this->hasMany('EventAttendee', array(
-             'local' => 'user_id',
-             'foreign' => 'id'));
+             'local' => 'id',
+             'foreign' => 'user_id'));
 
         $this->hasMany('ProfileIndustry', array(
-             'local' => 'user_id',
-             'foreign' => 'id'));
+             'local' => 'id',
+             'foreign' => 'user_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

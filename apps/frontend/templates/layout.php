@@ -19,10 +19,13 @@
 			<div class="header_wrapper">
 				<a href="<?php echo url_for('/'); ?>" alt=""><img src="/images/nwaw_logo_header.png" class="top_logo ie_anchor_no_border" /></a>
 				<div class="header_controls">
-					<a href="" alt="" title="Facebook" class="header_sns_fb"></a>
-					<a href="" alt="" title="LinkedIn" class="header_sns_linked_in"></a>
+          <?php if(!$sf_context->getUser()->isAuthenticated()): ?>
+					<a href="<?php echo url_for('/login/facebook'); ?>" alt="" title="Facebook" class="header_sns_fb"></a>
+          <a href="<?php echo url_for('/login/linkedin'); ?>" alt="" title="LinkedIn" class="header_sns_linked_in"></a>
+          <?php endif; ?>
+					<!--
 					<a href="" alt="" title="Twitter" class="header_sns_tt"></a>
-					<a href="" alt="" title="Olio" class="header_sns_orkut"></a>
+					<a href="" alt="" title="Olio" class="header_sns_orkut"></a> -->
           <?php if($sf_context->getUser()->isAuthenticated()): ?>
             <a href="<?php echo url_for('/logout'); ?>" alt="" class="btn_logout_small" alt=""></a>
           <?php else: ?>
@@ -31,7 +34,7 @@
 				</div>
 				<div class="header_nav_buttons_wrapper">
 					<a href="" alt="" class="btn_events"></a>
-					<a href="" alt="" class="btn_news"></a>
+					<a href="<?php echo url_for('/news'); ?>" alt="" class="btn_news"></a>
 					<a href="" alt="" class="btn_blog"></a>
 					<a href="" alt="" class="btn_photos"></a>
 					<a href="" alt="" class="btn_contact"></a>
@@ -82,12 +85,12 @@
 			<div class="footer_wrapper">
 				<a href="" alt=""><img src="/images/nwaw_logo_footer.png" class="footer_logo ie_anchor_no_border" /></a>
 				<div class="footer_nav">
-					<p><a href="" alt="">Register now for free</a> to create your profile and view others!</p>
+					<p><a href="<?php echo url_for('/register'); ?>" alt="">Register now for free</a> to create your profile and view others!</p>
 					<ul>
-						<li><a href="" alt="">HOME</a>&nbsp;&nbsp; |</li>
+						<li><a href="<?php echo url_for('/'); ?>" alt="">HOME</a>&nbsp;&nbsp; |</li>
 						<li>&nbsp;&nbsp;<a href="" alt="">EVENTS</a>&nbsp;&nbsp; |</li>
 						<li>&nbsp;&nbsp;<a href="" alt="">CONTACT</a>&nbsp;&nbsp; |</li>
-						<li>&nbsp;&nbsp;<a href="" alt="">ABOUT</a></li>
+						<li>&nbsp;&nbsp;<a href="<?php echo url_for('about'); ?>" alt="">ABOUT</a></li>
 					</ul>
 				</div>
 				<div class="footer_sns">
@@ -95,7 +98,7 @@
 					<a href="" alt="" title="Twitter" class="footer_sns_tumblr"></a>
 					<a href="" alt="" title="LinkedIn" class="footer_sns_linked_in"></a>
 				</div>
-				<div class="footer_copyright">Copyright © Network After Work 2009</div>
+				<div class="footer_copyright">Copyright &copy Network After Work <?php echo date('Y'); ?></div>
 			</div>
 		</div>
 	</body>

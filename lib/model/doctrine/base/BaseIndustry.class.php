@@ -49,12 +49,12 @@ abstract class BaseIndustry extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasMany('EventAttendee', array(
-             'local' => 'industry_id',
-             'foreign' => 'id'));
+             'local' => 'id',
+             'foreign' => 'industry_id'));
 
         $this->hasMany('ProfileIndustry', array(
-             'local' => 'industry_id',
-             'foreign' => 'id'));
+             'local' => 'id',
+             'foreign' => 'industry_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

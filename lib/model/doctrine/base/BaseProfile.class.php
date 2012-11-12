@@ -20,6 +20,7 @@ Doctrine_Manager::getInstance()->bindComponent('Profile', 'doctrine');
  * @property string $linkedin_url
  * @property string $fb_url
  * @property string $twitter_url
+ * @property string $olio_url
  * @property User $User
  * @property State $State
  * @property City $City
@@ -37,6 +38,7 @@ Doctrine_Manager::getInstance()->bindComponent('Profile', 'doctrine');
  * @method string  getLinkedinUrl()  Returns the current record's "linkedin_url" value
  * @method string  getFbUrl()        Returns the current record's "fb_url" value
  * @method string  getTwitterUrl()   Returns the current record's "twitter_url" value
+ * @method string  getOlioUrl()      Returns the current record's "olio_url" value
  * @method User    getUser()         Returns the current record's "User" value
  * @method State   getState()        Returns the current record's "State" value
  * @method City    getCity()         Returns the current record's "City" value
@@ -53,6 +55,7 @@ Doctrine_Manager::getInstance()->bindComponent('Profile', 'doctrine');
  * @method Profile setLinkedinUrl()  Sets the current record's "linkedin_url" value
  * @method Profile setFbUrl()        Sets the current record's "fb_url" value
  * @method Profile setTwitterUrl()   Sets the current record's "twitter_url" value
+ * @method Profile setOlioUrl()      Sets the current record's "olio_url" value
  * @method Profile setUser()         Sets the current record's "User" value
  * @method Profile setState()        Sets the current record's "State" value
  * @method Profile setCity()         Sets the current record's "City" value
@@ -133,6 +136,11 @@ abstract class BaseProfile extends sfDoctrineRecord
              'notnull' => true,
              'length' => 150,
              ));
+        $this->hasColumn('olio_url', 'string', 150, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 150,
+             ));
     }
 
     public function setUp()
@@ -145,14 +153,14 @@ abstract class BaseProfile extends sfDoctrineRecord
              'onUpdate' => 'CASCADE'));
 
         $this->hasOne('State', array(
-             'local' => 'id',
-             'foreign' => 'state_id',
+             'local' => 'state_id',
+             'foreign' => 'id',
              'onDelete' => 'CASCADE',
              'onUpdate' => 'CASCADE'));
 
         $this->hasOne('City', array(
-             'local' => 'id',
-             'foreign' => 'city_id',
+             'local' => 'city_id',
+             'foreign' => 'id',
              'onDelete' => 'CASCADE',
              'onUpdate' => 'CASCADE'));
 

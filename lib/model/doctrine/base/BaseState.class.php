@@ -60,16 +60,16 @@ abstract class BaseState extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasMany('Profile', array(
-             'local' => 'state_id',
-             'foreign' => 'id'));
+             'local' => 'id',
+             'foreign' => 'state_id'));
 
         $this->hasMany('City', array(
-             'local' => 'state_id',
-             'foreign' => 'id'));
+             'local' => 'id',
+             'foreign' => 'state_id'));
 
         $this->hasMany('Event', array(
-             'local' => 'state_id',
-             'foreign' => 'id'));
+             'local' => 'id',
+             'foreign' => 'state_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

@@ -69,6 +69,7 @@ class UserProfileForm extends BaseProfileForm{
       'linkedin_url' => new sfWidgetFormInputText(),
       'fb_url'       => new sfWidgetFormInputText(),
       'twitter_url'  => new sfWidgetFormInputText(),
+      'olio_url' => new sfWidgetFormInputText()
     ));
     
     $this->setValidators(array(
@@ -92,6 +93,7 @@ class UserProfileForm extends BaseProfileForm{
       'linkedin_url' => new sfValidatorString(array('max_length' => 150,'required' => false)),
       'fb_url'       => new sfValidatorString(array('max_length' => 150,'required' => false)),
       'twitter_url'  => new sfValidatorString(array('max_length' => 150,'required' => false)),
+      'olio_url'  => new sfValidatorString(array('max_length' => 150,'required' => false)),
     ));
     
     $this->widgetSchema->setLabels(array(
@@ -100,6 +102,7 @@ class UserProfileForm extends BaseProfileForm{
       'linkedin_url' => 'LinkedIn URL',
       'fb_url' => 'Facebook URL',
       'twitter_url' => 'Twitter URL',
+      'olio_url' => 'Olio URL',
       'to_meet' => 'Who I want to meet',
       'ido' => 'What I do',
       'my_industry1' => 'My Industry',

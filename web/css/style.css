@@ -1114,6 +1114,10 @@ padding:0;*/
 		.profile_info_text_1 h2 {
 			color: #424242;
 			font-family: museosans500;
+      width: 400px !important;
+      border-bottom:none !important;
+      margin-bottom:0 !important;
+      padding-bottom:0 !important;      
 		}
 		.profile_info_text_1 span {
 			color: #424242;
@@ -1161,6 +1165,7 @@ padding:0;*/
 			left: -11px;
 			margin-top: 5px;
 			position: absolute;
+      padding-right:10px;
 		}
 			.cwmo_orkut {
 				width: 22px;
@@ -1203,6 +1208,7 @@ padding:0;*/
 				margin-right: 9px;
 				float: right;
 			}
+      
 	.about_me {
 		margin-top: 49px;
 		margin-bottom: 59px;
@@ -1213,6 +1219,7 @@ padding:0;*/
 					border-bottom: 1px dotted #CCCCCC;
 					width: 735px;
 					color: #424242;
+          padding:0 !important;
 		}
 		.about_me table tr td:first-child {
 			font-size: 15px;
@@ -1367,6 +1374,7 @@ padding:0;*/
 #content a{
   color:#01528A;
   text-decoration:none;
+  font-family: museosans500;
 }
 
 #content table th{ 
@@ -1413,4 +1421,31 @@ img.profile_pic {
   padding: 5px;
   display: block;
   background-color: #FFFFFF;
+}
+
+.news h2{
+  border-bottom:none !important;
+  margin-bottom:11px !important;
+  padding-bottom:0 !important;
+}
+
+.news .event_long_description{
+  width:600px !important;
+  float:none;
+}
+
+.news .per_block_ul_separator > li:first-child{
+  padding-bottom:20px;
+}
+
+.news .event_name{
+  font-size:20px;
+}
+
+.bg-hide{
+  background-image:none;
+}
+
+.hide{
+  display:none;
 }

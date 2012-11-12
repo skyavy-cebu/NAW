@@ -10,19 +10,22 @@ Doctrine_Manager::getInstance()->bindComponent('Sponsor', 'doctrine');
  * @property integer $id
  * @property string $position
  * @property string $company
- * @property string $image_full
- * @property string $image_small
+ * @property enum $status_id
+ * @property string $image
+ * @property string $url
  * 
- * @method integer getId()          Returns the current record's "id" value
- * @method string  getPosition()    Returns the current record's "position" value
- * @method string  getCompany()     Returns the current record's "company" value
- * @method string  getImageFull()   Returns the current record's "image_full" value
- * @method string  getImageSmall()  Returns the current record's "image_small" value
- * @method Sponsor setId()          Sets the current record's "id" value
- * @method Sponsor setPosition()    Sets the current record's "position" value
- * @method Sponsor setCompany()     Sets the current record's "company" value
- * @method Sponsor setImageFull()   Sets the current record's "image_full" value
- * @method Sponsor setImageSmall()  Sets the current record's "image_small" value
+ * @method integer getId()        Returns the current record's "id" value
+ * @method string  getPosition()  Returns the current record's "position" value
+ * @method string  getCompany()   Returns the current record's "company" value
+ * @method enum    getStatusId()  Returns the current record's "status_id" value
+ * @method string  getImage()     Returns the current record's "image" value
+ * @method string  getUrl()       Returns the current record's "url" value
+ * @method Sponsor setId()        Sets the current record's "id" value
+ * @method Sponsor setPosition()  Sets the current record's "position" value
+ * @method Sponsor setCompany()   Sets the current record's "company" value
+ * @method Sponsor setStatusId()  Sets the current record's "status_id" value
+ * @method Sponsor setImage()     Sets the current record's "image" value
+ * @method Sponsor setUrl()       Sets the current record's "url" value
  * 
  * @package    symfony
  * @subpackage model
@@ -51,12 +54,22 @@ abstract class BaseSponsor extends sfDoctrineRecord
              'notnull' => true,
              'length' => 150,
              ));
-        $this->hasColumn('image_full', 'string', 150, array(
+        $this->hasColumn('status_id', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 0,
+              1 => 1,
+             ),
+             'notnull' => true,
+             'default' => 1,
+             ));
+        $this->hasColumn('image', 'string', 150, array(
              'type' => 'string',
              'notnull' => true,
              'length' => 150,
              ));
-        $this->hasColumn('image_small', 'string', 150, array(
+        $this->hasColumn('url', 'string', 150, array(
              'type' => 'string',
              'notnull' => true,
              'length' => 150,

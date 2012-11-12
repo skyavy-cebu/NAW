@@ -11,7 +11,7 @@
             <?php endif; ?>
 						<div class="logged_in_details"><span class="text_gray"><?php echo $name; ?></span><br /><span class="text_dark_blue"><?php echo $profile->getCompany(); ?></span></div>
 						<div class="clear"></div>
-						<a href="" alt="" class="btn_my_dashboard"></a>
+						<a href="<?php echo url_for('dashboard'); ?>" alt="" class="btn_my_dashboard"></a>
 						<a href="<?php echo url_for('profile/edit'); ?>" alt="" class="btn_edit_profile"></a>
 						<a href="logout" alt="" class="btn_logout"></a>
 					</div><!-- Login User -->
@@ -33,21 +33,17 @@
 				</div><!-- right_logged_in -->
         
 				<div class="right_latest_news">
-					<a href="" alt="">See More</a><h4 class="text_novecentowidenormal">LATEST NEWS</h4>
-					<ul>
-						<li>
-							<div class="right_latest_news_date">09.07.2011</div>
-							<div class="right_news_description">Network After Work is now hosting events in San Diego!</div>
-						</li>
-						<li>
-							<div class="right_latest_news_date">09.07.2011</div>
-							<div class="right_news_description">Network After Work is now hosting events in San Diego!</div>
-						</li>
-						<li>
-							<div class="right_latest_news_date">09.07.2011</div>
-							<div class="right_news_description">Network After Work is now hosting events in San Diego!</div>
-						</li>
-					</ul>
+					<a href="<?php echo url_for('/news'); ?>" alt="">See More</a><h4 class="text_novecentowidenormal">LATEST NEWS</h4>
+          <?php if($news): ?>
+            <ul>
+              <?php foreach($news as $x => $row): ?>
+              <li>
+                <div class="right_latest_news_date"><?php echo date('m.d.Y',strtotime($row->getPostDate())); ?></div>
+                <div class="right_news_description"><?php echo $row->getTitle(); ?></div>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+          <?php endif; ?>
 				</div>
 				<div class="right_member_spotlight">
 					<h4 class="text_novecentowidenormal">MEMBER SPOTLIGHT</h4>
@@ -90,12 +86,13 @@
 				</div>
 				<div class="right_sponsors">
 					<h4 class="text_novecentowidenormal">OUR SPONSORS</h4>
-					<a href="" alt=""><img src="../images/sponsors_1.png" alt="" class="ie_anchor_no_border" /></a>
-					<a href="" alt=""><img src="../images/sponsors_2.png" alt="" class="ie_anchor_no_border" /></a>
-					<a href="" alt=""><img src="../images/sponsors_3.png" alt="" class="ie_anchor_no_border" /></a>
-					<a href="" alt=""><img src="../images/sponsors_4.png" alt="" class="ie_anchor_no_border" /></a>
-					<a href="" alt=""><img src="../images/sponsors_5.png" alt="" class="ie_anchor_no_border" /></a>
-					<a href="" alt=""><img src="../images/sponsors_6.png" alt="" class="ie_anchor_no_border" /></a>
+          <?php if($sponsor): ?>
+            <?php foreach($sponsor as $x => $row): ?>
+              <a target="_blank" href="<?php echo $row->getUrl(); ?>" alt="<?php echo $row->getCompany(); ?>" title="<?php echo $row->getCompany(); ?>">
+                <img src="<?php echo url_for('/uploads/sponsor/'.$row->getImage()); ?>" alt="<?php echo $row->getCompany(); ?>" class="ie_anchor_no_border" />
+              </a>
+            <?php endforeach; ?>
+          <?php endif; ?>
 				</div>
 			</div>
 		

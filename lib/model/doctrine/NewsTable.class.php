@@ -12,8 +12,15 @@ class NewsTable extends Doctrine_Table
      *
      * @return object NewsTable
      */
-    public static function getInstance()
-    {
+    public static function getInstance(){
         return Doctrine_Core::getTable('News');
     }
+    
+    public static function getLatestNews(){
+      $q = Doctrine_Query::create()
+        ->from('News n')
+        ->orderBy('n.created_at DESC');
+        return $q->execute();
+    }
+    
 }

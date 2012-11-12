@@ -74,14 +74,14 @@ abstract class BaseProfileIndustry extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasOne('User', array(
-             'local' => 'id',
-             'foreign' => 'user_id',
+             'local' => 'user_id',
+             'foreign' => 'id',
              'onDelete' => 'CASCADE',
              'onUpdate' => 'CASCADE'));
 
         $this->hasOne('Industry', array(
-             'local' => 'id',
-             'foreign' => 'industry_id',
+             'local' => 'industry_id',
+             'foreign' => 'id',
              'onDelete' => 'CASCADE',
              'onUpdate' => 'CASCADE'));
 

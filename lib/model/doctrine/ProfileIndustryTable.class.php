@@ -18,6 +18,7 @@ class ProfileIndustryTable extends Doctrine_Table{
     public function getProfileIndustry($user_id,$type_id=0,$industry_id=0){
       $q = Doctrine_Query::create()
         ->from('ProfileIndustry pi')
+        ->leftJoin('pi.Industry i')
         ->where('pi.user_id = ?',$user_id)
         ->andWhere('pi.type_id = ?',$type_id);
       

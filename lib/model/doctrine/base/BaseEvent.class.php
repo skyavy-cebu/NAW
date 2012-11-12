@@ -176,20 +176,20 @@ abstract class BaseEvent extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasOne('State', array(
-             'local' => 'id',
-             'foreign' => 'state_id',
+             'local' => 'state_id',
+             'foreign' => 'id',
              'onDelete' => 'CASCADE',
              'onUpdate' => 'CASCADE'));
 
         $this->hasOne('City', array(
-             'local' => 'id',
-             'foreign' => 'city_id',
+             'local' => 'city_id',
+             'foreign' => 'id',
              'onDelete' => 'CASCADE',
              'onUpdate' => 'CASCADE'));
 
         $this->hasMany('EventAttendee', array(
-             'local' => 'event_id',
-             'foreign' => 'id'));
+             'local' => 'id',
+             'foreign' => 'event_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

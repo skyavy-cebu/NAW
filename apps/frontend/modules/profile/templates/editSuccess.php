@@ -99,4 +99,4 @@
 </form>
 
 </div>
-<?php include_component('home','sidebar',array()); ?>
+<?php include_component('home','sidebar'); ?>
