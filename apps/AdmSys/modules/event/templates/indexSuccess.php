@@ -3,7 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th>
+      <th>Event Date</th>
       <th>Name</th>
       <th>Description</th>
       <th>Start</th>
@@ -30,8 +30,6 @@
       <td><a href="<?php echo url_for('event/show?id='.$event->getId()) ?>"><?php echo $event->getId() ?></a></td>
       <td><?php echo $event->getName() ?></td>
       <td><?php echo $event->getDescription() ?></td>
-      <td><?php echo $event->getStart() ?></td>
-      <td><?php echo $event->getEnd() ?></td>
       <td><?php echo $event->getCityId() ?></td>
       <td><?php echo $event->getVenue() ?></td>
       <td><?php echo $event->getAddress() ?></td>
