@@ -47,7 +47,7 @@ class ProfileRegisterForm extends BaseProfileForm
       'industry3'    => ' ',
 			'industry4'    => ' ',
 			'to_meet'			 => 'Who I want to meet: ',
-      'image_full'   => 'upload Profile Photo:',
+      'image_full'   => 'Upload Profile Photo:',
 			'linkedin_url' => 'Linked In profile URL:',
       'fb_url'       => 'Facebook profile URL:',
 			'twitter_url'  => 'Twitter profile URL:'

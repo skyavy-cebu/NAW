@@ -12,7 +12,7 @@
       </thead>
       <tfoot>
         <tr>
-          <th colspan="16">
+          <th colspan="17">
             <?php if ($pager->haveToPaginate()): ?>
               <?php include_partial('user/pagination', array('pager' => $pager)) ?>
             <?php endif; ?>
@@ -20,12 +20,12 @@
         </tr>
       </tfoot>
       <tbody>
-        <?php foreach ($pager->getResults() as $i => $user): $odd = fmod(++$i, 2) ? 'odd' : 'even' ?>
-				<?php $profile = ProfileTable::getInstance()->findOneBy('id', $user->getId()); ?>
+        <?php foreach ($pager->getResults() as $i => $profile): $odd = fmod(++$i, 2) ? 'odd' : 'even' ?>
+				<?php $user = UserTable::getInstance()->findOneBy('id', $profile->getId()); ?>
           <tr class="sf_admin_row <?php echo $odd ?>">
-            <?php include_partial('user/list_td_batch_actions', array('user' => $user, 'helper' => $helper)) ?>
-            <?php include_partial('user/list_td_tabular', array('user' => $user, 'profile' => $profile)) ?>
-            <?php include_partial('user/list_td_actions', array('user' => $user, 'helper' => $helper)) ?>
+            <?php include_partial('user/list_td_batch_actions', array('profile' => $profile, 'helper' => $helper)) ?>
+            <?php include_partial('user/list_td_tabular', array('profile' => $profile,'user'=>$user)) ?>
+            <?php include_partial('user/list_td_actions', array('profile' => $profile, 'helper' => $helper)) ?>
           </tr>
         <?php endforeach; ?>
       </tbody>

@@ -47,7 +47,7 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
 
   public function getListParams()
   {
-    return '%%id%% - %%email%% - %%pass%% - %%fname%% - %%lname%% - %%dob%% - %%type_id%% - %%app_type%% - %%app_id%% - %%activation%% - %%last_login_at%% - %%active%% - %%created_at%% - %%updated_at%%';
+    return '%%id%% - %%title%% - %%company%% - %%state_id%% - %%city_id%% - %%address%% - %%ido%% - %%to_meet%% - %%image_full%% - %%image_small%% - %%linkedin_url%% - %%fb_url%% - %%twitter_url%% - %%created_at%% - %%updated_at%%';
   }
 
   public function getListLayout()
@@ -57,7 +57,7 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
 
   public function getListTitle()
   {
-    return 'User Management';
+    return 'User List';
   }
 
   public function getEditTitle()
@@ -92,24 +92,25 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
 
   public function getListDisplay()
   {
-    return array(  0 => 'id',  1 => 'email',  2 => 'pass',  3 => 'fname',  4 => 'lname',  5 => 'dob',  6 => 'type_id',  7 => 'app_type',  8 => 'app_id',  9 => 'activation',  10 => 'last_login_at',  11 => 'active',  12 => 'created_at',  13 => 'updated_at',);
+    return array(  0 => 'id',  1 => 'title',  2 => 'company',  3 => 'state_id',  4 => 'city_id',  5 => 'address',  6 => 'ido',  7 => 'to_meet',  8 => 'image_full',  9 => 'image_small',  10 => 'linkedin_url',  11 => 'fb_url',  12 => 'twitter_url',  13 => 'created_at',  14 => 'updated_at',);
   }
 
   public function getFieldsDefault()
   {
     return array(
       'id' => array(  'is_link' => true,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
-      'email' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
-      'pass' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
-      'fname' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
-      'lname' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
-      'dob' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Date',),
-      'type_id' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Enum',),
-      'app_type' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
-      'app_id' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
-      'activation' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
-      'last_login_at' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Date',),
-      'active' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Enum',),
+      'title' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'company' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'state_id' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'city_id' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'address' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'ido' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'to_meet' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'image_full' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'image_small' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'linkedin_url' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'fb_url' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
+      'twitter_url' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Text',),
       'created_at' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Date',),
       'updated_at' => array(  'is_link' => false,  'is_real' => true,  'is_partial' => false,  'is_component' => false,  'type' => 'Date',),
     );
@@ -119,17 +120,18 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
   {
     return array(
       'id' => array(),
-      'email' => array(),
-      'pass' => array(),
-      'fname' => array(),
-      'lname' => array(),
-      'dob' => array(),
-      'type_id' => array(),
-      'app_type' => array(),
-      'app_id' => array(),
-      'activation' => array(),
-      'last_login_at' => array(),
-      'active' => array(),
+      'title' => array(),
+      'company' => array(),
+      'state_id' => array(),
+      'city_id' => array(),
+      'address' => array(),
+      'ido' => array(),
+      'to_meet' => array(),
+      'image_full' => array(),
+      'image_small' => array(),
+      'linkedin_url' => array(),
+      'fb_url' => array(),
+      'twitter_url' => array(),
       'created_at' => array(),
       'updated_at' => array(),
     );
@@ -139,17 +141,18 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
   {
     return array(
       'id' => array(),
-      'email' => array(),
-      'pass' => array(),
-      'fname' => array(),
-      'lname' => array(),
-      'dob' => array(),
-      'type_id' => array(),
-      'app_type' => array(),
-      'app_id' => array(),
-      'activation' => array(),
-      'last_login_at' => array(),
-      'active' => array(),
+      'title' => array(),
+      'company' => array(),
+      'state_id' => array(),
+      'city_id' => array(),
+      'address' => array(),
+      'ido' => array(),
+      'to_meet' => array(),
+      'image_full' => array(),
+      'image_small' => array(),
+      'linkedin_url' => array(),
+      'fb_url' => array(),
+      'twitter_url' => array(),
       'created_at' => array(),
       'updated_at' => array(),
     );
@@ -159,17 +162,18 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
   {
     return array(
       'id' => array(),
-      'email' => array(),
-      'pass' => array(),
-      'fname' => array(),
-      'lname' => array(),
-      'dob' => array(),
-      'type_id' => array(),
-      'app_type' => array(),
-      'app_id' => array(),
-      'activation' => array(),
-      'last_login_at' => array(),
-      'active' => array(),
+      'title' => array(),
+      'company' => array(),
+      'state_id' => array(),
+      'city_id' => array(),
+      'address' => array(),
+      'ido' => array(),
+      'to_meet' => array(),
+      'image_full' => array(),
+      'image_small' => array(),
+      'linkedin_url' => array(),
+      'fb_url' => array(),
+      'twitter_url' => array(),
       'created_at' => array(),
       'updated_at' => array(),
     );
@@ -179,17 +183,18 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
   {
     return array(
       'id' => array(),
-      'email' => array(),
-      'pass' => array(),
-      'fname' => array(),
-      'lname' => array(),
-      'dob' => array(),
-      'type_id' => array(),
-      'app_type' => array(),
-      'app_id' => array(),
-      'activation' => array(),
-      'last_login_at' => array(),
-      'active' => array(),
+      'title' => array(),
+      'company' => array(),
+      'state_id' => array(),
+      'city_id' => array(),
+      'address' => array(),
+      'ido' => array(),
+      'to_meet' => array(),
+      'image_full' => array(),
+      'image_small' => array(),
+      'linkedin_url' => array(),
+      'fb_url' => array(),
+      'twitter_url' => array(),
       'created_at' => array(),
       'updated_at' => array(),
     );
@@ -199,17 +204,18 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
   {
     return array(
       'id' => array(),
-      'email' => array(),
-      'pass' => array(),
-      'fname' => array(),
-      'lname' => array(),
-      'dob' => array(),
-      'type_id' => array(),
-      'app_type' => array(),
-      'app_id' => array(),
-      'activation' => array(),
-      'last_login_at' => array(),
-      'active' => array(),
+      'title' => array(),
+      'company' => array(),
+      'state_id' => array(),
+      'city_id' => array(),
+      'address' => array(),
+      'ido' => array(),
+      'to_meet' => array(),
+      'image_full' => array(),
+      'image_small' => array(),
+      'linkedin_url' => array(),
+      'fb_url' => array(),
+      'twitter_url' => array(),
       'created_at' => array(),
       'updated_at' => array(),
     );
@@ -223,7 +229,7 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
    */
   public function getFormClass()
   {
-    return 'UserForm';
+    return 'AdminUserProfileForm';
   }
 
   public function hasFilterForm()
@@ -238,7 +244,7 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
    */
   public function getFilterFormClass()
   {
-    return 'UserFormFilter';
+    return 'ProfileFormFilter';
   }
 
   public function getPagerClass()
@@ -248,7 +254,7 @@ class userGeneratorConfiguration extends BaseUserGeneratorConfiguration
 
   public function getPagerMaxPerPage()
   {
-    return 2;
+    return 50;
   }
 
   public function getDefaultSort()

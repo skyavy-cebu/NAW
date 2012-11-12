@@ -11,11 +11,11 @@
   </div>
 
   <div id="sf_admin_bar">
-     <?php include_partial('user/filters', array('form' => $filters, 'configuration' => $configuration)) ?> 
+    <!-- <?php// include_partial('user/filters', array('form' => $filters, 'configuration' => $configuration)) ?> -->
   </div>
 
   <div id="sf_admin_content">
-    <form action="<?php echo url_for('user_collection', array('action' => 'batch')) ?>" method="post">
+    <form action="<?php echo url_for('profile_collection', array('action' => 'batch')) ?>" method="post">
 		
 		<div class="sf_admin_actions">
 			<span><a href="<?php echo url_for('user/new') ?>">Add User</a></span>

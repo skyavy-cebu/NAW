@@ -55,7 +55,7 @@ class userActions extends autoUserActions
     {
       $this->setFilters($this->configuration->getFilterDefaults());
 
-      $this->redirect('@user');
+      $this->redirect('@profile');
     }
 
     $this->filters = $this->configuration->getFilterForm($this->getFilters());
@@ -65,7 +65,7 @@ class userActions extends autoUserActions
     {
       $this->setFilters($this->filters->getValues());
 
-      $this->redirect('@user');
+      $this->redirect('@profile');
     }
 
     $this->pager = $this->getPager();
@@ -77,13 +77,13 @@ class userActions extends autoUserActions
   public function executeNew(sfWebRequest $request)
   {
     $this->form = $this->configuration->getForm();
-    $this->user = $this->form->getObject();
+    $this->profile = $this->form->getObject();
   }
 
   public function executeCreate(sfWebRequest $request)
   {
     $this->form = $this->configuration->getForm();
-    $this->user = $this->form->getObject();
+    $this->profile = $this->form->getObject();
 
     $this->processForm($request, $this->form);
 
@@ -92,14 +92,14 @@ class userActions extends autoUserActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->user = $this->getRoute()->getObject();
-    $this->form = $this->configuration->getForm($this->user);
+    $this->profile = $this->getRoute()->getObject();
+    $this->form = $this->configuration->getForm($this->profile);
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
-    $this->user = $this->getRoute()->getObject();
-    $this->form = $this->configuration->getForm($this->user);
+    $this->profile = $this->getRoute()->getObject();
+    $this->form = $this->configuration->getForm($this->profile);
 
     $this->processForm($request, $this->form);
 
@@ -117,7 +117,7 @@ class userActions extends autoUserActions
       $this->getUser()->setFlash('notice', 'The item was deleted successfully.');
     }
 
-    $this->redirect('@user');
+    $this->redirect('@profile');
   }
 
   public function executeBatch(sfWebRequest $request)
@@ -128,14 +128,14 @@ class userActions extends autoUserActions
     {
       $this->getUser()->setFlash('error', 'You must at least select one item.');
 
-      $this->redirect('@user');
+      $this->redirect('@profile');
     }
 
     if (!$action = $request->getParameter('batch_action'))
     {
       $this->getUser()->setFlash('error', 'You must select an action to execute on the selected items.');
 
-      $this->redirect('@user');
+      $this->redirect('@profile');
     }
 
     if (!method_exists($this, $method = 'execute'.ucfirst($action)))
@@ -148,7 +148,7 @@ class userActions extends autoUserActions
       $this->forward(sfConfig::get('sf_secure_module'), sfConfig::get('sf_secure_action'));
     }
 
-    $validator = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'User'));
+    $validator = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Profile'));
     try
     {
       // validate ids
@@ -162,7 +162,7 @@ class userActions extends autoUserActions
       $this->getUser()->setFlash('error', 'A problem occurs when deleting the selected items as some items do not exist anymore.');
     }
 
-    $this->redirect('@user');
+    $this->redirect('@profile');
   }
 
   protected function executeBatchDelete(sfWebRequest $request)
@@ -170,7 +170,7 @@ class userActions extends autoUserActions
     $ids = $request->getParameter('ids');
 
     $records = Doctrine_Query::create()
-      ->from('User')
+      ->from('Profile')
       ->whereIn('id', $ids)
       ->execute();
 
@@ -182,7 +182,7 @@ class userActions extends autoUserActions
     }
 
     $this->getUser()->setFlash('notice', 'The selected items have been deleted successfully.');
-    $this->redirect('@user');
+    $this->redirect('@profile');
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -190,10 +190,15 @@ class userActions extends autoUserActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $notice = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
+      $User = new User();
+			$User->setFname($this->form->getValue('fname'));
+			$User->setLname($this->form->getValue('lname'));
+			$User->save();
+			
+			$notice = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
 
       try {
-        $user = $form->save();
+        $profile = $form->save();
       } catch (Doctrine_Validator_Exception $e) {
 
         $errorStack = $form->getObject()->getErrorStack();
@@ -208,20 +213,22 @@ class userActions extends autoUserActions
         return sfView::SUCCESS;
       }
 
-      $this->dispatcher->notify(new sfEvent($this, 'admin.save_object', array('object' => $user)));
+      $this->dispatcher->notify(new sfEvent($this, 'admin.save_object', array('object' => $profile)));
 
       if ($request->hasParameter('_save_and_add'))
       {
         $this->getUser()->setFlash('notice', $notice.' You can add another one below.');
 
-        $this->redirect('@user_new');
+        $this->redirect('@profile_new');
       }
       else
       {
         $this->getUser()->setFlash('notice', $notice);
 
-        $this->redirect(array('sf_route' => 'user_edit', 'sf_subject' => $user));
+        $this->redirect(array('sf_route' => 'profile_edit', 'sf_subject' => $profile));
       }
+			
+			
     }
     else
     {
@@ -241,7 +248,7 @@ class userActions extends autoUserActions
 
   protected function getPager()
   {
-    $pager = $this->configuration->getPager('User');
+    $pager = $this->configuration->getPager('Profile');
     $pager->setQuery($this->buildQuery());
     $pager->setPage($this->getPage());
     $pager->init();
@@ -318,6 +325,7 @@ class userActions extends autoUserActions
 
   protected function isValidSortColumn($column)
   {
-    return Doctrine_Core::getTable('User')->hasColumn($column);
+    return Doctrine_Core::getTable('Profile')->hasColumn($column);
   }
 }
+

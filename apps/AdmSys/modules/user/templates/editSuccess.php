@@ -7,14 +7,14 @@
   <?php include_partial('user/flashes') ?>
 
   <div id="sf_admin_header">
-    <?php include_partial('user/form_header', array('user' => $user, 'form' => $form, 'configuration' => $configuration)) ?>
+    <?php include_partial('user/form_header', array('profile' => $profile, 'form' => $form, 'configuration' => $configuration)) ?>
   </div>
 
   <div id="sf_admin_content">
-    <?php include_partial('user/form', array('user' => $user, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?>
+    <?php include_partial('user/form', array('profile' => $profile, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?>
   </div>
 
   <div id="sf_admin_footer">
-    <?php include_partial('user/form_footer', array('user' => $user, 'form' => $form, 'configuration' => $configuration)) ?>
+    <?php include_partial('user/form_footer', array('profile' => $profile, 'form' => $form, 'configuration' => $configuration)) ?>
   </div>
 </div>

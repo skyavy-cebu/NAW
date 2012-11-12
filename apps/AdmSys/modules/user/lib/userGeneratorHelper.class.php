@@ -12,6 +12,6 @@ class userGeneratorHelper extends BaseUserGeneratorHelper
 {
   public function getUrlForAction($action)
   {
-    return 'list' == $action ? 'user' : 'user_'.$action;
+    return 'list' == $action ? 'profile' : 'profile_'.$action;
   }
 }

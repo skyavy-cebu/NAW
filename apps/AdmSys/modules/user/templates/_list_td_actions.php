@@ -1,7 +1,8 @@
 <td>
   <ul class="sf_admin_td_actions">
-    <?php echo $helper->linkToEdit($user, array(  'params' =>   array(  ),  'class_suffix' => 'edit',  'label' => 'Edit',)) ?>
-    <?php echo $helper->linkToDelete($user, array(  'params' =>   array(  ),  'confirm' => 'Are you sure?',  'class_suffix' => 'delete',  'label' => 'Delete',)) ?>
-		<li><?php echo link_to('View', 'user_edit', $user) ?></li>
+		<li><?php echo link_to('V', 'user_edit', $profile) ?></li>
+    <?php echo $helper->linkToEdit($profile, array(  'params' =>   array(  ),  'class_suffix' => 'edit',  'label' => 'E',)) ?>
+    <?php echo $helper->linkToDelete($profile, array(  'params' =>   array(  ),  'confirm' => 'Are you sure?',  'class_suffix' => 'delete',  'label' => 'D',)) ?>
+		
   </ul>
 </td>
