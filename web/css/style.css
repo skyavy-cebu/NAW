@@ -1451,6 +1451,10 @@ img.profile_pic {
 }
 
 /*------- admin ---------- */
+#sf_admin_content th, #sf_admin_content td, #sf_admin_content label{
+  font-size:13px;
+}
+
 #sf_admin_content table  {
 	text-align: left;
 	width: 100%;
@@ -1477,6 +1481,25 @@ img.profile_pic {
 	padding:5px;
 	border: 1px solid #fff;
 }
+
+#sf_admin_content a{
+  color:#000;
+  text-decoration:none;
+}
+
+#sf_admin_content a:hover{
+  text-decoration:underline;
+}
+
+#sf_admin_content thead a{
+  color:#fff;
+}
+
+ul.sf_admin_actions{
+  list-style: none;
+ padding: 0;
+}
+
 ul.sf_admin_td_actions {
  list-style: none;
  padding: 0;

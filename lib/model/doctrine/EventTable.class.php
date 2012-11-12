@@ -12,8 +12,17 @@ class EventTable extends Doctrine_Table
      *
      * @return object EventTable
      */
-    public static function getInstance()
-    {
+    public static function getInstance(){
         return Doctrine_Core::getTable('Event');
+    }
+    
+    public static function getAllEvent(){
+      $q = Doctrine_Query::create()
+        ->select('e.*,(SELECT count(*) FROM eventAttendee ea WHERE ea.event_id = e.id) as countAttendee')
+        ->from('Event e')
+        ->leftJoin('e.City c')
+        ->leftJoin('c.State s')
+        ->orderBy('e.event_date DESC');
+      return $q->execute();
     }
 }

@@ -1,3 +1,12 @@
+event:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                event
+    module:               event
+    prefix_path:          /event
+    column:               id
+    with_wildcard_routes: true
+
 profile:
   class: sfDoctrineRouteCollection
   options:

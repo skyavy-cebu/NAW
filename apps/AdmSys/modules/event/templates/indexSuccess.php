@@ -1,52 +1,51 @@
-<h1>Events List</h1>
-
-<table>
+<div id="sf_admin_content">
+<h2>Event List</h2>
+<table cellspacing="0" style="width:600px; padding:15px; padding-left:0">
+  <tr>
+    <td>Venue</td>
+    <td><input type="text"/></td>
+    <td>keyword</td>
+    <td><input type="text"/></td>
+    <td><input type="button" value="Search"/></td>
+  </tr>
+  <tr>
+    <td>Sort by State</td>
+    <td><select><option>Select State</option></select></td>
+    <td>Sort by City</td>
+    <td><select><option>Select City</option></select></td>
+    <td></td>
+  </tr>
+</table>
+<table cellspacing="0">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Event Date</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Start</th>
-      <th>End</th>
       <th>City</th>
+      <th>State</th>
       <th>Venue</th>
-      <th>Address</th>
-      <th>Prepay slots</th>
-      <th>Max capacity</th>
-      <th>Admission prepay</th>
-      <th>Admission at door</th>
-      <th>Admission no rsvp</th>
-      <th>Image full</th>
-      <th>Image small</th>
-      <th>Event admin1</th>
-      <th>Event admin2</th>
-      <th>Created at</th>
-      <th>Updated at</th>
+      <th>Registered  Attendees</th>
+      <th>Checked-In</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($events as $event): ?>
-    <tr>
-      <td><a href="<?php echo url_for('event/show?id='.$event->getId()) ?>"><?php echo $event->getId() ?></a></td>
-      <td><?php echo $event->getName() ?></td>
-      <td><?php echo $event->getDescription() ?></td>
-      <td><?php echo $event->getCityId() ?></td>
-      <td><?php echo $event->getVenue() ?></td>
-      <td><?php echo $event->getAddress() ?></td>
-      <td><?php echo $event->getPrepaySlots() ?></td>
-      <td><?php echo $event->getMaxCapacity() ?></td>
-      <td><?php echo $event->getAdmissionPrepay() ?></td>
-      <td><?php echo $event->getAdmissionAtDoor() ?></td>
-      <td><?php echo $event->getAdmissionNoRsvp() ?></td>
-      <td><?php echo $event->getImageFull() ?></td>
-      <td><?php echo $event->getImageSmall() ?></td>
-      <td><?php echo $event->getEventAdmin1() ?></td>
-      <td><?php echo $event->getEventAdmin2() ?></td>
-      <td><?php echo $event->getCreatedAt() ?></td>
-      <td><?php echo $event->getUpdatedAt() ?></td>
+    <?php foreach($events as $x => $event): ?>
+    <tr class=" <?php echo ($x&1)?'even':'odd'; ?>">
+      <td align="right"><?php echo $event->getId(); ?></td>
+      <td><?php echo date('m/d/Y',strtotime($event->getEventDate())); ?></td>
+      <td><?php echo $event['City']; ?></td>
+      <td><?php echo $event['City']['State']; ?></td>
+      <td><?php echo $event->getVenue(); ?></td>
+      <td align="right"><?php echo $event['countAttendee']; ?></td>
+      <td align="right">0</td>
+      <td align="right">
+        <a href="">
+          <img title="View Detail" src="/images/magnifier.png"/>
+        </a>
+      </td>
     </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
-
-  <a href="<?php echo url_for('event/new') ?>">New</a>
+</div>
