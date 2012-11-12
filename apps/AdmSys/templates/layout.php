@@ -48,6 +48,7 @@
 					<a href="" alt="" class="btn_photos"></a>
 					<a href="" alt="" class="btn_contact"></a>-->
           
+          <a href="<?php echo url_for('/AdmSys.php/event'); ?>">Events</a>
           <a href="">Happening Now</a>
           <a href="">Upcomming Events</a>
           <a href="">Past Events</a><br />

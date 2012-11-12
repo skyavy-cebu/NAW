@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 12, 2012 at 06:32 AM
+-- Generation Time: Nov 12, 2012 at 06:45 AM
 -- Server version: 5.5.16-log
 -- PHP Version: 5.3.8
 
@@ -60,8 +60,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
   `description` text,
-  `start` datetime DEFAULT NULL,
-  `end` datetime DEFAULT NULL,
+  `event_date` datetime DEFAULT NULL,
   `city_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   `venue` varchar(150) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -83,8 +82,8 @@ CREATE TABLE IF NOT EXISTS `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`id`, `name`, `description`, `start`, `end`, `city_id`, `venue`, `address`, `prepay_slots`, `max_capacity`, `admission_prepay`, `admission_at_door`, `admission_no_rsvp`, `image_full`, `image_small`, `event_admin1`, `event_admin2`, `created_at`, `updated_at`) VALUES
-(1, 'Thaddy''s 1st Birthday', 'This is description of the events blah blah blah weeee', '2012-11-12 00:00:00', '2012-11-12 00:00:00', 1, '', 'Falcon Lounge', 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `event` (`id`, `name`, `description`, `event_date`, `city_id`, `venue`, `address`, `prepay_slots`, `max_capacity`, `admission_prepay`, `admission_at_door`, `admission_no_rsvp`, `image_full`, `image_small`, `event_admin1`, `event_admin2`, `created_at`, `updated_at`) VALUES
+(1, 'Thaddy''s 1st Birthday', 'This is description of the events blah blah blah weeee', '2012-11-12 00:00:00', 1, '', 'Falcon Lounge', 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
