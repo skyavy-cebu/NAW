@@ -1,5 +1,12 @@
 <script>
   $(document).ready(function(){
+    $('#event_state').change(function(){
+      var state_id = $(this).val();
+      $.get('/profile/ajax/city/'+state_id,function(data){
+        $('#event_city').html(data);
+      });
+    });
+  
     $('#event_event_date').datepicker();
     $('#event_start_time').timepicker({
       hourGrid: 4,

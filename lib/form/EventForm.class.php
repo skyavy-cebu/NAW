@@ -59,17 +59,21 @@ class EventForm extends BaseEventForm{
     
     if($values['max_capacity'] <= 0){
       $error = new sfValidatorError($validator, 'Max capacity is required');
-      throw new sfValidatorErrorSchema($validator, array('max_capacity'=>$error));
+      $error_data['max_capacity'] = $error;
     }
     
-    if($values['state'] <= 0){
+    if($values['state'] == 0){
       $error = new sfValidatorError($validator, 'Please select state');
-      throw new sfValidatorErrorSchema($validator, array('state'=>$error));
+      $error_data['state'] = $error;
     }
     
-    if($values['city'] <= 0){
+    if($values['city'] == 0){
       $error = new sfValidatorError($validator, 'Please select city');
-      throw new sfValidatorErrorSchema($validator, array('city'=>$error));
+      $error_data['city'] = $error;
+    }
+    
+    if(isset($error_data)){
+      throw new sfValidatorErrorSchema($validator, $error_data);
     }
     
     return $values;
