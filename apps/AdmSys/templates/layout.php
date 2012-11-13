@@ -29,7 +29,7 @@
 	<body>
 		<div class="header">
 			<div class="header_wrapper">
-				<a href="<?php echo url_for('/AdmSys.php/event'); ?>" alt=""><img src="../images/nwaw_logo_header.png" class="top_logo ie_anchor_no_border" /></a>
+				<a href="<?php echo url_for('/AdmSys.php/event'); ?>" alt=""><img src="/images/nwaw_logo_header.png" class="top_logo ie_anchor_no_border" /></a>
 				<div class="header_controls">
 					<a href="" alt="" title="Facebook" class="header_sns_fb"></a>
 					<a href="" alt="" title="LinkedIn" class="header_sns_linked_in"></a>

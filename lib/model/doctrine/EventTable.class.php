@@ -16,17 +16,32 @@ class EventTable extends Doctrine_Table
         return Doctrine_Core::getTable('Event');
     }
     
-    public static function getAllEvent(){
-      $pager = new sfDoctrinePager('Event', 2);
+    public static function getAllEvent($page = 1,$param=array()){
       $q = Doctrine_Query::create()
         ->select('e.*,(SELECT count(*) FROM eventAttendee ea WHERE ea.event_id = e.id) as countAttendee')
         ->from('Event e')
         ->leftJoin('e.City c')
         ->leftJoin('c.State s')
-        ->orderBy('e.event_date DESC');
-      //return $q->execute();
+        ->where('1=1');
+      
+      if(isset($param['venue'])){
+        $q->andWhere('e.venue LIKE ?','%'.$param['venue'].'%');
+      }
+      if(isset($param['keyword'])){
+        $q->andWhere('e.description LIKE ?','%'.$param['keyword'].'%');
+      }
+      if(isset($param['state']) && $param['state'] > 0){
+        $q->andWhere('c.state_id = ?',$param['state']);
+      }
+       if(isset($param['city']) && $param['city'] > 0){
+        $q->andWhere('c.id = ?',$param['city']);
+      }
+      
+      $q->orderBy('e.event_date DESC');
+      
+       $pager = new sfDoctrinePager('Event', 20);
       $pager->setQuery($q);
-      $pager->setPage(1);
+      $pager->setPage($page);
       $pager->init();
       return $pager;
     }

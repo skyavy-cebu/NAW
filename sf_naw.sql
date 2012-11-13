@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 12, 2012 at 06:45 AM
+-- Generation Time: Nov 13, 2012 at 09:31 AM
 -- Server version: 5.5.16-log
 -- PHP Version: 5.3.8
 
@@ -58,9 +58,10 @@ INSERT INTO `city` (`id`, `state_id`, `name`, `created_at`, `updated_at`) VALUES
 DROP TABLE IF EXISTS `event`;
 CREATE TABLE IF NOT EXISTS `event` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) NOT NULL,
   `description` text,
-  `event_date` datetime DEFAULT NULL,
+  `event_date` date DEFAULT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
   `city_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   `venue` varchar(150) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -76,14 +77,23 @@ CREATE TABLE IF NOT EXISTS `event` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`id`, `name`, `description`, `event_date`, `city_id`, `venue`, `address`, `prepay_slots`, `max_capacity`, `admission_prepay`, `admission_at_door`, `admission_no_rsvp`, `image_full`, `image_small`, `event_admin1`, `event_admin2`, `created_at`, `updated_at`) VALUES
-(1, 'Thaddy''s 1st Birthday', 'This is description of the events blah blah blah weeee', '2012-11-12 00:00:00', 1, '', 'Falcon Lounge', 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `event` (`id`, `description`, `event_date`, `start_time`, `end_time`, `city_id`, `venue`, `address`, `prepay_slots`, `max_capacity`, `admission_prepay`, `admission_at_door`, `admission_no_rsvp`, `image_full`, `image_small`, `event_admin1`, `event_admin2`, `created_at`, `updated_at`) VALUES
+(1, 'Hovsgol is just now opening its arms to travelers who come to catch and release taimen, giant salmonid “river wolves” that stalk Hovsgol’s waterways. Others come to ride Mongolian ponies in search of the Tsaatan, small bands of nomadic reindeer herders (above) who live in encampments and follow shamanistic beliefs.', '2012-11-12', '24:59:00', '00:00:00', 1, 'Chateau De Busay', 'Falcon Lounge', 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Dusk falls on a primeval landscape on the Snæfellsnes Peninsula. A final relic from the world’s last ice age, this North Atlantic island nation is a world of knife-cut valleys, gargantuan fjords, monumental cliffs, black-sand beaches, thundering waterfalls, and silent white glaciers. Recent volcanic eruptions remind us that Iceland is still a country in the making, with changed landscapes that even Icelanders continue to discover.', '2012-11-14', '00:00:00', '00:00:00', 2, 'Mactan Resort', 'sdfasdf asdf', 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Three years of financial recovery have made Iceland more affordable, with consumer prices now largely pegged to the euro. The country’s return to a humbler attitude stems from a thousand-year-old tradition of self-reliance—a tradition that has preserved one of the world’s oldest living languages and harnessed some of the cleanest energy on Earth.', '2012-11-13', '00:00:00', '00:00:00', 5, 'London', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Crystal waters and pristine reefs surround the island. Up to 25 percent of the world’s tropical fish species swim in the protected waters around Koh Lipe (the island is in Tarutao National Marine Park). Pattaya Beach may be the island’s most developed tourist spot, but head to quieter Sunrise Beach, where a now settled community of “sea gypsies,” the Chao Lei, live and fish. Take in the view from Castaway Resort''s "chill-out deck," above.', '2012-11-13', '00:00:00', '00:00:00', 7, 'Barcelona', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'Dresden shone brightest in the 1700s, when the kings of Saxony spent their wealth to turn their capital into “Florence on the Elbe.” But in February 1945, two days of British and American bombing destroyed much of Dresden’s center and killed tens of thousands of civilians.', '2012-11-04', '00:00:00', '00:00:00', 6, 'Paris', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Spend some time floating in an inner tube down the Russian River and walking amid ancient giants—one over 1,400 years old—at Armstrong Redwoods State Natural Reserve. Poke around the old Russian stockade at Fort Ross, which turns 200 in 2012, or the Spanish adobe mission, San Francisco Solano, in Sonoma town. Hunt for antiques along Petaluma’s downtown Victorian row, and dine on seasonal sake-steamed, aged abalone at Michelin-starred Cyrus in Healdsburg. And don’t miss a flaky, fruit-packed slice of Gravenstein pie from Mom’s Apple Pie, a roadside stop outside Sebastopol. It ranks up there with a Russian River Valley Pinot Noir as a real taste of Sonoma.', '2012-11-02', '00:00:00', '00:00:00', 4, 'New York City', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, NULL, '2012-11-13', '00:00:00', '00:00:00', 0, '', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '2012-11-13 09:24:50', '2012-11-13 09:24:50'),
+(8, NULL, '2012-11-13', '09:23:00', '13:23:00', 0, '', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '2012-11-13 09:25:59', '2012-11-13 09:25:59'),
+(9, 'sdfsadfasdfasdfdasfdsaf sdfsadfsadf', '2012-11-13', '09:23:00', '13:23:00', 6, 'sdfasdf', 'dfdasfasf', 1, 20, '1.00', '1.00', '2.00', '', '', 0, 0, '2012-11-13 09:27:09', '2012-11-13 09:27:09'),
+(10, 'sdfsadfasdfasdfdasfdsaf sdfsadfsadf', '2012-11-13', '09:23:00', '13:23:00', 6, 'sdfasdf', 'dfdasfasf', 1, 20, '1.00', '1.00', '2.00', '', '', 0, 0, '2012-11-13 09:27:44', '2012-11-13 09:27:44');
 
 -- --------------------------------------------------------
 
@@ -96,12 +106,18 @@ CREATE TABLE IF NOT EXISTS `event_attendee` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `event_id` int(10) unsigned NOT NULL DEFAULT '0',
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `industry_id` int(10) unsigned NOT NULL DEFAULT '0',
   `paid` enum('0','1') NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `event_attendee`
+--
+
+INSERT INTO `event_attendee` (`id`, `event_id`, `user_id`, `paid`, `created_at`, `updated_at`) VALUES
+(1, 1, 10, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 

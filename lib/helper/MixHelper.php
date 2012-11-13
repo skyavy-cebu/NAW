@@ -6,6 +6,17 @@
 * @author rich alaba
 */
 
+function set_time($set,$time=''){
+	if(!$time){
+		$time = time();
+	}
+	if(is_numeric($time)){
+		return strtotime($set,$time);
+	}else{
+		return strtotime($set,strtotime($time));
+	}	
+}
+
 /**
 	* get File extension without "." and lower the case.
 	* 

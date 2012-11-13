@@ -17,10 +17,13 @@ class CityTable extends Doctrine_Table
         return Doctrine_Core::getTable('City');
     }
     
-    public function getCitiesByState($id){
+    public function getCitiesByState($state_id=0){
       $q = Doctrine_Query::create()
-        ->from('City c')
-        ->where('c.state_id = ?',$id);
+        ->from('City c');
+      if($state_id){
+        $q->where('c.state_id = ?',$state_id);
+      }
+      $q->orderBy('c.name ASC');
       return $q->execute();
     }
 		

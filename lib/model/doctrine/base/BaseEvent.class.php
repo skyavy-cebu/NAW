@@ -9,7 +9,9 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * 
  * @property integer $id
  * @property text $description
- * @property timestamp $event_date
+ * @property date $event_date
+ * @property time $start_time
+ * @property time $end_time
  * @property integer $city_id
  * @property string $venue
  * @property string $address
@@ -27,7 +29,9 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * 
  * @method integer             getId()                Returns the current record's "id" value
  * @method text                getDescription()       Returns the current record's "description" value
- * @method timestamp           getEventDate()         Returns the current record's "event_date" value
+ * @method date                getEventDate()         Returns the current record's "event_date" value
+ * @method time                getStartTime()         Returns the current record's "start_time" value
+ * @method time                getEndTime()           Returns the current record's "end_time" value
  * @method integer             getCityId()            Returns the current record's "city_id" value
  * @method string              getVenue()             Returns the current record's "venue" value
  * @method string              getAddress()           Returns the current record's "address" value
@@ -45,6 +49,8 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @method Event               setId()                Sets the current record's "id" value
  * @method Event               setDescription()       Sets the current record's "description" value
  * @method Event               setEventDate()         Sets the current record's "event_date" value
+ * @method Event               setStartTime()         Sets the current record's "start_time" value
+ * @method Event               setEndTime()           Sets the current record's "end_time" value
  * @method Event               setCityId()            Sets the current record's "city_id" value
  * @method Event               setVenue()             Sets the current record's "venue" value
  * @method Event               setAddress()           Sets the current record's "address" value
@@ -80,8 +86,14 @@ abstract class BaseEvent extends sfDoctrineRecord
         $this->hasColumn('description', 'text', null, array(
              'type' => 'text',
              ));
-        $this->hasColumn('event_date', 'timestamp', null, array(
-             'type' => 'timestamp',
+        $this->hasColumn('event_date', 'date', null, array(
+             'type' => 'date',
+             ));
+        $this->hasColumn('start_time', 'time', null, array(
+             'type' => 'time',
+             ));
+        $this->hasColumn('end_time', 'time', null, array(
+             'type' => 'time',
              ));
         $this->hasColumn('city_id', 'integer', 2, array(
              'type' => 'integer',

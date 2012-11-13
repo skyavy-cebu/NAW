@@ -16,6 +16,22 @@ class eventActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeIndex(sfWebRequest $request){
-    $this->events = EventTable::getInstance()->getAllEvent();
+    $this->curPage = $request->getParameter('p');
+    $this->venue = $request->getParameter('v');
+    $this->keyword = $request->getParameter('k');
+    $this->curState = $request->getParameter('s');
+    $this->curCity = $request->getParameter('c');
+    $this->curPage = (!empty($this->curPage))?$this->curPage:1;
+        
+    $this->states =  Doctrine_Core::getTable('State')->findAll();
+    $this->cities =  CityTable::getInstance()->getCitiesByState($this->curState);
+    
+    $param = array(
+      'venue' => $this->venue,
+      'keyword' => $this->keyword,
+      'state' => $this->curState,
+      'city' => $this->curCity
+    );    
+    $this->events = EventTable::getInstance()->getAllEvent($this->curPage,$param);
   }
 }

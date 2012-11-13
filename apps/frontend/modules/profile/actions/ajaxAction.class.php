@@ -1,4 +1,5 @@
 <?php
+/*/profile/ajax?var=city&val=*/
 class ajaxAction extends sfAction{
   
   public function execute($request){
@@ -13,12 +14,11 @@ class ajaxAction extends sfAction{
   }
   
   function getOptionCity($state_id){
-    $city = CityTable::getInstance()->getCitiesByState($state_id);
+    $cities = CityTable::getInstance()->getCitiesByState($state_id);
     $option = '<option value="0">Select City</option>';
-    foreach($city as $x => $row){
-      $option .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+    foreach($cities as $x => $city){
+      $option .= '<option value="'.$city->getId().'">'.$city->getName().'</option>';
     }
     return $this->renderText($option);
   }
-  
 }

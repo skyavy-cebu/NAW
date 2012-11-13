@@ -1451,7 +1451,7 @@ img.profile_pic {
 }
 
 /*------- admin ---------- */
-#sf_admin_content th, #sf_admin_content td, #sf_admin_content label{
+#sf_admin_content th, #sf_admin_content td, #sf_admin_content label, #sf_admin_content{
   font-size:13px;
 }
 
@@ -1506,4 +1506,56 @@ ul.sf_admin_td_actions {
 }
 ul.sf_admin_td_actions li {
  display: inline;
+}
+
+ul.pager{
+  list-style: none;
+  padding: 0;
+}
+
+ul.pager li{
+  float:left;
+  padding-right:5px;
+}
+
+a.add{
+  background:url('/images/add.png') left no-repeat;
+  padding-left:18px;
+  font-size:13px;
+}
+
+#event_event_date{
+  width:90px;
+}
+
+#event_start_time, #event_end_time{
+  width:70px;
+}
+
+.ui-timepicker-div, .ui-datepicker-buttonpane{
+  font-size:12px;
+  text-align:center;
+}
+
+.ui-timepicker-div dl dt, .ui-datepicker-title{
+  padding-left:5px;
+}
+
+.ui-datepicker-current{
+  float:left;
+}
+
+.ui-datepicker-close{
+  float:right;
+}
+
+#ui-datepicker-div{
+  font-size:12px;
+}
+
+#event_prepay_slots, #event_max_capacity, 
+#event_admission_prepay, #event_admission_at_door,
+#event_admission_no_rsvp{
+  width:30px;
+  text-align:right;
 }
