@@ -3,13 +3,23 @@ sfContext::getInstance()->getConfiguration()->loadHelpers(array('Mix'));
 class EventForm extends BaseEventForm{
   public function configure(){
   
+    $id = $this->getObject()->get('id');
+    if($id){
+      $event = Doctrine_Core::getTable('Event')->find($id);
+      $state_id = $event->getCity()->getStateId();
+      $city_id = $event->getCityId();
+    }else{
+      $state_id = 0;
+      $city_id = 0;
+    }
+  
     $states = Doctrine_Core::getTable('State')->findAll();
     $state_list[0] = 'Select State';
     foreach($states as $x => $state){
       $state_list[$state->getId()] = $state->getName();
     }
     
-    $cities = CityTable::getInstance()->getCitiesByState();
+    $cities = CityTable::getInstance()->getCitiesByState($state_id);
     $city_list[0] = 'Select City';
     foreach($cities as $x => $city){
       $city_list[$city->getId()] = $city->getName();
@@ -20,8 +30,8 @@ class EventForm extends BaseEventForm{
       'start_time' => new sfWidgetFormInputText(array('default'=>date('h:i a'))),
       'end_time' => new sfWidgetFormInputText(array('default'=>date('h:i a',set_time('4 hours')))),
       'description' => new sfWidgetFormTextArea(),
-      'state' => new sfWidgetFormSelect(array('choices' => $state_list,'default'=>0)),
-      'city' => new sfWidgetFormSelect(array('choices' => $city_list,'default'=>0)),
+      'state' => new sfWidgetFormSelect(array('choices' => $state_list,'default'=>$state_id)),
+      'city' => new sfWidgetFormSelect(array('choices' => $city_list,'default'=>$city_id)),
       'venue' => new sfWidgetFormInputText(),
       'address' => new sfWidgetFormInputText(),
       'prepay_slots' => new sfWidgetFormInputText(),

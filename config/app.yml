@@ -8,6 +8,11 @@ all:
     full: 128
     small: 44
   
+  event:
+    dir:  %SF_ROOT_DIR%/web/uploads/event/
+    full: 250
+    small: 150
+  
   facebook:
     fb_admins:        1600771217
     app_id:           377394829013291

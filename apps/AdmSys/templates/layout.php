@@ -49,9 +49,9 @@
 					<a href="" alt="" class="btn_contact"></a>-->
           
           <a href="<?php echo url_for('/AdmSys.php/event'); ?>">Events</a>
-          <a href="">Happening Now</a>
-          <a href="">Upcomming Events</a>
-          <a href="">Past Events</a><br />
+          <a href="<?php echo url_for('/AdmSys.php/event-type/now'); ?>">Happening Now</a>
+          <a href="<?php echo url_for('/AdmSys.php/event-type/upcomming'); ?>">Upcomming Events</a>
+          <a href="<?php echo url_for('/AdmSys.php/event-type/past'); ?>">Past Events</a><br />
           <a href="">Location</a>
           <a href="">Industry</a>
           <a href="<?php echo url_for('/AdmSys.php/user'); ?>">User</a>

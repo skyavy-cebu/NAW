@@ -10,6 +10,19 @@
       $('.city').html(data);
     });
   }
+  
+  function goDelete(id){
+    if(xconfirm()){
+      $('#event'+id).fadeOut('slow',function(){
+       $.post('/AdmSys.php/event/delete',{id:id},function(){
+        });
+        $('#event'+id).remove();
+        $('.event_list tbody tr:odd').removeClass('odd').addClass('even');
+        $('.event_list tbody tr:even').removeClass('even').addClass('odd');
+      });
+    }
+    return false;
+  }
 </script>
 
 <div id="sf_admin_content">
@@ -50,7 +63,7 @@
 </table>
 </form>
 <a class="add" href="<?php echo url_for('/AdmSys_dev.php/event/add'); ?>">Add</a>
-<table cellspacing="0">
+<table class="event_list" cellspacing="0">
   <thead>
     <tr>
       <th>ID</th>
@@ -65,7 +78,7 @@
   </thead>
   <tbody>
     <?php foreach($events as $x => $event): ?>
-    <tr class=" <?php echo ($x&1)?'even':'odd'; ?>">
+    <tr class=" <?php echo ($x&1)?'even':'odd'; ?>" id="event<?php echo $event->getId(); ?>">
       <td align="right"><?php echo $event->getId(); ?></td>
       <td><?php echo date('m/d/Y',strtotime($event->getEventDate())); ?></td>
       <td><?php echo $event['City']; ?></td>
@@ -74,20 +87,24 @@
       <td align="right"><?php echo $event['countAttendee']; ?></td>
       <td align="right">0</td>
       <td align="right">
-       <a href=""><img title="View Detail" src="/images/magnifier.png"/></a>
-        <a href=""><img title="Delete Event" src="/images/delete.png"/></a>
+        <a href=""><img title="View Detail" src="/images/magnifier.png"/></a>
+        <a href="<?php echo url_for('/AdmSys.php/event/edit/'.$event->getId()); ?>"><img title="Edit Event" src="/images/pencil.png"/></a>
+        <a href="<?php echo url_for('/AdmSys.php/event/delete/'.$event->getId()); ?>" onclick="return goDelete(<?php echo $event->getId(); ?>)">
+          <img title="Delete Event" src="/images/delete.png"/>
+        </a>
       </td>
     </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
 <?php
+$type = (!empty($type))?'event-type/'.$type:'event';
 $data = array(
   'maxPerPage' => $events->getmaxPerPage(),
   'lastPage' => $events->getlastPage(),
   'nbResults' => $events->getnbResults(),
   'curPage' => $curPage,
-  'linkPage' => '/AdmSys_dev.php/event?v='.$venue.'&k='.$keyword.'&s='.$curState.'&city='.$curCity
+  'linkPage' => '/AdmSys_dev.php/'.$type.'?v='.$venue.'&k='.$keyword.'&s='.$curState.'&city='.$curCity
 );
 include_partial('event/pager',$data); ?>
 

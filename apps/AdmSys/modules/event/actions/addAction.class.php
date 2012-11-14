@@ -22,7 +22,7 @@ class addAction extends sfAction{
         $event->setDescription($post['description']);
         $event->save();
         $id = $event->getId();
-        return $this->redirect('/AdmSys_dev.php/event');
+        return $this->redirect('/AdmSys.php/event/edit/'.$id);
       }
     }
   }

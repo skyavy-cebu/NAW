@@ -29,9 +29,17 @@ user:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 # default rules
+event_edit:
+  url:   /event/edit/:id
+  param: { module: event, action: edit }
+
+event_now:
+  url:   /event-type/:type
+  param: { module: event, action: index }
+
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: event, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules
