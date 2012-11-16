@@ -16,6 +16,11 @@ class homeActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeIndex(sfWebRequest $request){
+    if($this->getUser()->isAdmin()){
+      echo 'admin!';
+    }else{
+      echo 'not';
+    }
   }
   
   public function executeAbout(sfWebRequest $request){

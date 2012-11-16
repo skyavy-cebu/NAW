@@ -11,6 +11,16 @@
 sfContext::getInstance()->getConfiguration()->loadHelpers(array('Mix'));
 class eventActions extends sfActions
 {
+  public function preExecute(){
+    if(!$this->getUser()->isAuthenticated()){
+      return $this->redirect('/login');
+    }
+  
+    if(!$this->getUser()->isAdmin()){
+      $this->forward404();
+    }
+  }
+
  /**
   * Executes index action
   *

@@ -2,6 +2,14 @@
 class addAction extends sfAction{
 
   public function execute($request){
+    if(!$this->getUser()->isAuthenticated()){
+      return $this->redirect('/login');
+    }
+  
+    if(!$this->getUser()->isAdmin()){
+      $this->forward404();
+    }
+  
     $this->form = new EventForm();
     if($request->isMethod('post')){
       $this->form->bind($request->getParameter('event'));

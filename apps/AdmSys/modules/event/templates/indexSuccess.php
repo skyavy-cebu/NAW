@@ -26,8 +26,18 @@
 </script>
 
 <div id="sf_admin_content">
-<h2>Event List</h2>
-<form name="search" class="search" method="get" action="<?php echo url_for('/AdmSys_dev.php/event'); ?>">
+<h2><?php
+  if($type == 'now'){
+    echo 'Happening Now';
+  }elseif($type == 'upcomming'){
+    echo 'Upcomming Events';
+  }elseif($type == 'past'){
+    echo 'Past Events';
+  }else{
+    echo 'Event List';
+  }
+?></h2>
+<form name="search" class="search" method="get" action="<?php echo url_for('/AdmSys_dev.php/'.(!empty($type))?'event-type/'.$type:'event'); ?>">
 <table cellspacing="0" style="width:600px; padding:15px; padding-left:0">
   <tr>
     <td>Venue</td>
@@ -78,7 +88,7 @@
   </thead>
   <tbody>
     <?php foreach($events as $x => $event): ?>
-    <tr class=" <?php echo ($x&1)?'even':'odd'; ?>" id="event<?php echo $event->getId(); ?>">
+    <tr class="<?php echo ($x&1)?'even':'odd'; ?>" id="event<?php echo $event->getId(); ?>">
       <td align="right"><?php echo $event->getId(); ?></td>
       <td><?php echo date('m/d/Y',strtotime($event->getEventDate())); ?></td>
       <td><?php echo $event['City']; ?></td>
@@ -87,7 +97,7 @@
       <td align="right"><?php echo $event['countAttendee']; ?></td>
       <td align="right">0</td>
       <td align="right">
-        <a href=""><img title="View Detail" src="/images/magnifier.png"/></a>
+        <a href="<?php echo url_for('/AdmSys.php/event-view/'.$event->getId()); ?>"><img title="View Detail" src="/images/magnifier.png"/></a>
         <a href="<?php echo url_for('/AdmSys.php/event/edit/'.$event->getId()); ?>"><img title="Edit Event" src="/images/pencil.png"/></a>
         <a href="<?php echo url_for('/AdmSys.php/event/delete/'.$event->getId()); ?>" onclick="return goDelete(<?php echo $event->getId(); ?>)">
           <img title="Delete Event" src="/images/delete.png"/>

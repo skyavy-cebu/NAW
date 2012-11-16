@@ -9,6 +9,13 @@ class AdminUserProfileForm extends BaseProfileForm{
     
     $id = $this->getObject()->get('id');
     $user = Doctrine_Core::getTable('User')->find($id);
+    if($user){
+      $fname = $user->getProfile()->getFname();
+      $lname = $user->getProfile()->getLname();
+    }else{
+      $fname = '';
+      $lname = '';
+    }
     
     $dbState = Doctrine_Core::getTable('State')->findAll();
     $state = array('0'=>'Select State');
@@ -43,8 +50,8 @@ class AdminUserProfileForm extends BaseProfileForm{
          
     $this->setWidgets(array(
       'id'           			=> new sfWidgetFormInputHidden(),
-      'fname'   					=> new sfWidgetFormInputText(array('default'=>$user->getFname())),
-      'lname'   					=> new sfWidgetFormInputText(array('default'=>$user->getLname())),
+      'fname'   					=> new sfWidgetFormInputText(array('default'=>$fname)),
+      'lname'   					=> new sfWidgetFormInputText(array('default'=>$lname)),
       'title'        			=> new sfWidgetFormInputText(),
       'company'      			=> new sfWidgetFormInputText(),
       'state_id'     			=> new sfWidgetFormSelect(array('choices' => $state)),

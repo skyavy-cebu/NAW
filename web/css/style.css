@@ -1559,3 +1559,7 @@ a.add{
   width:30px;
   text-align:right;
 }
+
+.search_attendee span{
+  padding-right:15px;
+}

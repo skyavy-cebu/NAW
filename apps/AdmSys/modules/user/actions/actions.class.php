@@ -15,11 +15,18 @@ class userActions extends autoUserActions
 {
   public function preExecute()
   {
-    $this->configuration = new userGeneratorConfiguration();
-
+    /*$this->configuration = new userGeneratorConfiguration();
     if (!$this->getUser()->hasCredential($this->configuration->getCredentials($this->getActionName())))
     {
       $this->forward(sfConfig::get('sf_secure_module'), sfConfig::get('sf_secure_action'));
+    }*/
+    
+    if(!$this->getUser()->isAuthenticated()){
+      return $this->redirect('/login');
+    }
+    
+    if(!$this->getUser()->isAdmin()){
+      $this->forward404();
     }
 
     $this->dispatcher->notify(new sfEvent($this, 'admin.pre_execute', array('configuration' => $this->configuration)));

@@ -43,8 +43,8 @@ class UserProfileForm extends BaseProfileForm{
          
     $this->setWidgets(array(
       'id'           => new sfWidgetFormInputHidden(),
-      'fname'   => new sfWidgetFormInputText(array('default'=>$user->getFname())),
-      'lname'   => new sfWidgetFormInputText(array('default'=>$user->getLname())),
+      'fname'   => new sfWidgetFormInputText(array('default'=>$user->getProfile()->getFname())),
+      'lname'   => new sfWidgetFormInputText(array('default'=>$user->getProfile()->getLname())),
       'title'        => new sfWidgetFormInputText(),
       'company'      => new sfWidgetFormInputText(),
       'state_id'     => new sfWidgetFormSelect(array('choices' => $state)),

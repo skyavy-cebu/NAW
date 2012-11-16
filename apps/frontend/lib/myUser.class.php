@@ -57,6 +57,13 @@ class myUser extends sfBasicSecurityUser{
     $this->setAttribute('id', $user->getId(), 'frontend_module');
     
     $this->_refreshAccountObject();
+    $this->_refreshUserCredentials();
+  }
+  
+  private function _refreshUserCredentials(){
+    if($this->getAccount()->getTypeId() == 1){
+      $this->addCredential('Admin');
+    }
   }
   
   private function _refreshAccountObject() {
@@ -83,4 +90,7 @@ class myUser extends sfBasicSecurityUser{
 		$this->getAttributeHolder()->remove('id', NULL, 'frontend_module');
 	}
   
+  public function isAdmin() {
+		return $this->isAuthenticated() && $this->hasCredential('Admin');
+	}
 }

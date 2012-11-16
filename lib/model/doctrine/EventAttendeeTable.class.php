@@ -16,4 +16,19 @@ class EventAttendeeTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('EventAttendee');
     }
+    
+    public function getAllAttendee($event_id,$param=array()){
+      $q = Doctrine_Query::create()
+        ->from('EventAttendee ea')
+        ->innerJoin('ea.User u')
+        ->innerJoin('u.Profile p')
+        ->leftJoin('p.City c')
+        ->where('ea.event_id = ?',$event_id);
+      
+      $pager = new sfDoctrinePager('Event', 2);
+      $pager->setQuery($q);
+      $pager->setPage($param['curPage']);
+      $pager->init();
+      return $pager;
+    }
 }

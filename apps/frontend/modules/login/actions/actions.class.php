@@ -35,6 +35,9 @@ class loginActions extends sfActions
          
          if(!$this->notify){
           $this->getUser()->signIn($user);
+          if($this->getUser()->isAdmin()){
+            return $this->redirect('/AdmSys.php/event-type/now');
+          }
           return $this->redirect('/home');
          }
       }else{
@@ -42,13 +45,6 @@ class loginActions extends sfActions
       }
       $this->email = $email;
     }//end login
-  }
-  
-  public function executeManual(sfWebRequest $request){
-    $user_data = Doctrine::getTable('User')->find(1);
-    $user = $this->getUser();
-    $user->signIn($user_data);
-    return $this->renderText('');
   }
   
   public function executeLogout(sfWebRequest $request){
