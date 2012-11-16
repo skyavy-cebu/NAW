@@ -125,7 +125,7 @@ Upload Event Photo
   <br />
   <div>
     < <a href="<?php echo url_for('/AdmSys.php/event'); ?>">Back to Event</a> &nbsp;|&nbsp;
-    <a href="<?php echo url_for('/AdmSys.php/event/view/'.$event->getId()); ?>">Event View</a> >
+    <a href="<?php echo url_for('/AdmSys.php/event-view/'.$event->getId()); ?>">Event View</a> >
   </div>
   <br />
 </div>

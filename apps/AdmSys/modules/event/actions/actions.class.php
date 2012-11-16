@@ -47,6 +47,15 @@ class eventActions extends sfActions
     $this->events = EventTable::getInstance()->getAllEvent($this->type,$param);
   }
   
+  public function executeAttendeeDelete(sfWebRequest $request){
+    $id = $request->getParameter('id');
+    if($id){
+      $eventAttendee = Doctrine_Core::getTable('EventAttendee')->find($id);
+      $eventAttendee->delete();
+    }
+    return $this->renderText('');
+   }
+  
    public function executeDelete(sfWebRequest $request){
     $id = $request->getParameter('id');
     if($id){

@@ -24,7 +24,7 @@
 <div id="sf_admin_content">
   <h2>Event Add</h2>
  
-<form method="post" name="event_form" class="event_form" action="<?php echo url_for('/AdmSys_dev.php/event/add') ?>">
+<form method="post" name="event_form" class="event_form" action="<?php echo url_for('/AdmSys.php/event/add') ?>">
 <div class="display_form_errr">
 <?php if ($form->hasErrors()): ?>
   <ul class="shop_list_error">

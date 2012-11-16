@@ -46,7 +46,7 @@ class EventTable extends Doctrine_Table
       
       $q->orderBy('e.event_date DESC');
             
-      $pager = new sfDoctrinePager('Event', 3);
+      $pager = new sfDoctrinePager('Event', 5);
       $pager->setQuery($q);
       $pager->setPage($param['curPage']);
       $pager->init();

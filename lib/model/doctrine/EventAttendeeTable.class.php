@@ -25,7 +25,23 @@ class EventAttendeeTable extends Doctrine_Table
         ->leftJoin('p.City c')
         ->where('ea.event_id = ?',$event_id);
       
-      $pager = new sfDoctrinePager('Event', 2);
+      if($param['email']){
+        $q->andWhere('u.email = ?',$param['email']);
+      }
+      
+      if($param['company']){
+        $q->andWhere('p.company LIKE ?','%'.$param['company'].'%');
+      }
+      
+      if($param['keyword']){
+        $q->andWhere('u.fname LIKE ?','%'.$param['keyword'].'%');
+        $q->orWhere('u.lname LIKE ?','%'.$param['keyword'].'%');
+        $q->orWhere('p.ido LIKE ?','%'.$param['keyword'].'%');
+        $q->orWhere('p.to_meet LIKE ?','%'.$param['keyword'].'%');
+      }
+      
+      
+      $pager = new sfDoctrinePager('Event', 6);
       $pager->setQuery($q);
       $pager->setPage($param['curPage']);
       $pager->init();

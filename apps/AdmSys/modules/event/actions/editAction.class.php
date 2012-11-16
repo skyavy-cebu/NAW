@@ -16,7 +16,18 @@ class editAction extends sfAction{
     if($request->isMethod('post')){
       $this->form->bind($request->getParameter('event'));
       if($this->form->isValid()){
-        
+        $post = $request->getParameter('event');
+        $event = Doctrine_Core::getTable('Event')->find($id);
+        $event->setCityId($post['city']);
+        $event->setVenue($post['venue']);
+        $event->setAddress($post['address']);
+        $event->setPrepaySlots($post['prepay_slots']);
+        $event->setMaxCapacity($post['max_capacity']);
+        $event->setAdmissionPrepay($post['admission_prepay']);
+        $event->setAdmissionAtDoor($post['admission_at_door']);
+        $event->setAdmissionNoRsvp($post['admission_no_rsvp']);
+        $event->setDescription($post['description']);
+        $event->save();
       }
     }
   }

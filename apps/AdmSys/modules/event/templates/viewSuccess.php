@@ -1,3 +1,18 @@
+<script>
+function doDelete(id){
+  if(xconfirm()){
+    $('#attendee'+id).fadeOut('slow',function(){
+      $.post('/AdmSys_dev.php/event/attendeeDelete',{id:id},function(){
+        });
+      $('#attendee'+id).remove();
+      $('.attendee_list tbody tr:odd').removeClass('odd').addClass('even');
+      $('.attendee_list tbody tr:even').removeClass('even').addClass('odd');
+    });
+  }
+  return false;
+}
+</script>
+
 <div id="sf_admin_content">
 <h2>Event View</h2><br />
 <table class="event" cellspacing="0">
@@ -27,14 +42,16 @@
 <br /><br />
 <h2>Attendee list</h2><br />
 <div class="search_attendee">
-  <span>Email: <input type="text"/></span>
-  <span>Company: <input type="text"/></span>
-  <span>Keyword: <input type="text"/></span>
-  <span><input type="Submit" value="search"/></span>
+  <form method="get" action="<?php echo url_for('/AdmSys.php/event-view/'.$id); ?>">
+    <span>Email: <input name="e" value="<?php echo $email; ?>" type="text"/></span>
+    <span>Company: <input name="c" value="<?php echo $company; ?>" type="text"/></span>
+    <span>Keyword: <input name="k" value="<?php echo $keyword; ?>" type="text"/></span>
+    <span><input type="Submit" value="search"/></span>
+  </form>
 </div>
 <br />
-<a class="add Attendee" href="<?php echo url_for('/AdmSys_dev.php/event/add'); ?>">Add</a>
-<table class="event" cellspacing="0">
+<a class="add Attendee" href="<?php echo url_for('/AdmSys_dev.php/event/addAttendee/'.$id); ?>">Add</a>
+<table class="attendee_list" cellspacing="0">
 <thead>
   <tr>
     <th>Name</th>
@@ -55,12 +72,22 @@
     <td><?php echo date('m/d/Y',strtotime($user->getDob())); ?></td>
     <td align="right">
       <img src="/images/magnifier.png"/>
-      <a href="" title="Remove Attendee"><img src="/images/delete.png"/></a>
+      <a href="" title="Remove Attendee" onclick="return doDelete(<?php echo $attendee->getId(); ?>)"><img src="/images/delete.png"/></a>
     </td>
   </tr>
   <?php endforeach; ?>
 </tbody>
 </table>
 
+<?php
+
+$data = array(
+  'maxPerPage' => $attendees->getmaxPerPage(),
+  'lastPage' => $attendees->getlastPage(),
+  'nbResults' => $attendees->getnbResults(),
+  'curPage' => $curPage,
+  'linkPage' => '/AdmSys_dev.php/event-view/'.$id.'?e='.$email.'&c='.$company.'&k='.$keyword
+);
+include_partial('event/pager',$data); ?>
 
 </div><!-- sf_admin_content -->

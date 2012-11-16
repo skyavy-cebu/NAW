@@ -10,8 +10,8 @@ class viewAction extends sfAction{
       $this->forward404();
     }
   
-    $id = $request->getParameter('id');
-    $this->event = Doctrine_Core::getTable('Event')->find($id);
+    $this->id = $request->getParameter('id');
+    $this->event = Doctrine_Core::getTable('Event')->find($this->id);
     if(!$this->event){
       $this->forward404();
     }
@@ -28,7 +28,7 @@ class viewAction extends sfAction{
       'keyword' => $this->keyword,
       'curPage' => $this->curPage
     );
-    $this->attendees = EventAttendeeTable::getInstance()->getAllAttendee($id,$param);
+    $this->attendees = EventAttendeeTable::getInstance()->getAllAttendee($this->id,$param);
   }
   
 }
