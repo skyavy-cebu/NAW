@@ -29,6 +29,10 @@ user:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 # default rules
+event_editAttendee:
+  url:   /event/editAttendee/:id
+  param: { module: event, action: editAttendee }
+
 event_addAttendee:
   url:   /event/addAttendee/:id
   param: { module: event, action: addAttendee }

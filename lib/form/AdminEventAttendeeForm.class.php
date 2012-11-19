@@ -1,22 +1,46 @@
 <?php 
 sfContext::getInstance()->getConfiguration()->loadHelpers(array('Mix'));
-class AdminEventAttendeeForm extends BaseEventForm{
+class AdminEventAttendeeForm extends BaseEventAttendeeForm{
   public function configure(){
     
     $id = $this->getObject()->get('id');
+    $user = Doctrine_Core::getTable('User')->find($this->getObject()->get('user_id'));
+    if($user && $user->getId()){
+      $email = $user->getEmail();
+      $fname = $user->getFname();
+      $lname = $user->getLname();
+      $dob = date('m/d/Y',strtotime($user->getDob()));
+      $company = $user->getProfile()->getCompany();
+      $state = $user->getProfile()->getCity()->getStateId();
+      $city = $user->getProfile()->getCityId();
+      $myi = ProfileIndustryTable::getInstance()->getProfileIndustry($user->getId());
+      $my_industry = ($myi->getFirst())?$myi->getFirst()->getIndustryId():0;
+      $paid = $this->getObject()->get('paid');
+    }else{
+      $email = '';
+      $fname = '';
+      $lname = '';
+      $dob = '';
+      $company = '';
+      $state = 0;
+      $city = 0;
+      $my_industry = '';
+      $paid = 1;
+    }
     
     $industries = Doctrine_Core::getTable('Industry')->findAll();
+    $industry_list[0] = 'Select Industry';
     foreach($industries as $industry){
       $industry_list[$industry->getId()] = $industry->getName();
     }
     
     $dbState = Doctrine_Core::getTable('State')->findAll();
-    $state = array('0'=>'Select State');
-    foreach ($dbState as $s) $state[$s['id']] = $s['name'];
+    $state_list = array('0'=>'Select State');
+    foreach ($dbState as $s) $state_list[$s['id']] = $s['name'];
     
-    $dbCity = CityTable::getInstance()->getCitiesByState();
-    $city = array('0'=>'Select City');
-    foreach ($dbCity as $s) $city[$s['id']] = $s['name'];
+    $dbCity = CityTable::getInstance()->getCitiesByState($state);
+    $city_list = array('0'=>'Select City');
+    foreach ($dbCity as $s) $city_list[$s['id']] = $s['name'];
     
     $paid_list = array(
       0 => 'No',
@@ -24,16 +48,16 @@ class AdminEventAttendeeForm extends BaseEventForm{
     );
     
     $this->setWidgets(array(
-      'email' => new sfWidgetFormInputText(array('default'=>'')),
-      'fname' => new sfWidgetFormInputText(array('default'=>'')),
-      'lname' => new sfWidgetFormInputText(array('default'=>'')),
-      'state' => new sfWidgetFormSelect(array('choices' => $state)),
-      'city' => new sfWidgetFormSelect(array('choices' => $city)),
-      'company' => new sfWidgetFormInputText(),
-      'dob' => new sfWidgetFormInputText(),
-      'paid' => new sfWidgetFormSelectRadio(array('choices'=>$paid_list,'default'=>1)),
+      'email' => new sfWidgetFormInputText(array('default'=>''),array('value'=>$email)),
+      'fname' => new sfWidgetFormInputText(array('default'=>$fname),array('value'=>$fname)),
+      'lname' => new sfWidgetFormInputText(array('default'=>$lname),array('value'=>$lname)),
+      'state' => new sfWidgetFormSelect(array('choices' => $state_list,'default'=>$state)),
+      'city' => new sfWidgetFormSelect(array('choices' => $city_list,'default'=>$city)),
+      'company' => new sfWidgetFormInputText(array(),array('value'=>$company)),
+      'dob' => new sfWidgetFormInputText(array(),array('value'=>$dob)),
+      'paid' => new sfWidgetFormSelectRadio(array('choices'=>$paid_list,'default'=>$paid)),
       'industry' => new sfWidgetFormSelect(
-        array('choices' => $industry_list,'default'=>'')),
+        array('choices' => $industry_list,'default'=>$my_industry)),
     ));
     
     $this->setValidators(array(

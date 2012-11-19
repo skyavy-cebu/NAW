@@ -10,7 +10,6 @@ Doctrine_Manager::getInstance()->bindComponent('Profile', 'doctrine');
  * @property integer $id
  * @property string $title
  * @property string $company
- * @property integer $state_id
  * @property integer $city_id
  * @property string $address
  * @property text $ido
@@ -28,7 +27,6 @@ Doctrine_Manager::getInstance()->bindComponent('Profile', 'doctrine');
  * @method integer getId()           Returns the current record's "id" value
  * @method string  getTitle()        Returns the current record's "title" value
  * @method string  getCompany()      Returns the current record's "company" value
- * @method integer getStateId()      Returns the current record's "state_id" value
  * @method integer getCityId()       Returns the current record's "city_id" value
  * @method string  getAddress()      Returns the current record's "address" value
  * @method text    getIdo()          Returns the current record's "ido" value
@@ -45,7 +43,6 @@ Doctrine_Manager::getInstance()->bindComponent('Profile', 'doctrine');
  * @method Profile setId()           Sets the current record's "id" value
  * @method Profile setTitle()        Sets the current record's "title" value
  * @method Profile setCompany()      Sets the current record's "company" value
- * @method Profile setStateId()      Sets the current record's "state_id" value
  * @method Profile setCityId()       Sets the current record's "city_id" value
  * @method Profile setAddress()      Sets the current record's "address" value
  * @method Profile setIdo()          Sets the current record's "ido" value
@@ -85,13 +82,6 @@ abstract class BaseProfile extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              'length' => 150,
-             ));
-        $this->hasColumn('state_id', 'integer', 2, array(
-             'type' => 'integer',
-             'unsigned' => true,
-             'notnull' => true,
-             'default' => 0,
-             'length' => 2,
              ));
         $this->hasColumn('city_id', 'integer', 2, array(
              'type' => 'integer',

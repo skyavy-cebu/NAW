@@ -33,7 +33,7 @@ class addAttendeeAction extends sfAction{
           $user->setEmail($post['email']);
           $user->setFname($post['fname']);
           $user->setLname($post['lname']);
-          $user->setDob(date('Y-m-d',strtotime($post['dob']));
+          $user->setDob(date('Y-m-d',strtotime($post['dob'])));
           $user->save();
           $user_id = $user->getId();
           
