@@ -3,6 +3,8 @@ sfContext::getInstance()->getConfiguration()->loadHelpers(array('Mix'));
 class AdminEventAttendeeForm extends BaseEventForm{
   public function configure(){
     
+    $id = $this->getObject()->get('id');
+    
     $industries = Doctrine_Core::getTable('Industry')->findAll();
     foreach($industries as $industry){
       $industry_list[$industry->getId()] = $industry->getName();
@@ -43,6 +45,7 @@ class AdminEventAttendeeForm extends BaseEventForm{
       'city'  => new sfValidatorInteger(array('required' => false)),
       'company'  => new sfValidatorString(array('max_length' => 150,'required' => false)),
       'dob' => new sfValidatorString(array('max_length' => 30,'required' => false)),
+      'paid' => new sfValidatorString(array('max_length' => 2,'required' => true)),
       'industry' => new sfValidatorInteger(array('required' => false)),
     ));
     

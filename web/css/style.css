@@ -1563,3 +1563,7 @@ a.add{
 .search_attendee span{
   padding-right:15px;
 }
+
+span.error{
+  color:red;
+}

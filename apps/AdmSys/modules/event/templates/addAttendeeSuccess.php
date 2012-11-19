@@ -12,7 +12,43 @@ $(document).ready(function(){
       changeYear: true,
       yearRange: "<?php echo date('Y')-45; ?>:<?php echo date('Y')-5; ?>"
     });
+    
+    $('#attendee_email').keyup(function(){
+      doEmailQuery($(this).val());
+    });
+    
  });
+ 
+ var delayTimer;
+  function doEmailQuery(email) {
+      clearTimeout(delayTimer);
+      delayTimer = setTimeout(function(){
+          $('.loader').show();
+          if(is_email(email)){
+            var id = $('#attendee_id').val();
+            $.post('/AdmSys.php/event/searchAttendee',{id:id,email:email},function(data){
+              $('.loader').hide();
+              if(data.error){
+                $('.error').html(data.error).fadeIn('slow');
+              }else{
+                userSuggest(data.user);
+                $('.error').html('').hide();
+              }
+            },'json');
+          }else{
+            $('.loader').hide();
+          }          
+      }, 1000); // Will do the ajax stuff after 1000 ms, or 1 s
+  }
+  
+  function userSuggest(user){
+    $('#attendee_fname').val(user.fname);
+    $('#attendee_lname').val(user.lname);
+    $('#attendee_company').val(user.company);
+    $('#attendee_state').val(user.state);
+    $('#attendee_city').val(user.city);
+    $('#attendee_dob').val(user.dob);
+  }
 </script>
 
 <style>
@@ -29,12 +65,13 @@ $(document).ready(function(){
  #attendee_dob{
     width:80px;
  }
+
 </style>
 
 <div id="sf_admin_content">
 <h2>Add Event Attendee</h2><br />
 
-<form method="post" name="event_attendee_form" class="event_attendee_form" action="<?php echo url_for('/AdmSys_dev.php/event/addAttendee') ?>">
+<form method="post" name="event_attendee_form" class="event_attendee_form" action="<?php echo url_for('/AdmSys_dev.php/event/addAttendee/'.$id) ?>">
 <div class="display_form_errr">
 <?php if ($form->hasErrors()): ?>
   <ul class="shop_list_error">
@@ -47,10 +84,12 @@ $(document).ready(function(){
 </div>
 
 <table style="width:400px;">
+<span class="error hide"></span>
+<input id="attendee_id" type="hidden" name="id" value="<?php echo $id; ?>"/>
 <tbody>
   <tr>
     <td>Email Address</td>
-    <td><?php echo $form['email']; ?></td>
+    <td style="width:200px;"><?php echo $form['email']; ?> <span class="loader hide"><img src="/images/load.gif"/></span></td>
   </tr>
   <tr>
     <td>First Name</td>

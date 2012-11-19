@@ -47,4 +47,12 @@ class EventAttendeeTable extends Doctrine_Table
       $pager->init();
       return $pager;
     }
+
+  public function getAttedeeByEventIdAndUserId($event_id,$user_id){
+    $q = Doctrine_Query::create()
+        ->from('EventAttendee ea')
+        ->where('ea.event_id = ?',$event_id)
+        ->andWhere('ea.user_id = ?',$user_id);
+    return $q->fetchArray();
+  }
 }

@@ -20,6 +20,31 @@ class eventActions extends sfActions
       $this->forward404();
     }
   }
+  
+  public function executeSearchAttendee(sfWebRequest $request){
+    $error = '';
+    $data = '';
+    $email = $request->getParameter('email');
+    $event_id = $request->getParameter('id');
+    $user = Doctrine_Core::getTable('User')->findOneByEmail($email);
+    if($user){
+      $attendee = EventAttendeeTable::getInstance()->getAttedeeByEventIdAndUserId($event_id,$user->getId());
+      if($attendee){
+        $error = 'This user is already exist to this event';
+      }else{
+        $data = array(
+          'fname' => $user->getFname(),
+          'lname' => $user->getLname(),
+          'state' => $user->getProfile()->getCity()->getStateId(),//$user->getCity()->getStateId(),
+          'city' => $user->getProfile()->getCityId(),
+          'company' => $user->getProfile()->getCompany(),
+          'dob' => date('m/d/Y',strtotime($user->getDob())),
+          'industry' => ''
+        );
+      }      
+    }
+    return $this->renderText(json_encode(array('error'=>$error,'user'=>$data)));
+  }
 
  /**
   * Executes index action
