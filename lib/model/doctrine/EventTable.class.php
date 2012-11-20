@@ -41,7 +41,7 @@ class EventTable extends Doctrine_Table
       }
       if($type == 'now'){
         $q->andWhere('e.event_date = CURRENT_DATE');
-      }elseif($type == 'upcomming'){
+      }elseif($type == 'upcoming'){
         $q->andWhere('e.event_date > CURRENT_DATE');
       }elseif($type == 'past'){
         $q->andWhere('e.event_date < CURRENT_DATE');

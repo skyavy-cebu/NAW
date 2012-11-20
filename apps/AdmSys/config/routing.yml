@@ -40,14 +40,14 @@ event_addAttendee:
 event_view:
   url:   /event-view/:id
   param: { module: event, action: view }
+  
+event_type:
+  url:   /event-type/:type
+  param: { module: event, action: index }
 
 event_edit:
   url:   /event/edit/:id
   param: { module: event, action: edit }
-
-event_now:
-  url:   /event-type/:type
-  param: { module: event, action: index }
 
 homepage:
   url:   /

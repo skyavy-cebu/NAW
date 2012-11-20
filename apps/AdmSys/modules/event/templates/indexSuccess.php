@@ -29,15 +29,16 @@
 <h2><?php
   if($type == 'now'){
     echo 'Happening Now';
-  }elseif($type == 'upcomming'){
-    echo 'Upcomming Events';
+  }elseif($type == 'upcoming'){
+    echo 'Upcoming Events';
   }elseif($type == 'past'){
     echo 'Past Events';
   }else{
     echo 'Event List';
   }
 ?></h2>
-<form name="search" class="search" method="get" action="<?php echo url_for('/AdmSys_dev.php/'.(!empty($type))?'event'.$type:'event'); ?>">
+<?php $type = (!empty($type))?'event-type/'.$type:'event'; ?>
+<form name="search" class="search" method="get" action="<?php echo url_for('/AdmSys_dev.php/'.$type); ?>">
 <table cellspacing="0" style="width:600px; padding:15px; padding-left:0">
   <tr>
     <td>Venue</td>
@@ -111,6 +112,7 @@
 </table>
 <?php
 $type = (!empty($type))?'event-type/'.$type:'event';
+
 $data = array(
   'maxPerPage' => $events->getmaxPerPage(),
   'lastPage' => $events->getlastPage(),
