@@ -27,7 +27,10 @@ class EventTable extends Doctrine_Table
       if(isset($param['venue'])){
         $q->andWhere('e.venue LIKE ?','%'.$param['venue'].'%');
       }
-      if(isset($param['keyword'])){
+      
+      if(is_numeric($param['keyword'])){
+        $q->andWhere('e.id = ?',$param['keyword']);
+      }elseif(isset($param['keyword'])){
         $q->andWhere('e.description LIKE ?','%'.$param['keyword'].'%');
       }
       if(isset($param['state']) && $param['state'] > 0){

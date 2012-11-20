@@ -71,8 +71,7 @@ function doDelete(id){
     <td><?php echo $user->getProfile()->getCompany(); ?></td>
     <td><?php echo date('m/d/Y',strtotime($user->getDob())); ?></td>
     <td align="right">
-      <img src="/images/magnifier.png"/>
-      <a href="<?php echo url_for('/AdmSys.php/event/editAttendee/'.$attendee->getId()); ?>" title="Edit Attendee"><img src="/images/pencil.png"/></a>
+      <a href="<?php echo url_for('/AdmSys.php/event/editAttendee/'.$attendee->getId()); ?>" title="Edit Attendee"><img src="/images/magnifier.png"/></a>
       <a href="#delete" title="Remove Attendee" onclick="return doDelete(<?php echo $attendee->getId(); ?>)"><img src="/images/delete.png"/></a>
     </td>
   </tr>

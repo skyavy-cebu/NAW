@@ -37,7 +37,7 @@
     echo 'Event List';
   }
 ?></h2>
-<form name="search" class="search" method="get" action="<?php echo url_for('/AdmSys_dev.php/'.(!empty($type))?'event-type/'.$type:'event'); ?>">
+<form name="search" class="search" method="get" action="<?php echo url_for('/AdmSys_dev.php/'.(!empty($type))?'event'.$type:'event'); ?>">
 <table cellspacing="0" style="width:600px; padding:15px; padding-left:0">
   <tr>
     <td>Venue</td>
@@ -81,6 +81,7 @@
       <th>City</th>
       <th>State</th>
       <th>Venue</th>
+      <th>Capacity</th>
       <th>Registered  Attendees</th>
       <th>Checked-In</th>
       <th>&nbsp;</th>
@@ -94,6 +95,7 @@
       <td><?php echo $event['City']; ?></td>
       <td><?php echo $event['City']['State']; ?></td>
       <td><?php echo $event->getVenue(); ?></td>
+      <td align="right"><?php echo $event->getMaxCapacity(); ?></td>
       <td align="right"><?php echo $event['countAttendee']; ?></td>
       <td align="right">0</td>
       <td align="right">
