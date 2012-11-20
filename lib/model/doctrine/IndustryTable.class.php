@@ -16,6 +16,17 @@ class IndustryTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Industry');
     }
+    
+    public function getIndustryList($param=array()){
+      $q = Doctrine_Query::create()
+        ->from('Industry c');
+      
+      $pager = new sfDoctrinePager('Industry', 10);
+      $pager->setQuery($q);
+      $pager->setPage($param['curPage']);
+      $pager->init();
+      return $pager;
+    }
 		
 		public function getAllIndustry(){
       $q = Doctrine_Query::create()

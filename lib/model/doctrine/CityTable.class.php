@@ -22,7 +22,7 @@ class CityTable extends Doctrine_Table
         ->from('City c')
         ->leftJoin('c.State s');
       
-      $pager = new sfDoctrinePager('Event', 3);
+      $pager = new sfDoctrinePager('City', 10);
       $pager->setQuery($q);
       $pager->setPage($param['curPage']);
       $pager->init();

@@ -53,12 +53,12 @@
           <a href="<?php echo url_for('/AdmSys.php/event-type/upcoming'); ?>">Upcoming Events</a>
           <a href="<?php echo url_for('/AdmSys.php/event-type/past'); ?>">Past Events</a><br />
           <a href="<?php echo url_for('/AdmSys.php/location'); ?>">Location</a>
-          <a href="">Industry</a>
+          <a href="<?php echo url_for('/AdmSys.php/industry'); ?>">Industry</a>
           <a href="<?php echo url_for('/AdmSys.php/user'); ?>">User</a>
           <a href="">Account</a><br />
-          <a href="">News</a>
-          <a href="">Sponsor</a>
-          <a href="" class="end">Newsletter</a>
+          <a href="<?php echo url_for('/AdmSys.php/news'); ?>">News</a>
+          <a href="<?php echo url_for('/AdmSys.php/sponsor'); ?>">Sponsor</a>
+          <a href="<?php echo url_for('/AdmSys.php/newsletter'); ?>" class="end">Newsletter</a>
 				</div>
 			</div>
     </div><!-- header -->

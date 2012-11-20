@@ -16,6 +16,24 @@ class NewsTable extends Doctrine_Table
         return Doctrine_Core::getTable('News');
     }
     
+    public function getNewsList($param=array()){
+      $q = Doctrine_Query::create()
+        ->from('News c');
+      
+      if(is_numeric($param['search'])){
+        $q->where('c.id = ?',$param['search']);
+      }elseif($param['search']){
+        $q->where('c.title LIKE ?','%'.$param['search'].'%');
+        $q->orWhere('c.content LIKE ?','%'.$param['search'].'%');
+      }
+      
+      $pager = new sfDoctrinePager('News', 5);
+      $pager->setQuery($q);
+      $pager->setPage($param['curPage']);
+      $pager->init();
+      return $pager;
+    }
+    
     public static function getLatestNews(){
       $q = Doctrine_Query::create()
         ->from('News n')
