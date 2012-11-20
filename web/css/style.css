@@ -1451,6 +1451,10 @@ img.profile_pic {
 }
 
 /*------- admin ---------- */
+#sf_admin_content{
+  margin-bottom:20px;
+}
+
 #sf_admin_content th, #sf_admin_content td, #sf_admin_content label, #sf_admin_content{
   font-size:13px;
 }

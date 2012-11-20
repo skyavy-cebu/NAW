@@ -37,8 +37,8 @@
     echo 'Event List';
   }
 ?></h2>
-<?php $type = (!empty($type))?'event-type/'.$type:'event'; ?>
-<form name="search" class="search" method="get" action="<?php echo url_for('/AdmSys_dev.php/'.$type); ?>">
+<?php $type_temp = (!empty($type))?'event-type/'.$type:'event'; ?>
+<form name="search" class="search" method="get" action="<?php echo url_for('/AdmSys_dev.php/'.$type_temp); ?>">
 <table cellspacing="0" style="width:600px; padding:15px; padding-left:0">
   <tr>
     <td>Venue</td>
@@ -111,14 +111,14 @@
   </tbody>
 </table>
 <?php
-$type = (!empty($type))?'event-type/'.$type:'event';
+$type_temp = (!empty($type))?'event-type/'.$type:'event';
 
 $data = array(
   'maxPerPage' => $events->getmaxPerPage(),
   'lastPage' => $events->getlastPage(),
   'nbResults' => $events->getnbResults(),
   'curPage' => $curPage,
-  'linkPage' => '/AdmSys_dev.php/'.$type.'?v='.$venue.'&k='.$keyword.'&s='.$curState.'&city='.$curCity
+  'linkPage' => '/AdmSys.php/'.$type_temp.'?v='.$venue.'&k='.$keyword.'&s='.$curState.'&city='.$curCity
 );
 include_partial('event/pager',$data); ?>
 

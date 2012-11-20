@@ -17,6 +17,18 @@ class CityTable extends Doctrine_Table
         return Doctrine_Core::getTable('City');
     }
     
+    public function getCityList($param=array()){
+      $q = Doctrine_Query::create()
+        ->from('City c')
+        ->leftJoin('c.State s');
+      
+      $pager = new sfDoctrinePager('Event', 3);
+      $pager->setQuery($q);
+      $pager->setPage($param['curPage']);
+      $pager->init();
+      return $pager;
+    }
+    
     public function getCitiesByState($state_id=0){
       $q = Doctrine_Query::create()
         ->from('City c');

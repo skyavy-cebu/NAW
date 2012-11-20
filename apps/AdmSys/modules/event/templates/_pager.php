@@ -5,10 +5,10 @@
       <li class="cur"><?php echo $x; ?></li>
     <?php else: ?>
       <?php
-        if(strpos('?', $linkPage) !== false){
-          $link_sym = '?';
-        }else{
+        if(strpos($linkPage,'?') !== false){
           $link_sym = '&';
+        }else{
+          $link_sym = '?';
         }
         $link = $linkPage.$link_sym.'p='.$x;
       ?>
