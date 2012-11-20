@@ -15,6 +15,26 @@ class locationActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
+  
+  public function preExecute(){
+    if(!$this->getUser()->isAuthenticated()){
+      return $this->redirect('/login');
+    }
+  
+    if(!$this->getUser()->isAdmin()){
+      $this->forward404();
+    }
+  }
+  
+  public function executeDelete(sfWebRequest $request){
+    $id = $request->getParameter('id');
+    if($id){
+      $city = Doctrine_Core::getTable('City')->find($id);
+      $city->delete();
+    }
+    return $this->renderText($id);
+  }
+  
   public function executeIndex(sfWebRequest $request){
     $this->curPage = $request->getParameter('p');
   
