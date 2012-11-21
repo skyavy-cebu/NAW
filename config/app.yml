@@ -13,6 +13,11 @@ all:
     full: 250
     small: 150
   
+  news:
+    dir:  %SF_ROOT_DIR%/web/uploads/news/
+    full: 250
+    small: 150
+  
   facebook:
     fb_admins:        1600771217
     app_id:           377394829013291

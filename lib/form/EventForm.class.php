@@ -1,5 +1,4 @@
 <?php
-sfContext::getInstance()->getConfiguration()->loadHelpers(array('Mix'));
 class EventForm extends BaseEventForm{
   public function configure(){
   

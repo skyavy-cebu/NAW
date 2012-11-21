@@ -1,5 +1,5 @@
 <?php
-class NewsForm extends BaseCityForm{
+class NewsForm extends BaseNewsForm{
   
   public function configure(){
   
@@ -7,8 +7,8 @@ class NewsForm extends BaseCityForm{
     
     $this->setWidgets(array(
       'post_date' => new sfWidgetFormInputText(array(),array('value'=>$post_date)),
-      'title' => new sfWidgetFormInputText(array(),array('value'=>'')),
-      'content' => new sfWidgetFormTextArea(array(),array('value'=>'')),
+      'title' => new sfWidgetFormInputText(array()),
+      'content' => new sfWidgetFormTextArea(array()),
     ));
     
     

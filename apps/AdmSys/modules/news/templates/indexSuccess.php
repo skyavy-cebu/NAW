@@ -50,8 +50,8 @@
       <td><?php echo date('m/d/Y h:ia',strtotime($news->getPostDate())); ?></td>
       <td><a href="<?php echo url_for('/news/'.$news->getId()); ?>"><?php echo $news->getTitle(); ?></a></td>
       <td align="right">
-        <img src="/images/magnifier.png"/>
-        <img src="/images/pencil.png"/>
+        <a title="View News" href="<?php echo url_for('/news/'.$news->getId()); ?>"><img src="/images/magnifier.png"/></a>
+        <a href="/AdmSys.php/news/edit/<?php echo $news->getId(); ?>" title="Edit News"><img src="/images/pencil.png"/></a>
         <a href="#delete" title="Delete" onclick="return goDelete(<?php echo $news->getId(); ?>)">
           <img src="/images/delete.png"/>
         </a>

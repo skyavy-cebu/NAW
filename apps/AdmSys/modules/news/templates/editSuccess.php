@@ -19,9 +19,9 @@
 </style>
 
 <div id="sf_admin_content">
-<h2>Add News</h2><br />
+<h2>Edit News</h2><br />
 
-<form method="post" name="loc_form" class="loc_form" enctype="multipart/form-data" action="<?php echo url_for('/AdmSys.php/news/add') ?>">
+<form method="post" name="loc_form" class="loc_form" enctype="multipart/form-data" action="<?php echo url_for('/AdmSys_dev.php/news/edit/'.$news->getId()) ?>">
 <div class="display_form_errr">
 <?php if ($form->hasErrors()): ?>
   <ul class="shop_list_error">
@@ -46,6 +46,14 @@
   <tr>
     <td>Body</td>
     <td><?php echo $form['content']; ?></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <?php if($news->getImageSmall()): ?>
+        <a href="/uploads/news/<?php echo $news->getImageFull(); ?>" target="_blank"><img src="/uploads/news/<?php echo $news->getImageSmall(); ?>"/></a>
+      <?php endif; ?>
+    </td>
   </tr>
   <tr>
     <td>Upload Photo</td>

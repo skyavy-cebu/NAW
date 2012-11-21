@@ -2,7 +2,7 @@
 
 class AdmSysConfiguration extends sfApplicationConfiguration
 {
-  public function configure()
-  {
+  public function configure(){
+    sfProjectConfiguration::getActive()->loadHelpers(array('Mix'));
   }
 }

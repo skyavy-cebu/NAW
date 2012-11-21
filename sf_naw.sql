@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2012 at 09:31 AM
+-- Generation Time: Nov 20, 2012 at 09:31 AM
 -- Server version: 5.5.16-log
 -- PHP Version: 5.3.8
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `city`
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `event`
@@ -90,10 +90,12 @@ INSERT INTO `event` (`id`, `description`, `event_date`, `start_time`, `end_time`
 (4, 'Crystal waters and pristine reefs surround the island. Up to 25 percent of the world’s tropical fish species swim in the protected waters around Koh Lipe (the island is in Tarutao National Marine Park). Pattaya Beach may be the island’s most developed tourist spot, but head to quieter Sunrise Beach, where a now settled community of “sea gypsies,” the Chao Lei, live and fish. Take in the view from Castaway Resort''s "chill-out deck," above.', '2012-11-13', '00:00:00', '00:00:00', 7, 'Barcelona', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (5, 'Dresden shone brightest in the 1700s, when the kings of Saxony spent their wealth to turn their capital into “Florence on the Elbe.” But in February 1945, two days of British and American bombing destroyed much of Dresden’s center and killed tens of thousands of civilians.', '2012-11-04', '00:00:00', '00:00:00', 6, 'Paris', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (6, 'Spend some time floating in an inner tube down the Russian River and walking amid ancient giants—one over 1,400 years old—at Armstrong Redwoods State Natural Reserve. Poke around the old Russian stockade at Fort Ross, which turns 200 in 2012, or the Spanish adobe mission, San Francisco Solano, in Sonoma town. Hunt for antiques along Petaluma’s downtown Victorian row, and dine on seasonal sake-steamed, aged abalone at Michelin-starred Cyrus in Healdsburg. And don’t miss a flaky, fruit-packed slice of Gravenstein pie from Mom’s Apple Pie, a roadside stop outside Sebastopol. It ranks up there with a Russian River Valley Pinot Noir as a real taste of Sonoma.', '2012-11-02', '00:00:00', '00:00:00', 4, 'New York City', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, NULL, '2012-11-13', '00:00:00', '00:00:00', 0, '', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '2012-11-13 09:24:50', '2012-11-13 09:24:50'),
-(8, NULL, '2012-11-13', '09:23:00', '13:23:00', 0, '', NULL, 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '2012-11-13 09:25:59', '2012-11-13 09:25:59'),
 (9, 'sdfsadfasdfasdfdasfdsaf sdfsadfsadf', '2012-11-13', '09:23:00', '13:23:00', 6, 'sdfasdf', 'dfdasfasf', 1, 20, '1.00', '1.00', '2.00', '', '', 0, 0, '2012-11-13 09:27:09', '2012-11-13 09:27:09'),
-(10, 'sdfsadfasdfasdfdasfdsaf sdfsadfsadf', '2012-11-13', '09:23:00', '13:23:00', 6, 'sdfasdf', 'dfdasfasf', 1, 20, '1.00', '1.00', '2.00', '', '', 0, 0, '2012-11-13 09:27:44', '2012-11-13 09:27:44');
+(12, 'Spend some time floating in an inner tube down the Russian River and walking amid ancient giants—one over 1,400 years old—at Armstrong Redwoods State Natural Reserve. Poke around the old Russian stockade at Fort Ross, which turns 200 in 2012, or the Spanish adobe mission, San Francisco Solano, in Sonoma town. Hunt for antiques along Petaluma’s downtown Victorian row, and dine on seasonal sake-steamed, aged abalone at Michelin-starred Cyrus in Healdsburg. And don’t miss a flaky, fruit-packed slice of Gravenstein pie from Mom’s Apple Pie, a roadside stop outside Sebastopol. It ranks up there with a Russian River Valley Pinot Noir as a real taste of Sonoma.', '2012-11-23', '00:00:00', '00:00:00', 4, 'New York City', 'asddfasdfadf', 0, 10, '0.00', '0.00', '0.00', '1-S6pdiXl58.jpg', '1-S6pdiXl58_thumb.jpg', 0, 0, '0000-00-00 00:00:00', '2012-11-16 08:13:45'),
+(13, 'Hovsgol is just now opening its arms to travelers who come to catch and release taimen, giant salmonid “river wolves” that stalk Hovsgol’s waterways. Others come to ride Mongolian ponies in search of the Tsaatan, small bands of nomadic reindeer herders (above) who live in encampments and follow shamanistic beliefs.', '2012-11-17', '24:59:00', '00:00:00', 1, 'Chateau De Busay', 'Falcon Lounge', 0, 0, '0.00', '0.00', '0.00', '', '', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 'Spend some time floating in an inner tube down the Russian River and walking amid ancient giants—one over 1,400 years old—at Armstrong Redwoods State Natural Reserve. Poke around the old Russian stockade at Fort Ross, which turns 200 in 2012, or the Spanish adobe mission, San Francisco Solano, in Sonoma town. Hunt for antiques along Petaluma’s downtown Victorian row, and dine on seasonal sake-steamed, aged abalone at Michelin-starred Cyrus in Healdsburg. And don’t miss a flaky, fruit-packed slice of Gravenstein pie from Mom’s Apple Pie, a roadside stop outside Sebastopol. It ranks up there with a Russian River Valley Pinot Noir as a real taste of Sonoma.', '2012-11-23', '00:00:00', '00:00:00', 4, 'New York City', 'R. Duterte St. Banawa', 0, 25, '0.00', '0.00', '0.00', '1-S6pdiXl6E.jpg', '1-S6pdiXl6E_thumb.jpg', 0, 0, '2012-11-14 06:02:07', '2012-11-14 07:06:51'),
+(15, '', '2012-11-14', '06:15:00', '10:15:00', 1, 'Larsian', 'Fuente', 0, 10, '0.00', '0.00', '0.00', '1-S6pdiXl6I.jpg', '1-S6pdiXl6I_thumb.jpg', 0, 0, '2012-11-14 06:15:39', '2012-11-15 03:40:08'),
+(16, '', '2012-11-14', '06:16:00', '10:16:00', 1, 'New Larsian', 'Fuente Cebu', 0, 50, '0.00', '0.00', '0.00', '1-S6pdiXl6M.jpg', '1-S6pdiXl6M_thumb.jpg', 0, 0, '2012-11-14 06:16:32', '2012-11-14 06:59:10');
 
 -- --------------------------------------------------------
 
@@ -110,14 +112,25 @@ CREATE TABLE IF NOT EXISTS `event_attendee` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `event_attendee`
 --
 
 INSERT INTO `event_attendee` (`id`, `event_id`, `user_id`, `paid`, `created_at`, `updated_at`) VALUES
-(1, 1, 10, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(2, 1, 10, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 1, 6, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 1, 11, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 12, 11, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 12, 14, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 12, 15, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 12, 17, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 12, 6, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 12, 10, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 14, 6, '1', '2012-11-19 06:30:27', '2012-11-19 06:30:27'),
+(13, 14, 19, '1', '2012-11-19 06:44:48', '2012-11-19 06:44:48'),
+(14, 14, 20, '1', '2012-11-19 06:48:52', '2012-11-19 06:48:52');
 
 -- --------------------------------------------------------
 
@@ -132,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `industry` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `industry`
@@ -146,7 +159,9 @@ INSERT INTO `industry` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (5, 'Advertising', '2012-10-25 06:30:25', '2012-10-25 06:30:25'),
 (6, 'Web Design', '2012-10-25 06:30:37', '2012-10-25 06:30:37'),
 (7, 'Education', '2012-10-25 06:30:47', '2012-10-25 06:30:47'),
-(8, 'IT', '2012-10-25 06:30:54', '2012-10-25 06:30:54');
+(8, 'IT', '2012-10-25 06:30:54', '2012-10-25 06:30:54'),
+(16, 'Health Care', '2012-11-20 06:43:49', '2012-11-20 06:43:49'),
+(17, 'Engineering', '2012-11-20 06:45:37', '2012-11-20 06:45:37');
 
 -- --------------------------------------------------------
 
@@ -165,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `news`
@@ -174,7 +189,10 @@ CREATE TABLE IF NOT EXISTS `news` (
 INSERT INTO `news` (`id`, `post_date`, `title`, `content`, `image_full`, `image_small`, `created_at`, `updated_at`) VALUES
 (1, '2012-11-09 20:19:15', 'Network After Work is now hosting events in San Diego!', ' 	Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida. ', '', '', '2012-11-08 00:00:00', '0000-00-00 00:00:00'),
 (2, '2012-11-06 10:09:23', 'Mauris mollis libero a nulla viverra vestibulum', ' 	Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida. ', '', '', '2012-11-07 00:00:00', '0000-00-00 00:00:00'),
-(3, '2012-11-07 07:27:10', 'Duis semper eleifend volutpat', ' 	Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida. ', '', '', '2012-11-05 00:00:00', '0000-00-00 00:00:00');
+(3, '2012-11-07 07:27:10', 'Duis semper eleifend volutpat', ' 	Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida. ', '', '', '2012-11-05 00:00:00', '0000-00-00 00:00:00'),
+(7, '2012-11-15 00:00:00', 'asdfas asdfdsfasdf sfsa dfasdfsdfasdf', 'asfas fasdfsfsadfasfasdf safdsafasdf asf ', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, '0000-00-00 00:00:00', 'sfsadfasff', '<p>\r\n	asdfasdfassa <strong>sfasfasdf sdfd</strong> <u>sdsadfsa</u></p>\r\n', '', '', '2012-11-20 08:42:44', '2012-11-20 08:42:44'),
+(14, '2012-11-20 11:25:00', 'safdsafasfd', '<p>\r\n	asdfasdfasdfas</p>\r\n', '', '', '2012-11-20 09:25:28', '2012-11-20 09:25:28');
 
 -- --------------------------------------------------------
 
@@ -187,7 +205,6 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `id` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(5) NOT NULL,
   `company` varchar(150) NOT NULL,
-  `state_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   `city_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   `address` varchar(255) NOT NULL,
   `ido` text,
@@ -207,9 +224,15 @@ CREATE TABLE IF NOT EXISTS `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`id`, `title`, `company`, `state_id`, `city_id`, `address`, `ido`, `to_meet`, `image_full`, `image_small`, `linkedin_url`, `fb_url`, `twitter_url`, `olio_url`, `created_at`, `updated_at`) VALUES
-(6, 'AM', 'Forty Degrees Celsius', 43, 4, 'B. Rodriguez Street, Cebu City', 'Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida.', 'Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida.', '4uDEnc3Wy5p_.jpg', '4uDEnc3Wy5p__thumb.jpg', 'http://www.linkedin.com/pub/jerry-bwoy/5a/851/93b', 'http://www.facebook.com', 'http://www.twitter.com', 'http://www.twitter2.com', '2012-10-29 01:58:16', '2012-11-09 06:42:35'),
-(10, '', '', 0, 0, 'Shibuya, Tokyo', 'I can wiggle my ears. (without touching them of course)\nMy upper and lower teeth don''t touch in front so when I bite down, there''s a gap about the width of my pinky.\nI sleep flat on my back with a pillow underneath my legs (it''s good for your back), with my arms on my chest. Some have observed that while sleeping I resemble a mummy.\nMy name was initially going to be Dale but it was changed to Daniel while I was still in the hospital.\nI can walk on my hands.', NULL, '4uDEnc3Wy5p6YQ.jpg', '4uDEnc3Wy5p6YQ_thumb.jpg', '', 'http://www.facebook.com/jerry.bwoy.3', '', '', '2012-10-29 03:39:03', '2012-10-29 03:39:05');
+INSERT INTO `profile` (`id`, `title`, `company`, `city_id`, `address`, `ido`, `to_meet`, `image_full`, `image_small`, `linkedin_url`, `fb_url`, `twitter_url`, `olio_url`, `created_at`, `updated_at`) VALUES
+(6, 'AM', 'Forty Degrees Celsius', 4, 'B. Rodriguez Street, Cebu City', 'Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida.', 'Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida.', '4uDEnc3Wy5p_.jpg', '4uDEnc3Wy5p__thumb.jpg', 'http://www.linkedin.com/pub/jerry-bwoy/5a/851/93b', 'http://www.facebook.com', 'http://www.twitter.com', 'http://www.twitter2.com', '2012-10-29 01:58:16', '2012-11-09 06:42:35'),
+(10, '', 'Forty Degrees Celsius', 0, 'Shibuya, Tokyo', 'I can wiggle my ears. (without touching them of course)\nMy upper and lower teeth don''t touch in front so when I bite down, there''s a gap about the width of my pinky.\nI sleep flat on my back with a pillow underneath my legs (it''s good for your back), with my arms on my chest. Some have observed that while sleeping I resemble a mummy.\nMy name was initially going to be Dale but it was changed to Daniel while I was still in the hospital.\nI can walk on my hands.', NULL, '4uDEnc3Wy5p6YQ.jpg', '4uDEnc3Wy5p6YQ_thumb.jpg', '', 'http://www.facebook.com/jerry.bwoy.3', '', '', '2012-10-29 03:39:03', '2012-11-20 01:42:45'),
+(11, 'test', 'fasdfasdfasd', 4, 'asdfsdf', 'sadfasdfasdfadf', 'sdfasdfadsf asdf sadfsdfasdfsadfdsf', '', '', '', '', '', 'http://www.twitter2.com', '2012-11-15 07:54:39', '2012-11-15 07:54:39'),
+(14, 'df', 'asdfasdfsaf', 0, 'asdfdasf', 'asdfasdfads', 'asasdfasdf', '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, '', 'dsfasdfasf', 0, 'asdfasdfa', 'asdfasdf', 'asdfasdfasdf', '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, '', 'asfdasfdasf', 0, 'sadfasdfadsf', 'sadfasf', 'asdfasdfdsafasd', '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, '', 'CHN', 3, '', NULL, NULL, '', '', '', '', '', '', '2012-11-19 06:44:47', '2012-11-19 06:44:47'),
+(20, '', 'Forty Degrees Celsius', 3, '', NULL, NULL, '', '', '', '', '', '', '2012-11-19 06:48:52', '2012-11-19 06:48:52');
 
 -- --------------------------------------------------------
 
@@ -226,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `profile_industry` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=145 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=147 ;
 
 --
 -- Dumping data for table `profile_industry`
@@ -239,7 +262,9 @@ INSERT INTO `profile_industry` (`id`, `user_id`, `industry_id`, `type_id`, `crea
 (141, 6, 2, '1', '2012-11-12 05:25:35', '2012-11-12 05:25:35'),
 (142, 6, 3, '1', '2012-11-12 05:25:35', '2012-11-12 05:25:35'),
 (143, 6, 6, '1', '2012-11-12 05:25:35', '2012-11-12 05:25:35'),
-(144, 6, 8, '1', '2012-11-12 05:25:36', '2012-11-12 05:25:36');
+(144, 6, 8, '1', '2012-11-12 05:25:36', '2012-11-12 05:25:36'),
+(145, 19, 3, '0', '2012-11-19 06:44:48', '2012-11-19 06:44:48'),
+(146, 20, 8, '0', '2012-11-19 06:48:52', '2012-11-19 06:48:52');
 
 -- --------------------------------------------------------
 
@@ -367,15 +392,22 @@ CREATE TABLE IF NOT EXISTS `user` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `pass`, `fname`, `lname`, `dob`, `type_id`, `app_type`, `app_id`, `activation`, `last_login_at`, `active`, `created_at`, `updated_at`) VALUES
-(6, 'jerrybwoy1@gmail.com', '67ca51a65c6caefc73392f26e7cc934d', 'Jerry', 'Bwoy1', '1976-01-17', '0', 0, '', '', NULL, '1', '2012-10-29 01:58:16', '2012-11-07 08:27:50'),
-(10, 'jerrybwoy@gmail.com', '', 'Jerry', 'Bwoy', '1990-06-24', '0', 1, '100004221753392', '', NULL, '1', '2012-10-29 03:39:03', '2012-10-29 03:39:03');
+(6, 'jerrybwoy1@gmail.com', '67ca51a65c6caefc73392f26e7cc934d', 'Jerry', 'Bwoy1', '1976-01-17', '1', 0, '', '', NULL, '1', '2012-10-29 01:58:16', '2012-11-07 08:27:50'),
+(10, 'jerrybwoy@gmail.com', '', 'Jerry', 'Bwoy', '1990-06-24', '0', 1, '100004221753392', '', NULL, '1', '2012-10-29 03:39:03', '2012-10-29 03:39:03'),
+(11, 'dsfasdfas@gmail.com', '', 'First1', 'Last1', '1983-07-13', '0', 0, '', '', NULL, '0', '2012-11-15 07:54:39', '2012-11-20 01:46:06'),
+(14, 'dsfasdfas1@gmail.com', '', 'asdfasdf', 'asdfasdfdasf', NULL, '0', 0, '', '', NULL, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 'dsfasdfas2@gmail.com', '', 'asdfasdf', 'asdfdasfas', NULL, '0', 0, '', '', NULL, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 'dsfasdfas3@gmail.com', '', 'sadfsadf', 'adsfdasfasf', NULL, '0', 0, '', '', NULL, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 'dsfasdfas4@gmail.com', '', 'sadfsdf', 'asfdasdf', NULL, '0', 0, '', '', NULL, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 'chenalaba@gmail.com', '', 'Gretchen', 'Alaba', '1985-07-21', '0', 0, '', '', NULL, '0', '2012-11-19 06:44:47', '2012-11-19 09:56:08'),
+(20, 'richalaba@gmail.com', '', 'Rich', 'Alaba', '1984-08-21', '0', 0, '', '', NULL, '0', '2012-11-19 06:48:52', '2012-11-19 09:55:52');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

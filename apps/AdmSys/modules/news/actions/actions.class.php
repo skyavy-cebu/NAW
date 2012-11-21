@@ -29,6 +29,18 @@ class newsActions extends sfActions
     $id = $request->getParameter('id');
     if($id){
       $news = Doctrine_Core::getTable('news')->find($id);
+      
+      $dir = sfConfig::get('app_news_dir');
+      $image_full = $news->getImageFull();
+      $image_small = $news->getImageSmall();
+      if(is_file($dir.$image_full)){
+        unlink($dir.$image_full);
+      }
+       if(is_file($dir.$image_small)){
+        unlink($dir.$image_small);
+      }
+      
+      
       $news->delete();
     }
     return $this->renderText($id);

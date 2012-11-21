@@ -1,14 +1,15 @@
 <?php
-class addAction extends sfAction{
+class editAction extends sfAction{
 
   public function execute($request){
-    $this->form = new NewsForm();
+    $news_id = $request->getParameter('id');
+    $this->news = Doctrine_Core::getTable('News')->find($news_id);
+    $this->form = new NewsForm($this->news);
     if($request->isMethod('post')){
       $this->form->bind($request->getParameter('news'));
       if($this->form->isValid()){
         $post = $request->getParameter('news');
-                
-        $news = new News();
+        $news = Doctrine_Core::getTable('News')->find($news_id);
         $news->setTitle($post['title']);
         $news->setPostDate(date('Y-m-d m:i',strtotime($post['post_date'])));
         $news->setContent($post['content']);
