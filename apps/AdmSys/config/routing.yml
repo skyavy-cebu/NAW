@@ -29,6 +29,10 @@ user:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 # default rules
+sponsor_edit:
+  url:   /sponsor/edit/:id
+  param: { module: sponsor, action: edit }
+
 news_edit:
   url:   /news/edit/:id
   param: { module: news, action: edit }

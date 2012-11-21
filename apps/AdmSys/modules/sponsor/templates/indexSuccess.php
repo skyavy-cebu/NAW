@@ -45,7 +45,7 @@
         <a class="fancybox" title="<?php echo $sponsor->getCompany(); ?>" href="<?php echo url_for('/uploads/sponsor/'.$sponsor->getFile()); ?>">
           <img title="View Detail" src="/images/magnifier.png"/>
         </a>
-        <img title="Edit Event" src="/images/pencil.png"/>
+        <a title="Edit sponsor" href="<?php echo url_for('/AdmSys.php/sponsor/edit/'.$sponsor->getId()); ?>"><img title="Edit Event" src="/images/pencil.png"/></a>
         
         <a href="<?php echo url_for('/AdmSys.php/sponsor/delete/'.$sponsor->getId()); ?>" onclick="return goDelete(<?php echo $sponsor->getId(); ?>)">
           <img title="Delete Event" src="/images/delete.png"/>

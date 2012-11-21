@@ -1,5 +1,5 @@
 <?php
-class addAction extends sfAction{
+class editAction extends sfAction{
 
   public function execute($request){
     if(!$this->getUser()->isAuthenticated()){
@@ -9,20 +9,22 @@ class addAction extends sfAction{
     if(!$this->getUser()->isAdmin()){
       $this->forward404();
     }
+    
+    $id = $request->getParameter('id');
+    $this->sponsor = Doctrine_Core::getTable('Sponsor')->find($id);
   
-    $this->form = new SponsorForm();
+    $this->form = new SponsorForm($this->sponsor);
     if($request->isMethod('post')){
       $this->form->bind($request->getParameter('sponsor'));
       if($this->form->isValid()){
         $post = $request->getParameter('sponsor');
         
-        $sponsor = new Sponsor();
-        $sponsor->setCompany($post['company']);
-        $sponsor->setUrl($post['url']);
-        $sponsor->setPosition($post['position']);
-        $sponsor->setStatusId($post['status']);
-        $sponsor->save();
-        $sponsor_id = $sponsor->getId();
+        $this->sponsor->setCompany($post['company']);
+        $this->sponsor->setUrl($post['url']);
+        $this->sponsor->setPosition($post['position']);
+        $this->sponsor->setStatusId($post['status']);
+        $this->sponsor->save();
+        $sponsor_id = $this->sponsor->getId();
         
         $file = $this->request->getFiles();
         if($file['sponsor']['file']['name'] || $file['sponsor']['photo']['name']){
