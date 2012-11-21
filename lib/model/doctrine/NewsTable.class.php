@@ -34,12 +34,14 @@ class NewsTable extends Doctrine_Table
       return $pager;
     }
     
-    public static function getLatestNews(){
+    public static function getLatestNews($limit=''){
       $q = Doctrine_Query::create()
         ->from('News n')
-        ->orderBy('n.created_at DESC')
-        ->limit(4);
-        return $q->execute();
+        ->orderBy('n.created_at DESC');
+      if($limit){
+        $q->limit($limit);
+      }
+      return $q->execute();
     }
     
 }

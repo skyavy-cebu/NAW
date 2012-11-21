@@ -9,7 +9,7 @@ class homeComponents extends sfComponents{
     }
     
     //news
-    $this->news = NewsTable::getInstance()->getLatestNews();
+    $this->news = NewsTable::getInstance()->getLatestNews(4);
     
     //sponsor
     $this->sponsor = SponsorTable::getInstance()->getSponsor();

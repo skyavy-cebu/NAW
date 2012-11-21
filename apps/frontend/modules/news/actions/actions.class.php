@@ -17,11 +17,15 @@ class newsActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request){
     //news
-    $this->news = NewsTable::getInstance()->getLatestNews();
+    $this->newsList = NewsTable::getInstance()->getLatestNews();
   }
   
   public function executeSingle(sfWebRequest $request){
-    $this->news = $this->getRoute()->getObject();
+    $id = $request->getParameter('id');
+    $this->news = Doctrine_Core::getTable('News')->find($id);
+    if(!$this->news){
+       $this->forward404();
+    }
   }
   
 }

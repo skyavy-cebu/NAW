@@ -17,7 +17,7 @@
       <div class="clear"></div>
       <div class="event_info_3">
         <div class="event_long_description">
-          <?php echo $news->getContent(); ?><br />
+          <?php echo $news->getRawValue()->getContent(); ?><br />
         </div>
        </div>
         <div class="clear"></div>
