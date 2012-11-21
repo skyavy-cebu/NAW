@@ -21,7 +21,7 @@
 <div id="sf_admin_content">
 <h2>Edit News</h2><br />
 
-<form method="post" name="loc_form" class="loc_form" enctype="multipart/form-data" action="<?php echo url_for('/AdmSys_dev.php/news/edit/'.$news->getId()) ?>">
+<form method="post" name="loc_form" class="loc_form" enctype="multipart/form-data" action="<?php echo url_for('/AdmSys.php/news/edit/'.$news->getId()) ?>">
 <div class="display_form_errr">
 <?php if ($form->hasErrors()): ?>
   <ul class="shop_list_error">

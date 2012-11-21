@@ -37,7 +37,8 @@ class NewsTable extends Doctrine_Table
     public static function getLatestNews(){
       $q = Doctrine_Query::create()
         ->from('News n')
-        ->orderBy('n.created_at DESC');
+        ->orderBy('n.created_at DESC')
+        ->limit(4);
         return $q->execute();
     }
     

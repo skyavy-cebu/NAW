@@ -17,7 +17,7 @@ class addAction extends sfAction{
         
         $file = $this->request->getFiles();
         $file = $file['news']['photo'];
-        if($file){
+        if($file['name']){
           $this->uploadPhoto($news_id,$file);
         }
         
