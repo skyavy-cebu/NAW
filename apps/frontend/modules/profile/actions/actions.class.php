@@ -29,6 +29,7 @@ class profileActions extends sfActions{
   public function executeUploadPic(sfWebRequest $request){
     $file = $this->request->getFiles();
     $file = $file['profile']['photo'];
+    $file['ext'] = getFileExtension($file['name']);
     if(!$file){
       return  $this->forward404();
     }
@@ -36,12 +37,12 @@ class profileActions extends sfActions{
     $full = sfConfig::get('app_user_full');
     $small = sfConfig::get('app_user_small');
     $dir = sfConfig::get('app_user_dir');
-    
+    $file['ext'] = getFileExtension($file['name']);
     $id = $this->getUser()->getAccount()->getId();
     
     //saving & cropping picture
-    $image_full = encode('profile-'.$id).'.jpg';
-    $image_small = encode('profile-'.$id).'_thumb.jpg';
+    $image_full = encode('profile-'.$id).'.'.$file['ext'];
+    $image_small = encode('profile-'.$id).'_thumb.'.$file['ext'];
     $image_full_path = $dir.$image_full;
     $image_small_path = $dir.$image_small;
     rename($file['tmp_name'],$image_full_path);

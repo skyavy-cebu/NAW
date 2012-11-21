@@ -17,6 +17,9 @@ all:
     dir:  %SF_ROOT_DIR%/web/uploads/news/
     full: 250
     small: 150
+    
+  sponsor:
+    dir:  %SF_ROOT_DIR%/web/uploads/sponsor/
   
   facebook:
     fb_admins:        1600771217

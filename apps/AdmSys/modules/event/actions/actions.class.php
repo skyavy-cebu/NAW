@@ -79,7 +79,7 @@ class eventActions extends sfActions
       $eventAttendee->delete();
     }
     return $this->renderText('');
-   }
+  }
   
    public function executeDelete(sfWebRequest $request){
     $id = $request->getParameter('id');
@@ -88,6 +88,17 @@ class eventActions extends sfActions
       $eventAttendee->delete();
     
       $event = Doctrine_Core::getTable('Event')->find($id);
+      
+      $dir = sfConfig::get('app_event_dir');
+      $image_full = $news->getImageFull();
+      $image_small = $news->getImageSmall();
+      if(is_file($dir.$image_full)){
+        unlink($dir.$image_full);
+      }
+       if(is_file($dir.$image_small)){
+        unlink($dir.$image_small);
+      }
+      
       $event->delete();
     }
     return $this->renderText('');
@@ -103,12 +114,12 @@ class eventActions extends sfActions
     $full = sfConfig::get('app_event_full');
     $small = sfConfig::get('app_event_small');
     $dir = sfConfig::get('app_event_dir');
-    
+    $file['ext'] = getFileExtension($file['name']);
     $id = $request->getParameter('id');
         
     //saving & cropping picture
-    $image_full = encode('event-'.$id).'.jpg';
-    $image_small = encode('event-'.$id).'_thumb.jpg';
+    $image_full = encode('event-'.$id).'.'.$file['ext'];
+    $image_small = encode('event-'.$id).'_thumb.'.$file['ext'];
     $image_full_path = $dir.$image_full;
     $image_small_path = $dir.$image_small;
     rename($file['tmp_name'],$image_full_path);

@@ -73,7 +73,7 @@
   </tr>
 </table>
 </form>
-<a class="add" href="<?php echo url_for('/AdmSys_dev.php/event/add'); ?>">Add</a>
+<a class="add" href="<?php echo url_for('/AdmSys.php/event/add'); ?>">Add</a>
 <table class="event_list" cellspacing="0">
   <thead>
     <tr>

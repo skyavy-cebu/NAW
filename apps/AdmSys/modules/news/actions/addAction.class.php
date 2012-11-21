@@ -30,10 +30,11 @@ class addAction extends sfAction{
     $full = sfConfig::get('app_news_full');
     $small = sfConfig::get('app_news_small');
     $dir = sfConfig::get('app_news_dir');
+    $file['ext'] = getFileExtension($file['name']);
     
     //saving & cropping picture
-    $image_full = encode('news-'.$id).'.jpg';
-    $image_small = encode('news-'.$id).'_thumb.jpg';
+    $image_full = encode('news-'.$id).'.'.$file['ext'];
+    $image_small = encode('news-'.$id).'_thumb.'.$file['ext'];
     $image_full_path = $dir.$image_full;
     $image_small_path = $dir.$image_small;
     rename($file['tmp_name'],$image_full_path);

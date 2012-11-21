@@ -88,9 +88,13 @@
 					<h4 class="text_novecentowidenormal">OUR SPONSORS</h4>
           <?php if($sponsor): ?>
             <?php foreach($sponsor as $x => $row): ?>
-              <a target="_blank" href="<?php echo $row->getUrl(); ?>" alt="<?php echo $row->getCompany(); ?>" title="<?php echo $row->getCompany(); ?>">
-                <img src="<?php echo url_for('/uploads/sponsor/'.$row->getImage()); ?>" alt="<?php echo $row->getCompany(); ?>" class="ie_anchor_no_border" />
-              </a>
+                <?php if(strrpos($row->getFile(),'.swf')===true):?>
+                  <object data="<?php echo url_for('/uploads/sponsor/'.$row->getFile()); ?>"></object>
+                <?php else: ?>
+                  <a target="_blank" href="<?php echo $row->getUrl(); ?>" alt="<?php echo $row->getCompany(); ?>" title="<?php echo $row->getCompany(); ?>">
+                    <img src="<?php echo url_for('/uploads/sponsor/'.$row->getFile()); ?>" alt="<?php echo $row->getCompany(); ?>" class="ie_anchor_no_border" />
+                   </a>
+                <?php endif; ?>
             <?php endforeach; ?>
           <?php endif; ?>
 				</div>

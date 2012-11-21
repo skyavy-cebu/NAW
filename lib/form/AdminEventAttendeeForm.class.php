@@ -69,7 +69,7 @@ class AdminEventAttendeeForm extends BaseEventAttendeeForm{
       'city'  => new sfValidatorInteger(array('required' => false)),
       'company'  => new sfValidatorString(array('max_length' => 150,'required' => false)),
       'dob' => new sfValidatorString(array('max_length' => 30,'required' => false)),
-      'paid' => new sfValidatorString(array('max_length' => 2,'required' => true)),
+      'paid' => new sfValidatorString(array('required' => true)),
       'industry' => new sfValidatorInteger(array('required' => false)),
     ));
     

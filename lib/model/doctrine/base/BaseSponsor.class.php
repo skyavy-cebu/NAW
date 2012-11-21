@@ -11,20 +11,20 @@ Doctrine_Manager::getInstance()->bindComponent('Sponsor', 'doctrine');
  * @property string $position
  * @property string $company
  * @property enum $status_id
- * @property string $image
+ * @property string $file
  * @property string $url
  * 
  * @method integer getId()        Returns the current record's "id" value
  * @method string  getPosition()  Returns the current record's "position" value
  * @method string  getCompany()   Returns the current record's "company" value
  * @method enum    getStatusId()  Returns the current record's "status_id" value
- * @method string  getImage()     Returns the current record's "image" value
+ * @method string  getFile()      Returns the current record's "file" value
  * @method string  getUrl()       Returns the current record's "url" value
  * @method Sponsor setId()        Sets the current record's "id" value
  * @method Sponsor setPosition()  Sets the current record's "position" value
  * @method Sponsor setCompany()   Sets the current record's "company" value
  * @method Sponsor setStatusId()  Sets the current record's "status_id" value
- * @method Sponsor setImage()     Sets the current record's "image" value
+ * @method Sponsor setFile()      Sets the current record's "file" value
  * @method Sponsor setUrl()       Sets the current record's "url" value
  * 
  * @package    symfony
@@ -64,7 +64,7 @@ abstract class BaseSponsor extends sfDoctrineRecord
              'notnull' => true,
              'default' => 1,
              ));
-        $this->hasColumn('image', 'string', 150, array(
+        $this->hasColumn('file', 'string', 150, array(
              'type' => 'string',
              'notnull' => true,
              'length' => 150,
