@@ -5,6 +5,14 @@
 homepage:
   url:   /
   param: { module: home, action: index }
+
+forgot_code:
+  url:   /forgot/:code
+  param: { module: login, action: forgot }
+  
+forgot:
+  url:   /forgot
+  param: { module: login, action: forgot }
   
 about:
   url:   /about

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 20, 2012 at 09:31 AM
+-- Generation Time: Nov 22, 2012 at 07:49 AM
 -- Server version: 5.5.16-log
 -- PHP Version: 5.3.8
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `city`
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `news`
@@ -190,9 +190,17 @@ INSERT INTO `news` (`id`, `post_date`, `title`, `content`, `image_full`, `image_
 (1, '2012-11-09 20:19:15', 'Network After Work is now hosting events in San Diego!', ' 	Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida. ', '', '', '2012-11-08 00:00:00', '0000-00-00 00:00:00'),
 (2, '2012-11-06 10:09:23', 'Mauris mollis libero a nulla viverra vestibulum', ' 	Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida. ', '', '', '2012-11-07 00:00:00', '0000-00-00 00:00:00'),
 (3, '2012-11-07 07:27:10', 'Duis semper eleifend volutpat', ' 	Nulla egestas ultrices pharetra. Praesent tempor ultrices arcu vitae auctor. Cras et ligula libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris mollis libero a nulla viverra vestibulum. Proin viverra tristique libero sed fermentum. Nunc at orci id felis dictum ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at velit nunc, eu aliquet odio. Donec quam mi, commodo ut fermentum et, laoreet sit amet felis. Aliquam consectetur est id nibh viverra molestie. Duis semper eleifend volutpat. Vivamus molestie pharetra risus, vitae vehicula nisl pretium at. Suspendisse bibendum rhoncus gravida. ', '', '', '2012-11-05 00:00:00', '0000-00-00 00:00:00'),
-(7, '2012-11-15 00:00:00', 'asdfas asdfdsfasdf sfsa dfasdfsdfasdf', 'asfas fasdfsfsadfasfasdf safdsafasdf asf ', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, '0000-00-00 00:00:00', 'sfsadfasff', '<p>\r\n	asdfasdfassa <strong>sfasfasdf sdfd</strong> <u>sdsadfsa</u></p>\r\n', '', '', '2012-11-20 08:42:44', '2012-11-20 08:42:44'),
-(14, '2012-11-20 11:25:00', 'safdsafasfd', '<p>\r\n	asdfasdfasdfas</p>\r\n', '', '', '2012-11-20 09:25:28', '2012-11-20 09:25:28');
+(23, '2012-11-21 11:43:00', 'dfasdfasdfasd1', '<p>\r\n	asdfasdfasd1</p>\r\n', '4NPMqpGcmQ.jpg', '4NPMqpGcmQ_thumb.jpg', '2012-11-21 03:43:24', '2012-11-21 03:43:35'),
+(24, '2012-11-21 11:03:00', 'sadfsaf', '<p>\r\n	safasfasfasdfsadfasfasf sdfasfsafasdf</p>\r\n', '', '', '2012-11-21 03:56:40', '2012-11-21 04:03:39'),
+(25, '2012-11-21 11:58:00', 'fsafasdfasdfdas', '<p>\r\n	sdfsadffasd</p>\r\n', '', '', '2012-11-21 03:58:11', '2012-11-21 03:58:11'),
+(26, '2012-11-21 11:58:00', 'fsafasdfasdfdas', '<p>\r\n	sdfsadffasd</p>\r\n', '', '', '2012-11-21 04:01:22', '2012-11-21 04:01:22'),
+(27, '2012-11-21 11:01:00', 'sfsfsfsd', '<p>\r\n	sdfsdfsdfsdfsdfsdfdsfsdf</p>\r\n', '', '', '2012-11-21 04:01:34', '2012-11-21 04:01:34'),
+(28, '2012-11-21 11:01:00', 'sdfsdfsdfsdf2', '<p>\r\n	fsdfdfsdfsdf</p>\r\n', '4NPMqpGcng.jpg', '4NPMqpGcng_thumb.jpg', '2012-11-21 04:01:49', '2012-11-21 04:01:50'),
+(29, '2012-11-21 11:01:00', 'dfsdfsdfsdfsdfsdf4', '<p>\r\n	sdfsdfsffsdfsdf</p>\r\n', '', '', '2012-11-21 04:02:00', '2012-11-21 04:02:00'),
+(30, '2012-11-21 11:01:00', 'dfsdfsdfsdfsdfsdf4', '<p>\r\n	sdfsdfsffsdfsdf</p>\r\n', '', '', '2012-11-21 04:02:31', '2012-11-21 04:02:31'),
+(31, '2012-11-21 11:01:00', 'dfsdfsdfsdfsdfsdf4', '<p>\r\n	sdfsdfsffsdfsdf</p>\r\n', '', '', '2012-11-21 04:02:45', '2012-11-21 04:02:45'),
+(32, '2012-11-21 11:01:00', 'dfsdfsdfsdfsdfsdf4', '<p>\r\n	sdfsdfsffsdfsdf</p>\r\n', '', '', '2012-11-21 04:03:04', '2012-11-21 04:03:04'),
+(33, '2012-11-21 11:03:00', 'fsafsadfsdf', '<p>\r\n	dfsdfsdfsad</p>\r\n', '', '', '2012-11-21 04:03:14', '2012-11-21 04:03:14');
 
 -- --------------------------------------------------------
 
@@ -277,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `sponsor` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `position` varchar(1) NOT NULL,
   `company` varchar(150) NOT NULL,
-  `image` varchar(150) NOT NULL,
+  `file` varchar(150) NOT NULL,
   `url` varchar(150) NOT NULL,
   `status_id` enum('0','1') NOT NULL DEFAULT '1' COMMENT '1=active, 0=inactive',
   `created_at` datetime NOT NULL,
@@ -289,13 +297,13 @@ CREATE TABLE IF NOT EXISTS `sponsor` (
 -- Dumping data for table `sponsor`
 --
 
-INSERT INTO `sponsor` (`id`, `position`, `company`, `image`, `url`, `status_id`, `created_at`, `updated_at`) VALUES
-(1, 'A', 'Clear', 'sponsors_1.png', 'http://ww.yelp.com', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'B', 'Heavy Water', 'sponsors_2.png', 'http://ww.yelp.com', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'C', 'Red Door Spas', 'sponsors_3.png', 'http://ww.yelp.com', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'D', 'Kind Healthy Snacks', 'sponsors_4.png', 'http://ww.yelp.com', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'E', 'Yes', 'sponsors_5.png', 'http://ww.yelp.com', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'F', 'Verizon Wireless', 'sponsors_6.png', 'http://ww.yelp.com', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `sponsor` (`id`, `position`, `company`, `file`, `url`, `status_id`, `created_at`, `updated_at`) VALUES
+(1, 'A', 'Clear', 'sponsors_1.png', 'http://ww.yelp.com', '1', '2012-11-21 00:00:00', '2012-11-21 00:00:00'),
+(2, 'B', 'Heavy Water', 'sponsors_2.png', 'http://ww.yelp.com', '1', '2012-11-20 00:00:00', '2012-11-20 00:00:00'),
+(3, 'C', 'Red Door Spas', 'sponsors_3.png', 'http://ww.yelp.com', '1', '2012-11-19 00:00:00', '2012-11-19 00:00:00'),
+(4, 'D', 'Kind Healthy Snacks', 'sponsors_4.png', 'http://ww.yelp.com', '1', '2012-11-18 00:00:00', '2012-11-18 00:00:00'),
+(5, 'E', 'Yes1', 'sponsors_5.png', 'http://ww.yelp.com', '1', '0000-00-00 00:00:00', '2012-11-21 09:46:22'),
+(6, 'F', 'Verizon Wireless1', 'sponsors_6.png', 'http://ww.yelp.com', '1', '0000-00-00 00:00:00', '2012-11-21 09:46:17');
 
 -- --------------------------------------------------------
 
@@ -392,22 +400,22 @@ CREATE TABLE IF NOT EXISTS `user` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `pass`, `fname`, `lname`, `dob`, `type_id`, `app_type`, `app_id`, `activation`, `last_login_at`, `active`, `created_at`, `updated_at`) VALUES
-(6, 'jerrybwoy1@gmail.com', '67ca51a65c6caefc73392f26e7cc934d', 'Jerry', 'Bwoy1', '1976-01-17', '1', 0, '', '', NULL, '1', '2012-10-29 01:58:16', '2012-11-07 08:27:50'),
-(10, 'jerrybwoy@gmail.com', '', 'Jerry', 'Bwoy', '1990-06-24', '0', 1, '100004221753392', '', NULL, '1', '2012-10-29 03:39:03', '2012-10-29 03:39:03'),
+(6, 'jerrybwoy@gmail.com', '67ca51a65c6caefc73392f26e7cc934d', 'Jerry', 'Bwoy1', '1976-01-17', '1', 0, '', '', NULL, '1', '2012-10-29 01:58:16', '2012-11-22 07:10:36'),
+(10, 'jerrybwoy2@gmail.com', '', 'Jerry', 'Bwoy', '1990-06-24', '0', 1, '100004221753392', '', NULL, '1', '2012-10-29 03:39:03', '2012-10-29 03:39:03'),
 (11, 'dsfasdfas@gmail.com', '', 'First1', 'Last1', '1983-07-13', '0', 0, '', '', NULL, '0', '2012-11-15 07:54:39', '2012-11-20 01:46:06'),
 (14, 'dsfasdfas1@gmail.com', '', 'asdfasdf', 'asdfasdfdasf', NULL, '0', 0, '', '', NULL, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (15, 'dsfasdfas2@gmail.com', '', 'asdfasdf', 'asdfdasfas', NULL, '0', 0, '', '', NULL, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (16, 'dsfasdfas3@gmail.com', '', 'sadfsadf', 'adsfdasfasf', NULL, '0', 0, '', '', NULL, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (17, 'dsfasdfas4@gmail.com', '', 'sadfsdf', 'asfdasdf', NULL, '0', 0, '', '', NULL, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (19, 'chenalaba@gmail.com', '', 'Gretchen', 'Alaba', '1985-07-21', '0', 0, '', '', NULL, '0', '2012-11-19 06:44:47', '2012-11-19 09:56:08'),
-(20, 'richalaba@gmail.com', '', 'Rich', 'Alaba', '1984-08-21', '0', 0, '', '', NULL, '0', '2012-11-19 06:48:52', '2012-11-19 09:55:52');
+(20, 'richalaba@gmail.com', '', 'Rich', 'Alaba', '1984-08-21', '0', 0, '', '77783e613188f5573298d8e1b343f13e', NULL, '0', '2012-11-19 06:48:52', '2012-11-22 05:40:23');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,4 +1,4 @@
-<div id="content">
+<div id="content" class="content_dashboard_wrapper">
 <h2>Login</h2>
 
 <form id="login" method="post" class="fl">
@@ -18,7 +18,7 @@
     </td>
   </tr>
   <tr>  
-    <td><a href="<?php echo url_for('/register/forgotpassword'); ?>">Forgot Password</a></td>
+    <td><a href="<?php echo url_for('/forgot'); ?>">Forgot Password</a></td>
     <td></td>
   </tr>
   <tr>

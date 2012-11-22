@@ -1,5 +1,4 @@
 <?php
-sfContext::getInstance()->getConfiguration()->loadHelpers(array('Mix'));
 /**
  * login actions.
  *
@@ -31,6 +30,10 @@ class loginActions extends sfActions
       if($user && $user->getId()){
          if($pass != $user->getPass()){
            $this->notify = 'Invalid Email/Password';
+         }
+         
+         if(!$user->getActive()){
+          $this->notify = 'Your account is inactive';
          }
          
          if(!$this->notify){

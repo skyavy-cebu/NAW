@@ -1,0 +1,1 @@
+<div id="content" class="content_dashboard_wrapper">  <h2>Password successfully changed</h2>Your new password has been set<br /><br />You can now access your <a href="<?php echo url_for('/login'); ?>">account</a>.</div><?php include_component('home','sidebar',array()); ?>
