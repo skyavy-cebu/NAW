@@ -24,4 +24,47 @@ class UserTable extends Doctrine_Table
         ->andWhere('u.app_type = ?',$app_type);
       return $q->fetchOne(array(),Doctrine::HYDRATE_ARRAY);
     }
+    
+    function getAllUser($param=array()){
+      $q = Doctrine_Query::create()
+        ->select('u.*, (SELECT count(*) FROM eventAttendee ea WHERE ea.user_id = u.id) as countAttendee')
+        ->from('User u')
+        ->innerJoin('u.Profile p')
+        ->leftJoin('p.City c')
+        ->leftJoin('c.State s')
+        ->where('1=1')
+        ->orderBy('u.created_at DESC');
+        
+      if(isset($param['email'])){
+        $q->andWhere('u.email LIKE ?','%'.$param['email'].'%');
+      }
+      
+      if(isset($param['company'])){
+        $q->andWhere('p.company LIKE ?','%'.$param['company'].'%');
+      }
+      
+      if($param['state'] != 0){
+        $q->andWhere('c.state_id = ?',$param['state']);
+      }
+      
+      if($param['city'] != 0){
+        $q->andWhere('p.city_id = ?',$param['city']);
+      }
+      
+      if(is_numeric($param['keyword'])){
+        $q->andWhere('u.id = ?',$param['keyword']);
+      }elseif(isset($param['keyword'])){
+       $q->andWhere('u.fname LIKE ?','%'.$param['keyword'].'%');
+       $q->orWhere('u.lname LIKE ?','%'.$param['keyword'].'%');
+       $q->orWhere('p.address LIKE ?','%'.$param['keyword'].'%');
+       $q->orWhere('p.ido LIKE ?','%'.$param['keyword'].'%');
+       $q->orWhere('p.to_meet LIKE ?','%'.$param['keyword'].'%');
+      }
+        
+      $pager = new sfDoctrinePager('User', 50);
+      $pager->setQuery($q);
+      $pager->setPage($param['curPage']);
+      $pager->init();
+      return $pager;
+    }
 }

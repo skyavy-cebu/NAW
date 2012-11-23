@@ -9,12 +9,20 @@ class UserProfileForm extends BaseProfileForm{
     
     $id = $this->getObject()->get('id');
     $user = Doctrine_Core::getTable('User')->find($id);
+    $state_id = '';
+    $fname = '';
+    $lname = '';
+    if($user){
+      $state_id = $user->getProfile()->getCity()->getStateId();
+      $fname = $user->getFname();
+      $lname = $user->getLname();
+    }
     
     $dbState = Doctrine_Core::getTable('State')->findAll();
     $state = array('0'=>'Select State');
     foreach ($dbState as $s) $state[$s['id']] = $s['name'];
     
-    $dbCity = CityTable::getInstance()->getCitiesByState($this->getObject()->get('state_id'));
+    $dbCity = CityTable::getInstance()->getCitiesByState($state_id);
     $city = array('0'=>'Select City');
     foreach ($dbCity as $s) $city[$s['id']] = $s['name'];
     
@@ -42,9 +50,8 @@ class UserProfileForm extends BaseProfileForm{
     }
          
     $this->setWidgets(array(
-      'id'           => new sfWidgetFormInputHidden(),
-      'fname'   => new sfWidgetFormInputText(array('default'=>$user->getProfile()->getFname())),
-      'lname'   => new sfWidgetFormInputText(array('default'=>$user->getProfile()->getLname())),
+      'fname'   => new sfWidgetFormInputText(array('default'=>$fname),array('placeholder'=>'First Name')),
+      'lname'   => new sfWidgetFormInputText(array('default'=>$lname),array('placeholder'=>'Last Name')),
       'title'        => new sfWidgetFormInputText(),
       'company'      => new sfWidgetFormInputText(),
       'state_id'     => new sfWidgetFormSelect(array('choices' => $state)),
@@ -66,23 +73,22 @@ class UserProfileForm extends BaseProfileForm{
       'industries_meet5'  => new sfWidgetFormSelect(
         array('choices' => $industry,'default'=>$industries_meet[4])),
       'to_meet' => new sfWidgetFormTextarea(),
-      'linkedin_url' => new sfWidgetFormInputText(),
-      'fb_url'       => new sfWidgetFormInputText(),
-      'twitter_url'  => new sfWidgetFormInputText(),
+      'linkedin_url' => new sfWidgetFormInputText(array(),array('placeholder'=>'http://')),
+      'fb_url'       => new sfWidgetFormInputText(array(),array('placeholder'=>'http://')),
+      'twitter_url'  => new sfWidgetFormInputText(array(),array('placeholder'=>'http://')),
       'olio_url' => new sfWidgetFormInputText()
     ));
     
     $this->setValidators(array(
-      'id'           => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'fname'   => new sfValidatorString(array('max_length' => 150,'required' => false)),
-      'lname'   => new sfValidatorString(array('max_length' => 150,'required' => false)),
-      'title'        => new sfValidatorString(array('max_length' => 5,'required' => false)),
+      'fname'   => new sfValidatorString(array('max_length' => 150,'required' => true),array('required'=>'Please enter First name')),
+      'lname'   => new sfValidatorString(array('max_length' => 150,'required' => true),array('required'=>'Please enter Last name')),
+      'title'        => new sfValidatorString(array('max_length' => 5,'required' => true),array('required'=>'Please enter Title')),
       'company'      => new sfValidatorString(array('max_length' => 150,'required' => false)),
       'state_id'     => new sfValidatorInteger(array('required' => false)),
       'city_id'      => new sfValidatorInteger(array('required' => false)),
       'my_industry1'      => new sfValidatorInteger(array('required' => false)),
       'my_industry2'      => new sfValidatorInteger(array('required' => false)),
-      'address'      => new sfValidatorString(array('max_length' => 255)),
+      'address'      => new sfValidatorString(array('max_length' => 255,'required' => false)),
       'ido'         => new sfValidatorPass(array('required' => false)),
       'industries_meet1' => new sfValidatorInteger(array('required' => false)),
       'industries_meet2' => new sfValidatorInteger(array('required' => false)),
