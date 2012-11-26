@@ -12,10 +12,18 @@ class AdminUserProfileForm extends BaseProfileForm{
     $state_id = '';
     $fname = '';
     $lname = '';
+    $dob = '';
+    $email = '';
+    $required = true;
+    $active = 0;
     if($user){
       $state_id = $user->getProfile()->getCity()->getStateId();
       $fname = $user->getFname();
       $lname = $user->getLname();
+      $dob = date('m/d/Y',strtotime($user->getDob()));
+      $email = $user->getEmail();
+      $required = false;
+      $active = $user->getActive();
     }
     
     $dbState = Doctrine_Core::getTable('State')->findAll();
@@ -52,9 +60,11 @@ class AdminUserProfileForm extends BaseProfileForm{
     $this->setWidgets(array(
       'fname'   => new sfWidgetFormInputText(array('default'=>$fname),array('placeholder'=>'First Name')),
       'lname'   => new sfWidgetFormInputText(array('default'=>$lname),array('placeholder'=>'Last Name')),
+      'dob'        => new sfWidgetFormInputText(
+        array('default'=>$dob),array('placeholder'=>'MM/DD/YYYY','readonly'=>'readonly')),
       'title'        => new sfWidgetFormInputText(),
       'company'      => new sfWidgetFormInputText(),
-      'state_id'     => new sfWidgetFormSelect(array('choices' => $state)),
+      'state_id'     => new sfWidgetFormSelect(array('choices' => $state,'default'=>$state_id)),
       'city_id'      => new sfWidgetFormSelect(array('choices' => $city)),
       'my_industry1' => new sfWidgetFormSelect(
         array('choices' => $industry,'default'=>$my_industry[0])),
@@ -77,15 +87,17 @@ class AdminUserProfileForm extends BaseProfileForm{
       'fb_url'       => new sfWidgetFormInputText(array(),array('placeholder'=>'http://')),
       'twitter_url'  => new sfWidgetFormInputText(array(),array('placeholder'=>'http://')),
       'olio_url' => new sfWidgetFormInputText(),
-      'email1' => new sfWidgetFormInputText(),
+      'email1' => new sfWidgetFormInputText(array(),array('placeholder'=>$email)),
       'email2' => new sfWidgetFormInputText(),
       'pass1' => new sfWidgetFormInputPassword(),
       'pass2' => new sfWidgetFormInputPassword(),
+      'active' => new sfWidgetFormSelectRadio(array('choices'=>array(1=>'Active',0=>'Inactive'),'default'=>$active))
     ));
     
     $this->setValidators(array(
       'fname'   => new sfValidatorString(array('max_length' => 150,'required' => true),array('required'=>'Please enter First name')),
       'lname'   => new sfValidatorString(array('max_length' => 150,'required' => true),array('required'=>'Please enter Last name')),
+      'dob'   => new sfValidatorString(array('max_length' => 15,'required' => true),array('required'=>'Please enter Birthdate')),
       'title'        => new sfValidatorString(array('max_length' => 5,'required' => true),array('required'=>'Please enter Title')),
       'company'      => new sfValidatorString(array('max_length' => 150,'required' => false)),
       'state_id'     => new sfValidatorInteger(array('required' => false)),
@@ -104,10 +116,13 @@ class AdminUserProfileForm extends BaseProfileForm{
       'fb_url'       => new sfValidatorString(array('max_length' => 150,'required' => false)),
       'twitter_url'  => new sfValidatorString(array('max_length' => 150,'required' => false)),
       'olio_url'  => new sfValidatorString(array('max_length' => 150,'required' => false)),
-      'email1'   => new sfValidatorEmail(array('max_length' => 150,'required' => true),array('required'=>'Please enter email address','invalid' => 'Invalid Email.')),
-      'email2'   => new sfValidatorEmail(array('max_length' => 150,'required' => true),array('required'=>'Please enter confirm email address','invalid' => 'Invalid Confirm Email.')),
-      'pass1' => new sfValidatorString(array('max_length' => 30,'required' => true),array('required'=>'Please enter password')),
-      'pass2' => new sfValidatorString(array('max_length' => 30,'required' => true),array('required'=>'Please enter confirm password')),
+      'email1'   => new sfValidatorEmail(array('max_length' => 150,'required' => $required),array('required'=>'Please enter email address','invalid' => 'Invalid Email.')),
+      'email2'   => new sfValidatorEmail(array('max_length' => 150,'required' => $required),array('required'=>'Please enter confirm email address','invalid' => 'Invalid Confirm Email.')),
+      'pass1' => new sfValidatorString(array('max_length' => 30,'required' => $required),
+        array('required'=>'Please enter password')),
+      'pass2' => new sfValidatorString(array('max_length' => 30,'required' => $required),
+        array('required'=>'Please enter confirm password')),
+      'active' => new sfValidatorString(array('required' => false)),
     ));
     
     $this->widgetSchema->setLabels(array(

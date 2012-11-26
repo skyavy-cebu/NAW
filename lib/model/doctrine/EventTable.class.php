@@ -16,6 +16,31 @@ class EventTable extends Doctrine_Table
         return Doctrine_Core::getTable('Event');
     }
     
+    public static function getPassAttendedByUser($user_id=0,$param=array()){
+      $q = Doctrine_Query::create()
+        ->from('Event e')
+        ->innerJoin('e.EventAttendee ea')
+        ->leftJoin('e.City c')
+        ->where('ea.user_id = ?',$user_id)
+        ->andWhere('e.event_date < CURRENT_DATE');
+        
+      if($param['venue']){
+        $q->andWhere('e.venue LIKE ?','%'.$param['venue'].'%');
+      }
+      
+      if($param['keyword']){
+        $q->andWhere('e.address LIKE ?','%'.$param['keyword'].'%');
+        $q->orWhere('e.description LIKE ?','%'.$param['keyword'].'%');
+        $q->orWhere('e.description LIKE ?','%'.$param['keyword'].'%');
+      }
+      
+      $pager = new sfDoctrinePager('Event', 10);
+      $pager->setQuery($q);
+      $pager->setPage($param['curPage']);
+      $pager->init();
+      return $pager;
+    }
+    
     public static function getAllEvent($type='all',$param=array()){
       $q = Doctrine_Query::create()
         ->select('e.*,(SELECT count(*) FROM eventAttendee ea WHERE ea.event_id = e.id) as countAttendee')

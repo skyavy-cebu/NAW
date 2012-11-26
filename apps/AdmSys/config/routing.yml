@@ -29,6 +29,14 @@ user:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 # default rules
+user_attendedEvents:
+  url:   /user/attendedEvents/:id
+  param: { module: user, action: attendedEvents }
+
+user_edit:
+  url:   /user/edit/:id
+  param: { module: user, action: edit }
+
 sponsor_edit:
   url:   /sponsor/edit/:id
   param: { module: sponsor, action: edit }

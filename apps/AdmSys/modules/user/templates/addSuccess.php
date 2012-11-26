@@ -6,8 +6,18 @@
         $('#profile_city_id').html(data);
       });
     });
+    $('#profile_dob').datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "<?php echo date('Y')-45; ?>:<?php echo date('Y')-5; ?>"
+    });
   });
 </script>
+<style>
+  #profile_dob{
+    width:90px;
+  }
+</style>
 
 <div id="sf_admin_content">
   <h2>Add User</h2>
@@ -29,6 +39,10 @@
   <tr>
     <td>Name</td>
     <td><?php echo $form['fname']; ?> &nbsp; <?php echo $form['lname']; ?></td>
+  </tr>
+  <tr>
+    <td>Birthdate</td>
+    <td><?php echo $form['dob']; ?></td>
   </tr>
   <tr>
     <td>Title</td>
@@ -105,6 +119,10 @@
   <tr>
     <td>Password Confirm</td>
     <td><?php echo $form['pass2']; ?></td>
+  </tr>
+  <tr>
+    <td>Account</td>
+    <td><?php echo $form['active']; ?></td>
   </tr>
   <tr>
     <td>&nbsp;</td>

@@ -19,10 +19,15 @@ class addAction extends sfAction{
         $user = new User();
         $user->setFname($post['fname']);
         $user->setLname($post['fname']);
+        $user->setEmail($post['email1']);
+        $user->setPass(md5hash($post['pass1']));
+        $user->setDob($post['dob']);
+        $user->setActive($post['active']);
         $user->save();
         $user_id = $user->getId();
         
         $profile = new Profile();
+        $profile->setId($user_id);
         $profile->setTitle($post['title']);
         $profile->setCompany($post['company']);
         $profile->setCityId($post['city_id']);
@@ -43,7 +48,7 @@ class addAction extends sfAction{
                 
           $pi = new ProfileIndustry();
           $pi->setTypeId(0);
-          $pi->setUserId($id);
+          $pi->setUserId($user_id);
           $pi->setIndustryId($industry_id);
           $pi->save();
         }
@@ -57,14 +62,14 @@ class addAction extends sfAction{
            
           $pi = new ProfileIndustry();
           $pi->setTypeId(1);
-          $pi->setUserId($id);
+          $pi->setUserId($user_id);
           $pi->setIndustryId($industry_id);
           $pi->save();
          }
         
         $file = $this->request->getFiles();
         $file = $file['profile']['photo'];
-        if(isset($file['profile']['name'])){
+        if(isset($file)){
           $this->uploadFile($user_id,$file);
         }
      
@@ -73,7 +78,7 @@ class addAction extends sfAction{
     }
   }
   
-  public function uploadFile($id,$file){
+  function uploadFile($id,$file){
     $full = sfConfig::get('app_user_full');
     $small = sfConfig::get('app_user_small');
     $dir = sfConfig::get('app_user_dir');

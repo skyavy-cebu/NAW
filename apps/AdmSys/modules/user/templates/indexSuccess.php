@@ -89,9 +89,8 @@
       <td><?php echo date('m/d/Y',strtotime($user->getDob())); ?></td>
       <td align="right"><?php echo $user['countAttendee']; ?></td>
       <td align="right">
-        <img src="/images/magnifier.png"/>
-        <img src="/images/pencil.png"/>
-        <a href="" title="Edit Account"><img src="/images/key.png"/></a>
+        <a href="<?php echo url_for('/AdmSys.php/user/attendedEvents/'.$user->getId()); ?>" title="View User Past Attended Events"><img src="/images/magnifier.png"/></a>
+        <a href="<?php echo url_for('/AdmSys.php/user/edit/'.$user->getId()); ?>" title="Edit User"><img src="/images/pencil.png"/></a>
         <a href="#delete" onclick="return goDelete(<?php echo $user->getId(); ?>);"><img src="/images/delete.png"/></a>
       </td>
     </tr>
