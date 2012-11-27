@@ -7,7 +7,13 @@ class EventForm extends BaseEventForm{
       $event = Doctrine_Core::getTable('Event')->find($id);
       $state_id = $event->getCity()->getStateId();
       $city_id = $event->getCityId();
+      $date = date('m/d/Y',strtotime($event->getEventDate()));
+      $start_time = date('h:i a',strtotime($event->getStartTime()));
+      $end_time = date('h:i a',strtotime($event->getEndTime()));
     }else{
+      $date = date('m/d/Y');
+      $start_time = date('h:i a');
+      $end_time = date('h:i a',set_time('4 hours'));
       $state_id = 0;
       $city_id = 0;
     }
@@ -25,9 +31,9 @@ class EventForm extends BaseEventForm{
     }
       
     $this->setWidgets(array(
-      'event_date' => new sfWidgetFormInputText(array('default'=>date('m/d/Y'))),
-      'start_time' => new sfWidgetFormInputText(array('default'=>date('h:i a'))),
-      'end_time' => new sfWidgetFormInputText(array('default'=>date('h:i a',set_time('4 hours')))),
+      'event_date' => new sfWidgetFormInputText(array(),array('value'=>$date)),
+      'start_time' => new sfWidgetFormInputText(array(),array('value'=>date('h:i a'))),
+      'end_time' => new sfWidgetFormInputText(array(),array('value'=>date('h:i a',set_time('4 hours')))),
       'description' => new sfWidgetFormTextArea(),
       'state' => new sfWidgetFormSelect(array('choices' => $state_list,'default'=>$state_id)),
       'city' => new sfWidgetFormSelect(array('choices' => $city_list,'default'=>$city_id)),

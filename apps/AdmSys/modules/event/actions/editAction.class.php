@@ -18,6 +18,9 @@ class editAction extends sfAction{
       if($this->form->isValid()){
         $post = $request->getParameter('event');
         $event = Doctrine_Core::getTable('Event')->find($id);
+        $event->setEventDate(date('Y-m-d',strtotime($post['event_date'])));
+        $event->setStartTime(date('H:i',strtotime($post['start_time'])));
+        $event->setEndTime(date('H:i',strtotime($post['end_time'])));
         $event->setCityId($post['city']);
         $event->setVenue($post['venue']);
         $event->setAddress($post['address']);
