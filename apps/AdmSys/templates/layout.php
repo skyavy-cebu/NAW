@@ -51,13 +51,14 @@
           <a href="<?php echo url_for('/AdmSys.php/event'); ?>">Events</a>
           <a href="<?php echo url_for('/AdmSys.php/event-type/now'); ?>">Happening Now</a>
           <a href="<?php echo url_for('/AdmSys.php/event-type/upcoming'); ?>">Upcoming Events</a>
-          <a href="<?php echo url_for('/AdmSys.php/event-type/past'); ?>">Past Events</a><br />
-          <a href="<?php echo url_for('/AdmSys.php/location'); ?>">Location</a>
+          <a href="<?php echo url_for('/AdmSys.php/event-type/past'); ?>">Past Events</a>
+          <a href="<?php echo url_for('/AdmSys.php/location'); ?>">Location</a><br />
           <a href="<?php echo url_for('/AdmSys.php/industry'); ?>">Industry</a>
           <a href="<?php echo url_for('/AdmSys.php/user'); ?>">User</a>
           <a href="<?php echo url_for('/AdmSys.php/news'); ?>">News</a>
           <a href="<?php echo url_for('/AdmSys.php/sponsor'); ?>">Sponsor</a>
-          <a href="<?php echo url_for('/AdmSys.php/newsletter'); ?>" class="end">Newsletter</a>
+          <a href="<?php echo url_for('/AdmSys.php/newsletter'); ?>">Newsletter</a>
+          <a href="<?php echo url_for('/AdmSys.php/account'); ?>" class="end">My Account</a>
 				</div>
 			</div>
     </div><!-- header -->

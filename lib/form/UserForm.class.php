@@ -5,7 +5,7 @@ class UserForm extends BaseUserForm{
    
     $this->setWidgets(array(
       'id' => new sfWidgetFormInputHidden(),
-      'email1' => new sfWidgetFormInputText(),
+      'email1' => new sfWidgetFormInputText(array(),array('placeholder'=>$this->getObject()->get('email'))),
       'email2' => new sfWidgetFormInputText(),
       'pass1' => new sfWidgetFormInputPassword(),
       'pass2' => new sfWidgetFormInputPassword(),
