@@ -13,7 +13,13 @@
 <?php endif; ?>
 <?php echo $form->renderHiddenFields(); ?>
 </div>
-
+<?php if($msg == 'email'): ?>
+  <em>Your email address has been successfully changed</em>
+  <br/><br/>
+<?php elseif($msg == 'pass'): ?>
+  <em>Your password has been successfully changed</em>
+  <br/><br/>
+<?php endif; ?>
 <table style="width:600px;">
 <tbody>
   <tr>

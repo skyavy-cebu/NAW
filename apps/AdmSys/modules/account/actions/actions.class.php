@@ -31,8 +31,23 @@ class accountActions extends sfActions
     if($request->isMethod('post')){
       $this->form->bind($request->getParameter('user'));
       if($this->form->isValid()){
+        $email = $this->form->getValue('email1');
+        if($email){
+          //change email
+          $user->setEmail($email);
+          $user->save();
+          $this->redirect('/AdmSys_dev.php/account?msg=email');
+        }
         
+        $pass2 = $this->form->getValue('pass2');
+        if($pass2){
+          //change pass
+          $user->setPass(md5hash($pass2));
+          $user->save();
+          $this->redirect('/AdmSys_dev.php/account?msg=pass');
+        }
       }
     }
+    $this->msg = $request->getParameter('msg');
   }
 }
