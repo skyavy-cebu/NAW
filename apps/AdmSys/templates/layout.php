@@ -57,7 +57,6 @@
           <a href="<?php echo url_for('/AdmSys.php/user'); ?>">User</a>
           <a href="<?php echo url_for('/AdmSys.php/news'); ?>">News</a>
           <a href="<?php echo url_for('/AdmSys.php/sponsor'); ?>">Sponsor</a>
-          <a href="<?php echo url_for('/AdmSys.php/newsletter'); ?>">Newsletter</a>
           <a href="<?php echo url_for('/AdmSys.php/account'); ?>" class="end">My Account</a>
 				</div>
 			</div>
