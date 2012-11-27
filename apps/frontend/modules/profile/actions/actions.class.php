@@ -120,6 +120,7 @@ class profileActions extends sfActions{
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
     $this->forward404Unless($profile = Doctrine_Core::getTable('Profile')->find(array($request->getParameter('id'))), sprintf('Object profile does not exist (%s).', $request->getParameter('id')));
     $this->form = new UserProfileForm($profile);
+    
 
     $this->processForm($request, $this->form);
 
@@ -134,10 +135,10 @@ class profileActions extends sfActions{
   protected function processForm(sfWebRequest $request, sfForm $form){
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if($form->isValid()){
-     $id = $this->form->getValue('id');
+     $id = $this->getUser()->getAccount()->getId();
      $user = Doctrine_Core::getTable('User')->find(array($id));
-     $user->setFname($this->form->getValue('fname'));
-     $user->setLname($this->form->getValue('lname'));
+     $user->setFname($form->getValue('fname'));
+     $user->setLname($form->getValue('lname'));
      $user->save();
      
      //my industry

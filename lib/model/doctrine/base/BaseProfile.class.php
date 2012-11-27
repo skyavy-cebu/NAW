@@ -10,6 +10,9 @@ Doctrine_Manager::getInstance()->bindComponent('Profile', 'doctrine');
  * @property integer $id
  * @property string $title
  * @property string $company
+ * @property string $position
+ * @property string $phone
+ * @property string $website
  * @property integer $city_id
  * @property string $address
  * @property text $ido
@@ -27,6 +30,9 @@ Doctrine_Manager::getInstance()->bindComponent('Profile', 'doctrine');
  * @method integer getId()           Returns the current record's "id" value
  * @method string  getTitle()        Returns the current record's "title" value
  * @method string  getCompany()      Returns the current record's "company" value
+ * @method string  getPosition()     Returns the current record's "position" value
+ * @method string  getPhone()        Returns the current record's "phone" value
+ * @method string  getWebsite()      Returns the current record's "website" value
  * @method integer getCityId()       Returns the current record's "city_id" value
  * @method string  getAddress()      Returns the current record's "address" value
  * @method text    getIdo()          Returns the current record's "ido" value
@@ -43,6 +49,9 @@ Doctrine_Manager::getInstance()->bindComponent('Profile', 'doctrine');
  * @method Profile setId()           Sets the current record's "id" value
  * @method Profile setTitle()        Sets the current record's "title" value
  * @method Profile setCompany()      Sets the current record's "company" value
+ * @method Profile setPosition()     Sets the current record's "position" value
+ * @method Profile setPhone()        Sets the current record's "phone" value
+ * @method Profile setWebsite()      Sets the current record's "website" value
  * @method Profile setCityId()       Sets the current record's "city_id" value
  * @method Profile setAddress()      Sets the current record's "address" value
  * @method Profile setIdo()          Sets the current record's "ido" value
@@ -79,6 +88,21 @@ abstract class BaseProfile extends sfDoctrineRecord
              'length' => 5,
              ));
         $this->hasColumn('company', 'string', 150, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 150,
+             ));
+        $this->hasColumn('position', 'string', 150, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 150,
+             ));
+        $this->hasColumn('phone', 'string', 150, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 150,
+             ));
+        $this->hasColumn('website', 'string', 150, array(
              'type' => 'string',
              'notnull' => true,
              'length' => 150,
