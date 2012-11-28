@@ -53,11 +53,14 @@ class EventTable extends Doctrine_Table
         $q->andWhere('e.venue LIKE ?','%'.$param['venue'].'%');
       }
       
-      if(is_numeric($param['keyword'])){
-        $q->andWhere('e.id = ?',$param['keyword']);
-      }elseif(isset($param['keyword'])){
-        $q->andWhere('e.description LIKE ?','%'.$param['keyword'].'%');
+      if(isset($param['keyword'])){
+        if(is_numeric($param['keyword'])){
+          $q->andWhere('e.id = ?',$param['keyword']);
+        }elseif(isset($param['keyword'])){
+          $q->andWhere('e.description LIKE ?','%'.$param['keyword'].'%');
+        }
       }
+      
       if(isset($param['state']) && $param['state'] > 0){
         $q->andWhere('c.state_id = ?',$param['state']);
       }
@@ -66,13 +69,14 @@ class EventTable extends Doctrine_Table
       }
       if($type == 'now'){
         $q->andWhere('e.event_date = CURRENT_DATE');
+        $q->orderBy('e.event_date DESC');
       }elseif($type == 'upcoming'){
         $q->andWhere('e.event_date > CURRENT_DATE');
+        $q->orderBy('e.event_date ASC');
       }elseif($type == 'past'){
         $q->andWhere('e.event_date < CURRENT_DATE');
+        $q->orderBy('e.event_date DESC');
       }
-      
-      $q->orderBy('e.event_date DESC');
             
       $pager = new sfDoctrinePager('Event', 5);
       $pager->setQuery($q);

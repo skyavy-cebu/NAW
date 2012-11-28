@@ -6,6 +6,23 @@
 * @author rich alaba
 */
 
+function day_diff($start,$end=''){
+  /*if($end == ''){
+    $end = now();
+  }
+  $datetime1 = new DateTime($start);
+  $datetime2 = new DateTime($end);
+  $interval = $datetime1->diff($datetime2);
+  $days = $interval->format('%a');
+  return $days;*/
+  $ts1 = strtotime($start);
+  $ts2 = strtotime($end);
+
+  $seconds_diff = $ts2 - $ts1;
+
+  return floor($seconds_diff/3600/24);
+}
+
 function set_time($set,$time=''){
 	if(!$time){
 		$time = time();

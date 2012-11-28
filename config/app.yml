@@ -10,8 +10,8 @@ all:
   
   event:
     dir:  %SF_ROOT_DIR%/web/uploads/event/
-    full: 250
-    small: 150
+    full: 278
+    small: 178
   
   news:
     dir:  %SF_ROOT_DIR%/web/uploads/news/

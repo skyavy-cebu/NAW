@@ -16,8 +16,7 @@ class testActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeIndex(sfWebRequest $request){
-   display($_SESSION);
-   
+   echo day_diff(now(),'Nov 29 2012');   
   }
   
   public function executePass(sfWebRequest $request){

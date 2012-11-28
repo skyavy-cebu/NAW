@@ -466,7 +466,7 @@ padding:0;*/
 			border-bottom: 1px dotted #CCCCCC;
 		}
 		.per_block_ul_separator>li:first-child {
-			/*margin-top: 29px;*/
+			/*padding-top: 10px;*/
 			border-top: 1px dotted #CCCCCC;
 		}
 		.per_block_ul_separator li:last-child {
@@ -632,7 +632,8 @@ padding:0;*/
 				}
 			.event_info_2 {
 				height: 70px;
-				width: 348px;
+				/*width: 348px;*/
+        width:365px;
 				float: right;
 			}
 				.btn_sign_up_now {
@@ -728,11 +729,13 @@ padding:0;*/
 					border: 1px solid #CCCCCC;
 					padding: 5px 5px 5px 5px;
 					float: left;
+          margin-right:15px;
+          overflow:hidden;
 				}
 				.event_long_description {
 					color: #424242;
 					width: 420px;
-					float: right;
+					float: left;
 					line-height: 20px;
 					text-align: justify;
 					font-family: museosans500;
@@ -1574,4 +1577,15 @@ span.error{
 
 ul.radio_list{
   list-style:none;
+}
+
+.home h2{
+  width:400px !important;
+  border-bottom:none !important;
+  margin-bottom:0 !important;
+  padding-bottom:10px; !important;
+}
+
+.event_info .event_name{
+  width:280px;
 }

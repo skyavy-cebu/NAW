@@ -6,6 +6,10 @@ homepage:
   url:   /
   param: { module: home, action: index }
 
+map_address:
+  url:   /event/map/:address
+  param: { module: event, action: map }
+
 forgot_code:
   url:   /forgot/:code
   param: { module: login, action: forgot }

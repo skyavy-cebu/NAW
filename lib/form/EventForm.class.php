@@ -55,7 +55,7 @@ class EventForm extends BaseEventForm{
       'city' => new sfValidatorString(array('required'=>true)),
       'venue' => new sfValidatorString(array('required'=>true),array('required'=>'Please enter event venue')),
       'address' => new sfValidatorString(array('required'=>true),array('required'=>'Please enter address')),
-      'prepay_slots' => new sfValidatorString(array('required'=>false)),
+      'prepay_slots' => new sfValidatorString(array('required'=>true),array('required'=>'Please enter prepay slots')),
       'max_capacity' => new sfValidatorString(array('required'=>true),array('required'=>'Please enter max capacity')),
       'admission_prepay' => new sfValidatorString(array('required'=>false)),
       'admission_at_door' => new sfValidatorString(array('required'=>false)),

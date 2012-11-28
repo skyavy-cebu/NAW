@@ -16,7 +16,10 @@ class homeActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeIndex(sfWebRequest $request){
-
+    $param = array(
+      'curPage' => 1
+    );
+    $this->events = EventTable::getInstance()->getAllEvent('upcoming',$param);
   }
   
   public function executeAbout(sfWebRequest $request){

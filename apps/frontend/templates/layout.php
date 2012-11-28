@@ -60,10 +60,10 @@
 						<div class="find_event_in_city">
 							<select>
 								<option>FIND AN EVENT IN YOUR CITY!</option>
-								<option>Tokyo</option>
-								<option>Seoul</option>
-								<option>London</option>
-								<option>New York</option>
+                <?php $cities = CityTable::getInstance()->getCitiesByState(); ?>
+                <?php foreach($cities as $x => $city): ?>
+                  <option value="<?php echo $city->getId(); ?>"><?php echo $city->getName(); ?></option>
+                <?php endforeach; ?>
 							</select>
 						</div>
 						<a href="http://www.youtube.com/watch?v=oHg5SJYRHA0" rel="prettyPhoto" alt="" class="btn_look_at_events"></a>
