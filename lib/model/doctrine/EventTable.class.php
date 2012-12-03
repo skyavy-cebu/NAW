@@ -16,6 +16,16 @@ class EventTable extends Doctrine_Table
         return Doctrine_Core::getTable('Event');
     }
     
+    public static function getRandomPastEventByCity($city_id){
+      $q = Doctrine_Query::create()
+        ->from('Event e')
+        ->where('e.city_id = ?',$city_id)
+        ->andWhere('e.event_date < CURRENT_DATE')
+        ->andWhere('e.image_full != ?','')
+        ->orderBy('RAND()');
+       return $q->execute();
+    }
+    
     public static function getPassAttendedByUser($user_id=0,$param=array()){
       $q = Doctrine_Query::create()
         ->from('Event e')
@@ -41,9 +51,25 @@ class EventTable extends Doctrine_Table
       return $pager;
     }
     
+    public static function getEventById($event_id){
+      $q = Doctrine_Query::create()
+        ->select("e.*,
+          (SELECT count(*) FROM eventAttendee ea WHERE ea.event_id = e.id) as countAttendee,
+          (SELECT count(*) FROM eventAttendee ea2 WHERE ea2.event_id = e.id AND ea2.check_in = '1') as countCheckIn
+        ")
+        ->from('Event e')
+        ->leftJoin('e.City c')
+        ->leftJoin('c.State s')
+        ->where('e.id = ?',$event_id);
+       return $q->fetchOne();
+    }
+    
     public static function getAllEvent($type='all',$param=array()){
       $q = Doctrine_Query::create()
-        ->select('e.*,(SELECT count(*) FROM eventAttendee ea WHERE ea.event_id = e.id) as countAttendee')
+        ->select("e.*,
+          (SELECT count(*) FROM eventAttendee ea WHERE ea.event_id = e.id) as countAttendee,
+          (SELECT count(*) FROM eventAttendee ea2 WHERE ea2.event_id = e.id AND ea2.check_in = '1') as countCheckIn
+        ")
         ->from('Event e')
         ->leftJoin('e.City c')
         ->leftJoin('c.State s')

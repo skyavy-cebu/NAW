@@ -1589,3 +1589,12 @@ ul.radio_list{
 .event_info .event_name{
   width:280px;
 }
+
+.fb-button{
+  float:left;
+  padding-right:20px;
+}
+
+.tw-button{
+  float:left;
+}

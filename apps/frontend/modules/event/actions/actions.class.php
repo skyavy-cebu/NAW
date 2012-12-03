@@ -15,8 +15,19 @@ class eventActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->forward('default', 'module');
+  public function executeIndex(sfWebRequest $request){
+    $this->type = $request->getParameter('type');
+    $this->city = $request->getParameter('city');
+    if(!$this->type || !$this->city){
+      $this->forward404();
+    }
+    $param = array(
+      'venue' => '',
+      'keyword' => '',
+      'state' => '',
+      'city' => $this->city,
+      'curPage' => ''
+    );
+    $this->events = EventTable::getInstance()->getAllEvent($this->type,$param);
   }
 }

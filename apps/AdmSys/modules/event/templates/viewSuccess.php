@@ -11,6 +11,16 @@ function doDelete(id){
   }
   return false;
 }
+
+function goCheckIn(id){
+  var checkbox = $('#check'+id).prop('checked');
+  var check = 0;
+  if(checkbox){
+    check = 1;
+  }
+  $.post('/AdmSys_dev.php/event/attendeeCheckIn',{id:id,check:check},function(){
+  });
+}
 </script>
 
 <div id="sf_admin_content">
@@ -34,8 +44,8 @@ function doDelete(id){
     <td><?php echo $event->getVenue(); ?></td>
     <td><?php echo $event->getAddress(); ?></td>
     <td align="right"><?php echo $event->getMaxCapacity(); ?></td>
-    <td align="right">0</td>
-    <td align="right">0</td>
+    <td align="right"><?php echo $event->countAttendee; ?></td>
+    <td align="right"><?php echo $event->countCheckIn; ?></td>
   </tr>
 </tbody>
 </table>
@@ -54,6 +64,7 @@ function doDelete(id){
 <table class="attendee_list" cellspacing="0">
 <thead>
   <tr>
+    <th style="width:60px;">Check In</th>
     <th>Name</th>
     <th>Email</th>
     <th>City</th>
@@ -65,6 +76,7 @@ function doDelete(id){
 <tbody>
   <?php foreach($attendees as $x => $attendee): $user = $attendee->getUser(); ?>
   <tr class="<?php echo ($x&1)?'even':'odd'; ?>" id="attendee<?php echo $attendee->getId(); ?>">
+    <td align="center"><input onchange="goCheckIn(<?php echo $attendee->getId(); ?>)"; type="checkbox" id="check<?php echo $attendee->getId(); ?>" <?php echo ($attendee->getCheckIn()==1)?'checked="checked"':''; ?>/></td>
     <td><?php echo $user->getFname().' '.$user->getLname(); ?></td>
     <td><?php echo $user->getEmail(); ?></td>
     <td><?php echo $user->getProfile()->getCity(); ?></td>

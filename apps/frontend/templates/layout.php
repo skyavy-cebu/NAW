@@ -7,12 +7,49 @@
 		<![endif]-->   
     <?php include_http_metas() ?>
     <?php include_metas() ?>
+    
+    <title><?php 
+    include_slot('meta_title');
+    if (has_slot('meta_title')) echo ' - ';
+    echo 'Network After Work' ;
+    ?></title>
+    
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
 		<script type="text/javascript" src="http://widgets.twimg.com/j/2/widget.js"></script>
     <!--[if IE]>
       <script src="/js/ie-html5-fix.js"></script>
     <![endif]-->
+    
+    <meta property="og:site_name" content="Network After Work">
+    <meta property="og:type" content="website">
+    <meta property="fb:admins" content="<?php echo sfConfig::get('app_facebook_fb_admins'); ?>" />
+    <meta property="fb:app_id" content="<?php echo sfConfig::get('app_facebook_app_id'); ?>" />
+    
+    <?php if (has_slot('og_title')) : ?>
+			<meta property="og:title" content="<?php include_slot('og_title') ?>">
+		<?php else : ?>
+			<meta property="og:title" content="Network After Work">
+		<?php endif; ?>
+    
+    <?php if (has_slot('og_description')) : ?>
+			<meta property="og:description" content="<?php include_slot('og_description') ?>">
+		<?php else : ?>
+			<meta property="og:description" content="">
+		<?php endif; ?>
+    
+		<?php if (has_slot('og_image')) : ?>
+			<meta property="og:image" content="<?php include_slot('og_image') ?>">
+		<?php else : ?>
+			<meta property="og:image" content="<?php echo base_url(); ?>images/fb_thumb.png">
+		<?php endif; ?>
+    
+    <?php if (has_slot('og_url')) : ?>
+			<meta property="og:url" content="<?php include_slot('og_url') ?>">
+		<?php else : ?>
+			<meta property="og:url" content="<?php echo base_url(); ?>">
+		<?php endif; ?>
+    
 	</head>
 	<body>
 		<div class="header">
@@ -57,9 +94,18 @@
 					<div class="clear"></div>
 					<div class="banner_links">
 						<!--<a href="" alt=""><div class="btn_find_event_in_city"></div></a>-->
+            <script type="text/javascript">
+              function goCityChange(){
+                city = $('.find_event_in_city select').val();
+                if(city != 0){
+                  window.location = '/event/upcoming/'+city;
+                }
+              }
+            </script>
+
 						<div class="find_event_in_city">
-							<select>
-								<option>FIND AN EVENT IN YOUR CITY!</option>
+							<select onchange="goCityChange()">
+								<option value="0">FIND AN EVENT IN YOUR CITY!</option>
                 <?php $cities = CityTable::getInstance()->getCitiesByState(); ?>
                 <?php foreach($cities as $x => $city): ?>
                   <option value="<?php echo $city->getId(); ?>"><?php echo $city->getName(); ?></option>

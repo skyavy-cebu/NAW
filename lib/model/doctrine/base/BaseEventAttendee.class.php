@@ -11,21 +11,27 @@ Doctrine_Manager::getInstance()->bindComponent('EventAttendee', 'doctrine');
  * @property integer $event_id
  * @property integer $user_id
  * @property enum $paid
+ * @property enum $payment_method
+ * @property enum $check_in
  * @property Event $Event
  * @property User $User
  * 
- * @method integer       getId()       Returns the current record's "id" value
- * @method integer       getEventId()  Returns the current record's "event_id" value
- * @method integer       getUserId()   Returns the current record's "user_id" value
- * @method enum          getPaid()     Returns the current record's "paid" value
- * @method Event         getEvent()    Returns the current record's "Event" value
- * @method User          getUser()     Returns the current record's "User" value
- * @method EventAttendee setId()       Sets the current record's "id" value
- * @method EventAttendee setEventId()  Sets the current record's "event_id" value
- * @method EventAttendee setUserId()   Sets the current record's "user_id" value
- * @method EventAttendee setPaid()     Sets the current record's "paid" value
- * @method EventAttendee setEvent()    Sets the current record's "Event" value
- * @method EventAttendee setUser()     Sets the current record's "User" value
+ * @method integer       getId()             Returns the current record's "id" value
+ * @method integer       getEventId()        Returns the current record's "event_id" value
+ * @method integer       getUserId()         Returns the current record's "user_id" value
+ * @method enum          getPaid()           Returns the current record's "paid" value
+ * @method enum          getPaymentMethod()  Returns the current record's "payment_method" value
+ * @method enum          getCheckIn()        Returns the current record's "check_in" value
+ * @method Event         getEvent()          Returns the current record's "Event" value
+ * @method User          getUser()           Returns the current record's "User" value
+ * @method EventAttendee setId()             Sets the current record's "id" value
+ * @method EventAttendee setEventId()        Sets the current record's "event_id" value
+ * @method EventAttendee setUserId()         Sets the current record's "user_id" value
+ * @method EventAttendee setPaid()           Sets the current record's "paid" value
+ * @method EventAttendee setPaymentMethod()  Sets the current record's "payment_method" value
+ * @method EventAttendee setCheckIn()        Sets the current record's "check_in" value
+ * @method EventAttendee setEvent()          Sets the current record's "Event" value
+ * @method EventAttendee setUser()           Sets the current record's "User" value
  * 
  * @package    symfony
  * @subpackage model
@@ -59,6 +65,27 @@ abstract class BaseEventAttendee extends sfDoctrineRecord
              'length' => 4,
              ));
         $this->hasColumn('paid', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 0,
+              1 => 1,
+             ),
+             'notnull' => true,
+             'default' => 0,
+             ));
+        $this->hasColumn('payment_method', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 0,
+              1 => 1,
+              2 => 2,
+             ),
+             'notnull' => true,
+             'default' => 0,
+             ));
+        $this->hasColumn('check_in', 'enum', null, array(
              'type' => 'enum',
              'values' => 
              array(

@@ -11,7 +11,7 @@ class viewAction extends sfAction{
     }
   
     $this->id = $request->getParameter('id');
-    $this->event = Doctrine_Core::getTable('Event')->find($this->id);
+    $this->event = EventTable::getInstance()->getEventById($this->id);
     if(!$this->event){
       $this->forward404();
     }

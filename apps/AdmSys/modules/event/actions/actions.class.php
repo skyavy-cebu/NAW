@@ -81,7 +81,18 @@ class eventActions extends sfActions
     return $this->renderText('');
   }
   
-   public function executeDelete(sfWebRequest $request){
+  public function executeAttendeeCheckIn(sfWebRequest $request){
+    $id = $request->getParameter('id');
+    $check = $request->getParameter('check');
+    
+    $eventAttendee = Doctrine_Core::getTable('EventAttendee')->find($id);
+    $eventAttendee->setCheckIn($check);
+    $eventAttendee->save();
+    
+    return $this->renderText('');
+  }
+  
+  public function executeDelete(sfWebRequest $request){
     $id = $request->getParameter('id');
     if($id){
       $eventAttendee = Doctrine_Core::getTable('EventAttendee')->findByEventId($id);
@@ -111,8 +122,12 @@ class eventActions extends sfActions
       return  $this->forward404();
     }
     
-    $full = sfConfig::get('app_event_full');
-    $small = sfConfig::get('app_event_small');
+    $fullWidth = sfConfig::get('app_event_fullWidth');
+    $fullHeight = sfConfig::get('app_event_fullHeight');
+    
+    $smallWidth = sfConfig::get('app_event_smallWidth');
+    $smallHeight = sfConfig::get('app_event_smallHeight');
+    
     $dir = sfConfig::get('app_event_dir');
     $file['ext'] = getFileExtension($file['name']);
     $id = $request->getParameter('id');
@@ -126,14 +141,14 @@ class eventActions extends sfActions
     
     //cropping image_full
     $profile_image = new myImageManipulator($image_full_path);
-    $profile_image->resample2($full, $full);
-    $profile_image->crop(0, 0, $full, $full);
+    $profile_image->resample($fullWidth, $fullHeight);
+    $profile_image->crop(0, 0, $fullWidth, $fullHeight);
     $profile_image->save($image_full_path);
     
     //cropping image_small
     $profile_image = new myImageManipulator($image_full_path);
-    $profile_image->resample2($small, $small);
-    $profile_image->crop(0, 0, $small, $small);
+    $profile_image->resample($smallWidth, $smallHeight);
+    $profile_image->crop(0, 0, $smallWidth, $smallHeight);
     $profile_image->save($image_small_path);
     
     //update

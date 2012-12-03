@@ -1,16 +1,17 @@
-<script type="text/javascript">
-$(document).ready(function() {
-  $(".fancybox").fancybox({
-    openEffect	: 'none',
-		closeEffect	: 'none'
-  });
-});
-</script>
-<?php if(isset($events)): ?>
-<ul class="per_block_ul_separator">
-<?php foreach($events as $x => $event): ?>
-						<li>
-							<div class="calendar_date">
+<?php slot('meta_title',$event->getVenue().', '.$event->getCity())?>
+<?php slot('og_title',$event->getVenue().', '.$event->getCity())?>
+<?php slot('og_description',cut($event->getDescription(),150))?>
+<?php if($event->getImageSmall()): ?>
+<?php slot('og_image',base_url().'uploads/event/'.$event->getImageFull())?>
+<?php endif; ?>
+<?php slot('og_url',base_url().'/event/view/'.$id)?>
+
+<div id="content" class="content_dashboard_wrapper home">
+<div>  
+  <h2 class="text_gray upcoming_events_margin text_museosans500"><?php echo $event->getVenue().', '.$event->getCity() ?></h2>
+</div>
+
+<div class="calendar_date">
 								<div class="calendar_month_shortened"><?php echo date('M',strtotime($event->getEventDate())); ?></div>
 								<div class="calendar_day"><h1><?php echo date('d',strtotime($event->getEventDate())); ?></h1></div>
 							</div>
@@ -23,7 +24,7 @@ $(document).ready(function() {
 									<li class="event_venue"><a href="" alt="" class="text_no_underline text_gray text_museosans500"><?php echo $event->getAddress(); ?></a> &nbsp;<a href="<?php echo url_for('/event/map/'.encode($event->getAddress())) ?>" target="_blank" alt="" class="event_venue_see_more">See Map</a></li>
 								</ul>
 							</div>
-              <?php if(!isset($type)): ?>
+              <?php if($event->getEventDate() > now()): ?>
 							<div class="event_info_2">
 								<a href="" alt="" class="btn_sign_up_now"></a>
 								<div class="event_dsa_info_2_label"><div class="event_attending_count text_red"><span>
@@ -71,12 +72,8 @@ $(document).ready(function() {
                 <?php endif; ?>
                 <br />
 								<div class="sns_tiny">
-                    
-                   <!-- AddThis Button BEGIN -->
-									<div class="addthis_toolbox addthis_default_style" 
-                  addthis:url="<?php echo base_url().'event/view/'.$event->getId(); ?>"
-                  addthis:title="<?php echo $event->getVenue().', '.$event->getCity(); ?>"
-                  addthis:description="<?php echo $event->getDescription(); ?>">
+									<!-- AddThis Button BEGIN -->
+									<div class="addthis_toolbox addthis_default_style ">
 										<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
 										<a class="addthis_button_tweet"></a>
 										<a class="addthis_counter addthis_pill_style"></a>
@@ -87,11 +84,10 @@ $(document).ready(function() {
 									</div>
 									<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4fb21f8c3dd4fc6c"></script>
 									<!-- AddThis Button END -->
-                    
 								</div>
 								<div class="clear"></div>
 							</div>
-						</li>
-<?php endforeach; ?>
-       </ul>
-<?php endif; ?>
+
+
+</div>
+<?php include_component('home','sidebar',array()); ?>

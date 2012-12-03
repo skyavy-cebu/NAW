@@ -10,8 +10,11 @@ all:
   
   event:
     dir:  %SF_ROOT_DIR%/web/uploads/event/
-    full: 278
-    small: 178
+    fullWidth: 278
+    fullHeight: 178
+    smallWidth: 80
+    smallHeight: 49
+    
   
   news:
     dir:  %SF_ROOT_DIR%/web/uploads/news/

@@ -97,8 +97,8 @@
       <td><?php echo $event['City']['State']; ?></td>
       <td><?php echo $event->getVenue(); ?></td>
       <td align="right"><?php echo $event->getMaxCapacity(); ?></td>
-      <td align="right"><?php echo $event['countAttendee']; ?></td>
-      <td align="right">0</td>
+      <td align="right"><?php echo $event->countAttendee; ?></td>
+      <td align="right"><?php echo $event->countCheckIn; ?></td>
       <td align="right">
         <a href="<?php echo url_for('/AdmSys.php/event-view/'.$event->getId()); ?>"><img title="View Detail" src="/images/magnifier.png"/></a>
         <a href="<?php echo url_for('/AdmSys.php/event/edit/'.$event->getId()); ?>"><img title="Edit Event" src="/images/pencil.png"/></a>
