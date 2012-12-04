@@ -22,8 +22,6 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @property decimal $admission_no_rsvp
  * @property string $image_full
  * @property string $image_small
- * @property integer $event_admin1
- * @property integer $event_admin2
  * @property City $City
  * @property Doctrine_Collection $EventAttendee
  * 
@@ -42,8 +40,6 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @method decimal             getAdmissionNoRsvp()   Returns the current record's "admission_no_rsvp" value
  * @method string              getImageFull()         Returns the current record's "image_full" value
  * @method string              getImageSmall()        Returns the current record's "image_small" value
- * @method integer             getEventAdmin1()       Returns the current record's "event_admin1" value
- * @method integer             getEventAdmin2()       Returns the current record's "event_admin2" value
  * @method City                getCity()              Returns the current record's "City" value
  * @method Doctrine_Collection getEventAttendee()     Returns the current record's "EventAttendee" collection
  * @method Event               setId()                Sets the current record's "id" value
@@ -61,8 +57,6 @@ Doctrine_Manager::getInstance()->bindComponent('Event', 'doctrine');
  * @method Event               setAdmissionNoRsvp()   Sets the current record's "admission_no_rsvp" value
  * @method Event               setImageFull()         Sets the current record's "image_full" value
  * @method Event               setImageSmall()        Sets the current record's "image_small" value
- * @method Event               setEventAdmin1()       Sets the current record's "event_admin1" value
- * @method Event               setEventAdmin2()       Sets the current record's "event_admin2" value
  * @method Event               setCity()              Sets the current record's "City" value
  * @method Event               setEventAttendee()     Sets the current record's "EventAttendee" collection
  * 
@@ -150,20 +144,6 @@ abstract class BaseEvent extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              'length' => 150,
-             ));
-        $this->hasColumn('event_admin1', 'integer', 4, array(
-             'type' => 'integer',
-             'unsigned' => true,
-             'notnull' => true,
-             'default' => 0,
-             'length' => 4,
-             ));
-        $this->hasColumn('event_admin2', 'integer', 4, array(
-             'type' => 'integer',
-             'unsigned' => true,
-             'notnull' => true,
-             'default' => 0,
-             'length' => 4,
              ));
     }
 

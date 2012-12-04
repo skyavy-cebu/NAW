@@ -5,7 +5,11 @@
 homepage:
   url:   /
   param: { module: home, action: index }
-  
+ 
+event_register:
+  url:   /event/register/:id
+  param: { module: event, action: register }
+
 map_address:
   url:   /event/map/:address
   param: { module: event, action: map }

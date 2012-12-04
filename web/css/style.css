@@ -1598,3 +1598,25 @@ ul.radio_list{
 .tw-button{
   float:left;
 }
+
+.login_box{
+  padding: 5px;
+  margin:5px;
+  border:1px solid #ccc;
+  width:400px;
+}
+
+.event_registration_table{
+  margin-top:50px;
+  width:600px;
+}
+
+.radio_list{
+  margin:0px;
+  padding:0px;
+}
+
+.radio_list li{
+  float:left;
+  padding-right:15px;
+}
