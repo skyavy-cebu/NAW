@@ -26,7 +26,7 @@
 							</div>
               <?php if($event->getEventDate() > now()): ?>
 							<div class="event_info_2">
-								<a href="" alt="" class="btn_sign_up_now"></a>
+								<a href="<?php echo url_for('/event/register/'.$event->getId()); ?>" alt="" class="btn_sign_up_now"></a>
 								<div class="event_dsa_info_2_label"><div class="event_attending_count text_red"><span>
                 <?php echo day_diff(now(),$event->getEventDate()); ?>
                 </span></div>&nbsp;DAYS LEFT</div>
@@ -73,7 +73,10 @@
                 <br />
 								<div class="sns_tiny">
 									<!-- AddThis Button BEGIN -->
-									<div class="addthis_toolbox addthis_default_style ">
+									<div class="addthis_toolbox addthis_default_style 
+                    addthis:url="<?php echo base_url().'event/view/'.$event->getId(); ?>"
+                    addthis:title="Network After Work at <?php echo $event->getVenue(); ?>"
+                    addthis:description="<?php echo $event->getVenue().', '.$event->getCity(); ?>">
 										<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
 										<a class="addthis_button_tweet"></a>
 										<a class="addthis_counter addthis_pill_style"></a>

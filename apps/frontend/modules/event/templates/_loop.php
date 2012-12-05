@@ -25,7 +25,7 @@ $(document).ready(function() {
 							</div>
               <?php if(!isset($type)): ?>
 							<div class="event_info_2">
-								<a href="" alt="" class="btn_sign_up_now"></a>
+								<a href="<?php echo url_for('/event/register/'.$event->getId()); ?>" alt="" class="btn_sign_up_now"></a>
 								<div class="event_dsa_info_2_label"><div class="event_attending_count text_red"><span>
                 <?php echo day_diff(now(),$event->getEventDate()); ?>
                 </span></div>&nbsp;DAYS LEFT</div>

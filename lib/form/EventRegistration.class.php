@@ -2,11 +2,27 @@
 class EventRegistrationForm extends BaseUserForm{
   
   public function configure(){
+    unset( 
+			$this['created_at'], $this['updated_at'],
+      $this['updated_at'], $this['updated_at'],
+      $this['pass'], $this['pass'],
+      $this['activation'], $this['activation'],
+      $this['app_id'], $this['app_id']
+    );
   
     $id = $this->getObject()->get('id');
+    $dob = '';
+    if($id){
+      $dob = date('m/d/Y',strtotime($this->getObject()->get('dob')));
+    }
+    
+    $state_id = 0;
+    $city_id = 0;
     $profile = Doctrine_Core::getTable('Profile')->find($id);
-    $state_id = $profile->getCity()->getStateId();
-    $city_id = $profile->getCityId();
+    if($profile){
+      $state_id = $profile->getCity()->getStateId();
+      $city_id = $profile->getCityId();
+    }
     
     $states = Doctrine_Core::getTable('State')->findAll();
     $state_list[0] = 'Select State';
@@ -20,41 +36,72 @@ class EventRegistrationForm extends BaseUserForm{
       $city_list[$city->getId()] = $city->getName();
     }
     
+    //industry
+    $industries = Doctrine_Core::getTable('Industry')->findAll();
+    $industry_list[0] = 'Select Industry';
+    foreach($industries as $x => $industry){
+      $industry_list[$industry->getId()] = $industry->getName();
+    }
+    
     $this->widgetSchema['fname'] = new sfWidgetFormInputText(array('default'=>''));
     $this->widgetSchema['lname'] = new sfWidgetFormInputText(array('default'=>''));
     $this->widgetSchema['email'] = new sfWidgetFormInputText(array('default'=>''));
     $this->widgetSchema['state'] = new sfWidgetFormSelect(
-      array('choices' => $state_list,'default'=>'')
+      array('choices' => $state_list,'default'=>$state_id)
     );
     $this->widgetSchema['city'] = new sfWidgetFormSelect(
-      array('choices' => $city_list,'default'=>'')
+      array('choices' => $city_list,'default'=>$city_id)
     );  
     $this->widgetSchema['dob'] = new sfWidgetFormInputText(
-      array('default'=>''),array('placeholder'=>'Select date','readonly'=>'readonly')
+      array(),array('placeholder'=>'Select date','readonly'=>'readonly','value'=>$dob)
     );
     $this->widgetSchema['industry'] = new sfWidgetFormSelect(
-      array('choices' => array(1,2),'default'=>'')
+      array('choices' => $industry_list,'default'=>'')
     );
     $this->widgetSchema['payment_method'] = new sfWidgetFormSelectRadio(
       array('choices' => array(1=>'Pay Now',2=>'Pay at the door'),'default'=>'')
     );
     
     $this->validatorSchema['fname']	= new sfValidatorString(
-      array('max_length' => 150,'required' => true),array('required'=>'Please enter First name')
+      array('max_length' => 150,'required' => true),
+      array('required'=>'Please enter your First name')
     );
     $this->validatorSchema['lname']	= new sfValidatorString(
-      array('max_length' => 150,'required' => true),array('required'=>'Please enter Last name')
+      array('max_length' => 150,'required' => true),
+      array('required'=>'Please enter your Last name')
     );
-    $this->validatorSchema['email']	= new sfValidatorString(
-      array('max_length' => 150,'required' => true),array('required'=>'Please enter email address')
+    $this->sfValidatorEmail['email']	= new sfValidatorString(
+      array('max_length' => 150,'required' => true),
+      array('required'=>'Please enter email address'),
+      array('invalid' =>'Please enter valid email address')
     );
     $this->validatorSchema['state'] = new sfValidatorString(array('required'=>false));
     $this->validatorSchema['city'] = new sfValidatorString(array('required'=>false));
-    $this->validatorSchema['dob'] = new sfValidatorString(array('required'=>true));
-    $this->validatorSchema['industry'] = new sfValidatorString(array('required'=>true));
-    $this->validatorSchema['payment_method'] = new sfValidatorString(array('required'=>true));
+    $this->validatorSchema['dob'] = new sfValidatorString(
+      array('required'=>true),
+      array('required'=>'Please enter your Date of Birth')
+    );
+    $this->validatorSchema['industry'] = new sfValidatorString(array('required'=>false));
+    $this->validatorSchema['payment_method'] = new sfValidatorString(
+      array('required'=>true),
+      array('required'=>'Please select payment method')
+    );
     
     $this->widgetSchema->setNameFormat('event[%s]');
+    $this->validatorSchema->setPostValidator(new sfValidatorCallback(array('callback'=>array($this, 'validateForm'))));
+  }
+  
+  public function validateForm($validator, $values){
+    if(!is_email($values['email'])){
+      $error = new sfValidatorError($validator, 'Please enter valid email address');
+      $error_data['email'] = $error;
+    }
+  
+    if(isset($error_data)){
+      throw new sfValidatorErrorSchema($validator, $error_data);
+    }
+    
+    return $values;
   }
   
 }

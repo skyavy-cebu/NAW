@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript">
   $(document).ready(function(){
     $('#profile_state_id').change(function(){
       var state_id = $(this).val();

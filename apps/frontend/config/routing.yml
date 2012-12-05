@@ -6,6 +6,10 @@ homepage:
   url:   /
   param: { module: home, action: index }
  
+event_register_done:
+  url:   /event/registerDone/:id
+  param: { module: event, action: registerDone }
+ 
 event_register:
   url:   /event/register/:id
   param: { module: event, action: register }

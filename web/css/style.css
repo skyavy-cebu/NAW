@@ -1600,14 +1600,22 @@ ul.radio_list{
 }
 
 .login_box{
-  padding: 5px;
-  margin:5px;
+  padding: 15px;
+  margin:15px;
   border:1px solid #ccc;
   width:400px;
 }
 
+.login_box div{
+  margin:10px;
+}
+
+.event_form{
+  margin-top:15px;
+}
+
 .event_registration_table{
-  margin-top:50px;
+  margin-top:15px;
   width:600px;
 }
 
@@ -1619,4 +1627,8 @@ ul.radio_list{
 .radio_list li{
   float:left;
   padding-right:15px;
+}
+
+.registerDone.event_info_2{
+ height: 40px !important;
 }
