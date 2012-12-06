@@ -21,3 +21,6 @@ default:
 
 mapSuccess:
   has_layout:     false
+
+registerOtherFormSuccess:
+  has_layout:     false

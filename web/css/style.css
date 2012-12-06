@@ -1632,3 +1632,18 @@ ul.radio_list{
 .registerDone.event_info_2{
  height: 40px !important;
 }
+
+.box{
+  border: 1px solid #ccc;
+  padding:15px;
+  margin:15px;
+  margin-left:0;
+}
+
+.dob{
+  width:70px;
+}
+
+.display_form_errr{
+  color:#ff3737;
+}

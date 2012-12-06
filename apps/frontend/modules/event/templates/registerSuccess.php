@@ -1,19 +1,3 @@
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('#event_state').change(function(){
-      var state_id = $(this).val();
-      $.get('/profile/ajax/city/'+state_id,function(data){
-        $('#event_city').html(data);
-      });
-    });
-    $('#event_dob').datepicker({
-      changeMonth: true,
-      changeYear: true,
-      yearRange: "<?php echo date('Y')-45; ?>:<?php echo date('Y')-5; ?>"
-    });
-  });
-</script>
-
 <div id="content" class="content_dashboard_wrapper home">
 <h2>Event Registration</h2>
 Register for Network After Work at <?php echo $event->getVenue(); ?>, <?php echo $event->getCity(); ?>

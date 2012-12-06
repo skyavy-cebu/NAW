@@ -30,4 +30,14 @@ class eventActions extends sfActions
     );
     $this->events = EventTable::getInstance()->getAllEvent($this->type,$param);
   }
+  
+  public function executeRegisterOtherForm(sfWebRequest $request){
+    $this->id = $request->getParameter('id');
+    if(!$this->id){
+      $this->id = 0;
+    }
+    if($this->id > 4){
+      $this->forward404();
+    }
+  }
 }

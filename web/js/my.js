@@ -1,4 +1,40 @@
-﻿function trim(str, chars) {
+﻿/*NAW*/
+$(document).ready(function(){
+    var d = new Date();
+    var year = d.getFullYear();
+    var startYear = d.getFullYear()-80;
+    $('.dob').datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1967:"+year
+    }).prop('readonly',true);
+  });
+//state to city
+$(document).ready(function(){
+  var state_length = $('select.state').length;
+  if(state_length){
+    source = $(this).attr('id');
+    target = $(this).attr('data-target');
+    $('select.state').change(function(){
+      source = $(this).attr('id');
+      target = $(this).attr('data-target');
+      if(target){
+        getCityOption('#'+source,'#'+target);
+      }
+    });
+  }
+});
+
+function getCityOption(source,target){
+  var state_id = $(source).val();
+  $.get('/profile/ajax/city/'+state_id,function(data){
+    $(target).html(data);
+  });
+}
+
+/*my.js*/
+
+function trim(str, chars) {
 	return ltrim(rtrim(str, chars), chars);
 }
  
